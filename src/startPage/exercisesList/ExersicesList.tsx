@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { DataType } from '../../types/types';
+import ExerciseView from '../exerciseView/ExerciseView';
 
-const ExersisesList: React.FunctionComponent = (): JSX.Element => {
+const ExercisesList: React.FunctionComponent = (): JSX.Element => {
   const [result, setResult] = useState<DataType | null>(null);
 
   useEffect(() => {
@@ -15,10 +16,10 @@ const ExersisesList: React.FunctionComponent = (): JSX.Element => {
   return (
     <div className="exersisesList">
       {result?.questions.map((q, ind) => (
-        <div key={ind}>{q.title}</div>
+        <ExerciseView q={q} key={ind} />
       ))}
     </div>
   );
 };
 
-export default ExersisesList;
+export default ExercisesList;
