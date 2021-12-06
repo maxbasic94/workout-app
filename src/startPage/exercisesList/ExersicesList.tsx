@@ -15,8 +15,8 @@ const ExercisesList: React.FunctionComponent = (): JSX.Element => {
 
   return (
     <div className="exersisesList">
-      {result?.questions.map((q, ind) => (
-        <ExerciseView q={q} key={ind} />
+      {result?.questions.map((item, index) => (
+        <ExerciseView exrList={item} key={index} />
       ))}
     </div>
   );
