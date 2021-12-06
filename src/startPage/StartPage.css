@@ -1,0 +1,10 @@
+.startPage {
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #eeeeee;
+}

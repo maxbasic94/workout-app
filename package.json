@@ -27,7 +27,8 @@
   },
   "prettier": {
     "singleQuote": true,
-    "printWidth": 100
+    "printWidth": 100,
+    "endOfLine": "auto"
   },
   "eslintConfig": {
     "extends": [
@@ -69,6 +70,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/maxbasic94/workout-app/issues"
-  },
-  "homepage": "https://github.com/maxbasic94/workout-app#readme"
+  }
 }

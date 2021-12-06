@@ -1,0 +1,10 @@
+@media screen and (max-width: 800px) {
+    .initImgDiv {
+        border-radius: 0;
+    }
+    
+    .initImg {
+        width: 100vw;
+        border-radius: 0;
+    }
+}
