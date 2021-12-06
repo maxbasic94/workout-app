@@ -10,8 +10,8 @@ const StartPage: React.FunctionComponent = (): JSX.Element => {
     <div className="startPage">
       <InitImgDiv />
       <StartInfo />
-      <StartButton />
       <ExercisesList />
+      <StartButton />
     </div>
   );
 };

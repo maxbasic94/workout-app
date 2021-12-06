@@ -1,6 +1,12 @@
 .startPage {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.startPage::-webkit-scrollbar {
+  width: 0;
 }
 
 hr {
