@@ -1,0 +1,28 @@
+.waitTimer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 40px;
+  line-height: 56px;
+  font-weight: 600;
+}
+
+.waitTimerCaption {
+  font-family: SF Pro Display;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 800px) {
+  .controls {
+    width: 100vw;
+  }
+}
