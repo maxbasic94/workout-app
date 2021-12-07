@@ -9,10 +9,11 @@ interface ExProps {
 const ExerciseView: React.FunctionComponent<ExProps> = (props) => {
   return (
     <div className="exerciseView">
-      <div>{props.exrList.title}</div>
+      <div className="exrCaption">{props.exrList.title}</div>
       {props.exrList.exercises.map((item, index) => (
         <Exercise exr={item} key={index} />
       ))}
+      <hr />
     </div>
   );
 };

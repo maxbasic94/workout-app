@@ -1,5 +1,6 @@
 export type ExersiceType = {
   description: string;
+  duration: number;
   id: number;
   photo: string;
   title: string;

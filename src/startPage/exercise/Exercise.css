@@ -1,0 +1,38 @@
+.exrCaption {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #212121;
+  margin: 5px 0 10px 0;
+}
+
+.exercise {
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.exrImg {
+  height: 64px;
+  width: 64px;
+}
+
+.exrInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 10px;
+}
+
+.exrTitle {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #212121;
+}
+
+.exrDuration {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #212121;
+}
