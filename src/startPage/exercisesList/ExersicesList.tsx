@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { DataType } from '../../types/types';
+import React from 'react';
+import { QuestionType } from '../../types/types';
 import ExerciseView from '../exerciseView/ExerciseView';
 
-const ExercisesList: React.FunctionComponent = (): JSX.Element => {
-  const [result, setResult] = useState<DataType | null>(null);
-  const apiPath: string = process.env.REACT_APP_API_PATH || '';
-  useEffect(() => {
-    fetch(`${apiPath}`)
-      .then((res) => res.json())
-      .then((data) => setResult(data.data));
-  }, [apiPath]);
+interface ExerListProps {
+  exerListArr: QuestionType[] | undefined;
+}
 
+const ExercisesList: React.FC<ExerListProps> = ({ exerListArr }): JSX.Element => {
   return (
     <div className="exersisesList">
-      {result?.questions.map((item, index) => (
+      {exerListArr?.map((item, index) => (
         <ExerciseView exrList={item} key={index} />
       ))}
     </div>

@@ -5,9 +5,7 @@ import './Exercise.css';
 interface ExrProps {
   exr: ExersiceType;
 }
-
 const Exercise: React.FunctionComponent<ExrProps> = (props): JSX.Element => {
-  console.log(props.exr);
   return (
     <div className="exercise">
       <div className="exrImgDiv">

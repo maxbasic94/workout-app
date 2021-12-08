@@ -5,7 +5,6 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import './Timer.css';
 
 const Timer: React.FC = (): JSX.Element => {
-  console.log(CountdownCircleTimer);
   return (
     <div className="waitTimer">
       <div className="waitTimerCaption">Get Ready</div>

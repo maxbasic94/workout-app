@@ -44,3 +44,41 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+# Workout
+
+This application represents home exercises. \
+You can check how it works here: 
+
+## Task
+
+Link on the document: https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/edit#
+
+## How to use
+
+## Folders structure
+    
+    .
+    ├── build                           
+    ├── node_modules
+    ├── public
+    │   └── pages                     
+    ├── src                             
+    │   ├── api
+    │   │   └── pages      
+    │   ├── tests
+    │   │   └── pages
+    │   ├── tests
+    │   │   └── pages                            
+    │   ├── App.css                             
+    │   ├── App.tsx                                    
+    │   ├── index.css                           
+    │   ├── index.tsx                            
+    │   └── react-app-env.d.ts                       
+    ├── .env                        
+    ├── .eslintrc.json                    
+    ├── .gitignore                       
+    ├── package-lock.json               
+    ├── package.json                    
+    ├── README.md                      
+    └── tsconfig.json              
