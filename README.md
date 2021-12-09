@@ -4,8 +4,9 @@ This application represents home exercises. \
 You can check how it works here: 
 
 ## How to run
-.
-For local start use `npm start` \
+```
+ `npm start` 
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
