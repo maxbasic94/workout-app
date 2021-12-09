@@ -1,17 +1,16 @@
 import React from 'react';
-import prevExr from './prevExr.png';
-import nextExr from './nextExr.png';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import PrevButton from '../buttons/PrevButton';
+import NextButton from '../buttons/NextButton';
 import './Timer.css';
+import PlayPauseButton from '../buttons/PlayPauseButton';
 
 const Timer: React.FC = (): JSX.Element => {
   return (
     <div className="waitTimer">
       <div className="waitTimerCaption">Get Ready</div>
       <div className="controls">
-        <button>
-          <img src={prevExr} />
-        </button>
+        <PrevButton />
         <CountdownCircleTimer
           isPlaying
           duration={5}
@@ -23,10 +22,9 @@ const Timer: React.FC = (): JSX.Element => {
         >
           {({ remainingTime }) => remainingTime}
         </CountdownCircleTimer>
-        <button>
-          <img src={nextExr} />
-        </button>
+        <NextButton />
       </div>
+      <PlayPauseButton />
     </div>
   );
 };
