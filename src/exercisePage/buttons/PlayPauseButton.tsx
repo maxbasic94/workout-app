@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import play from './images/play.png';
 import pause from './images/pause.png';
+import './PlayPauseButton.css';
 
 const PlayPauseButton: React.FC = (): JSX.Element => {
   const [state, setState] = useState(play);
@@ -14,7 +15,7 @@ const PlayPauseButton: React.FC = (): JSX.Element => {
   }
 
   return (
-    <button onClick={testFunction}>
+    <button className="playPauseButton" onClick={testFunction}>
       <img src={state}></img>
     </button>
   );

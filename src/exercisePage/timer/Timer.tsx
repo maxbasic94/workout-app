@@ -3,7 +3,6 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import PrevButton from '../buttons/PrevButton';
 import NextButton from '../buttons/NextButton';
 import './Timer.css';
-import PlayPauseButton from '../buttons/PlayPauseButton';
 
 const Timer: React.FC = (): JSX.Element => {
   return (
@@ -24,7 +23,6 @@ const Timer: React.FC = (): JSX.Element => {
         </CountdownCircleTimer>
         <NextButton />
       </div>
-      <PlayPauseButton />
     </div>
   );
 };

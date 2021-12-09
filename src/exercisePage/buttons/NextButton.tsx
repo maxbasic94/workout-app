@@ -3,7 +3,7 @@ import nextExr from './images/nextExr.png';
 
 const NextButton: React.FC = (): JSX.Element => {
   return (
-    <button>
+    <button className="nextButton">
       <img src={nextExr} />
     </button>
   );
