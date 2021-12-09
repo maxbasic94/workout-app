@@ -3,6 +3,8 @@
 This application represents home exercises. \
 You can check how it works here: 
 
+## How to run
+.
 For local start use `npm start` \
 
 Runs the app in the development mode.\
