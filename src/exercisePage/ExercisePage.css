@@ -10,6 +10,11 @@
   padding: 0;
 }
 
+.nextButton:active, .prevButton:active {
+  background: hsla(280, 100%, 50%, 0.123);
+  border-radius: 6px;
+}
+
 @media screen and (max-width: 800px) {
   .exercisePage {
     min-width: 0;
