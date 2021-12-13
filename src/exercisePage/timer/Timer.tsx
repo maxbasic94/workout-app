@@ -4,24 +4,36 @@ import PrevButton from '../buttons/PrevButton';
 import NextButton from '../buttons/NextButton';
 import './Timer.css';
 
-const Timer: React.FC = (): JSX.Element => {
+interface TimerProps {
+  moveToNext: () => void;
+  moveToPrev: () => void;
+  setFirstUrl: () => void;
+  index: number;
+}
+
+const Timer: React.FC<TimerProps> = ({
+  moveToNext,
+  moveToPrev,
+  setFirstUrl,
+  index,
+}): JSX.Element => {
   return (
     <div className="waitTimer">
       <div className="waitTimerCaption">Get Ready</div>
       <div className="controls">
-        <PrevButton />
+        <PrevButton moveToPrev={moveToPrev} index={index} />
         <CountdownCircleTimer
           isPlaying
           duration={5}
           colors={'#1DE9B6'}
           size={128}
           onComplete={() => {
-            console.log('test');
+            setFirstUrl();
           }}
         >
           {({ remainingTime }) => remainingTime}
         </CountdownCircleTimer>
-        <NextButton />
+        <NextButton moveToNext={moveToNext} index={index} />
       </div>
     </div>
   );

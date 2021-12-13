@@ -1,0 +1,14 @@
+.playerDiv {
+    width:  800px;
+}
+
+.video {
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .playerDiv {
+        width:  100vw;
+    }
+    
+}

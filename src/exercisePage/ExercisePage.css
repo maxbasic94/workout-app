@@ -1,8 +1,10 @@
 .exercisePage {
-  min-width: 800px;
+  display: flex;
+  flex-direction: column;
 }
 
-.nextButton, .prevButton {
+.nextButton,
+.prevButton {
   height: 48px;
   width: 74px;
   background: none;
@@ -10,7 +12,8 @@
   padding: 0;
 }
 
-.nextButton:active, .prevButton:active {
+.nextButton:active,
+.prevButton:active {
   background: hsla(280, 100%, 50%, 0.123);
   border-radius: 6px;
 }

@@ -5,6 +5,7 @@
   font-size: 40px;
   line-height: 56px;
   font-weight: 600;
+  width: 800px;
 }
 
 .waitTimerCaption {
@@ -23,6 +24,10 @@
 
 @media screen and (max-width: 800px) {
   .controls {
+    width: 100vw;
+  }
+
+  .waitTimer {
     width: 100vw;
   }
 }

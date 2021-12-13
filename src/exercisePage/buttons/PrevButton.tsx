@@ -1,10 +1,15 @@
 import React from 'react';
 import prevExr from './images/prevExr.png';
 
-const PrevButton: React.FC = (): JSX.Element => {
+interface PrevBtnProps {
+  moveToPrev: () => void;
+  index: number;
+}
+
+const PrevButton: React.FC<PrevBtnProps> = ({ moveToPrev, index }): JSX.Element => {
   return (
-    <button className="prevButton">
-      <img src={prevExr} />
+    <button className="prevButton" onClick={moveToPrev}>
+      {index !== 0 && <img src={prevExr} />}
     </button>
   );
 };
