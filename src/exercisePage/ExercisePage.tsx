@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ExersiceType } from '../../src/types/types';
-import Timer from './timer/Timer';
+import Control from './control/Control';
 import './ExercisePage.css';
 import Player from './player/Player';
 // import PlayPauseButton from './buttons/PlayPauseButton';
@@ -12,14 +12,19 @@ interface ExrPageProps {
 const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
   const [url, setUrl] = useState<string>('');
   const [indexExr, setIndexExr] = useState(0);
+  const [duration, setDuration] = useState(20);
 
   useEffect(() => {
+    console.log(indexExr);
     if (allExr.length) {
+      setDuration(allExr[indexExr].duration);
       setUrl(allExr[indexExr].video);
     }
   }, [allExr, indexExr]);
 
   function moveToNextIndex() {
+    console.log('here');
+    console.log(allExr);
     if (allExr.length - 1 > indexExr) {
       setIndexExr(indexExr + 1);
     }
@@ -31,17 +36,15 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
     }
   }
 
-  function setFirstUrl() {
-    console.log('test');
-  }
-
   return (
     <div className="exercisePage">
-      <Timer
+      <Control
         moveToNext={moveToNextIndex}
         moveToPrev={moveToPrevIndex}
-        setFirstUrl={setFirstUrl}
         index={indexExr}
+        duration={duration}
+        id={allExr[indexExr]?.id || 0}
+        caption={allExr[indexExr]?.title}
       />
       <Player url={url} />
       {/* <PlayPauseButton /> */}

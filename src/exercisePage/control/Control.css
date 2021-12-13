@@ -1,14 +1,14 @@
-.waitTimer {
+.control {
   display: flex;
-  flex-direction: column;
   align-items: center;
   font-size: 40px;
   line-height: 56px;
   font-weight: 600;
   width: 800px;
+  justify-content: space-around;
 }
 
-.waitTimerCaption {
+.timerCaption {
   font-family: SF Pro Display;
   font-weight: 600;
   font-size: 24px;
@@ -22,8 +22,14 @@
   justify-content: space-evenly;
 }
 
+.exerTimerDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media screen and (max-width: 800px) {
-  .controls {
+  .control {
     width: 100vw;
   }
 
