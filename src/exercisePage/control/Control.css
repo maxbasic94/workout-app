@@ -9,6 +9,7 @@
 }
 
 .timerCaption {
+  text-align: center;
   font-family: SF Pro Display;
   font-weight: 600;
   font-size: 24px;
