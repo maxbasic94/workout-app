@@ -32,14 +32,32 @@ Have a good day!
     ├── build                           
     ├── node_modules
     ├── public
-    │   └── pages                     
+    │   ├── favicon.ico
+    │   └── index.html                   
     ├── src                             
-    │   ├── api
-    │   │   └── pages      
-    │   ├── tests
-    │   │   └── pages
-    │   ├── tests
-    │   │   └── pages                            
+    │   ├── exercisePage
+    │   │   ├── buttons
+    │   │   ├── control
+    │   │   ├── exerTimer
+    │   │   ├── finishWorkout
+    │   │   ├── player
+    │   │   ├── waitTimer
+    │   │   ├── ExercisePage.css
+    │   │   └── ExercisePage.tsx
+    │   ├── notFoundPage
+    │   │   └── NotFoundPage.tsx
+    │   ├── startPage
+    │   │   ├── exercise
+    │   │   ├── exercisesList
+    │   │   ├── exerciseView
+    │   │   ├── ininImg
+    │   │   ├── startButton
+    │   │   ├── startInfo
+    │   │   ├── StartPage.css
+    │   │   └── StartOage.tsx
+    │   ├── types
+    │   │   ├── images.d.ts
+    │   │   └── types.ts                          
     │   ├── App.css                             
     │   ├── App.tsx                                    
     │   ├── index.css                           
