@@ -6,14 +6,22 @@ interface ExerTimerProps {
   moveToNext: () => void;
   id: number;
   caption: string;
+  isPause: boolean;
 }
 
-const ExerTimer: React.FC<ExerTimerProps> = ({ time, moveToNext, id, caption }): JSX.Element => {
+const ExerTimer: React.FC<ExerTimerProps> = ({
+  time,
+  moveToNext,
+  id,
+  caption,
+  isPause,
+}): JSX.Element => {
+  console.log(isPause);
   return (
     <div className="exerTimerDiv">
       <div className="timerCaption">{caption}</div>
       <CountdownCircleTimer
-        isPlaying
+        isPlaying={isPause}
         duration={time}
         key={id}
         colors={'#FF4081'}

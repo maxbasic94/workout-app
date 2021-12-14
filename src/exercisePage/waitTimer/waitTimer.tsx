@@ -1,9 +1,13 @@
 import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-const WaitTimer: React.FC = (): JSX.Element => {
+interface WaitTimerProps {
+  setReady: () => void;
+}
+
+const WaitTimer: React.FC<WaitTimerProps> = ({ setReady }): JSX.Element => {
   return (
-    <div className="exerTimerDiv">
+    <div className="waitTimerDiv">
       <div className="timerCaption">Get Ready</div>
       <CountdownCircleTimer
         isPlaying
@@ -11,8 +15,7 @@ const WaitTimer: React.FC = (): JSX.Element => {
         colors={'#1DE9B6'}
         size={128}
         onComplete={() => {
-          //   moveToNext();
-          console.log('here');
+          setReady();
         }}
       >
         {({ remainingTime }) => remainingTime}

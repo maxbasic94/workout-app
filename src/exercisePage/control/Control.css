@@ -32,6 +32,12 @@
   min-width: 370px;
 }
 
+.waitTimerDiv {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 56px;
+}
+
 @media screen and (max-width: 800px) {
   .control {
     width: 100vw;

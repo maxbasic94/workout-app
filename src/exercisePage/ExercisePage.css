@@ -19,6 +19,10 @@
   border-radius: 6px;
 }
 
+.loophole {
+  height: 80%;
+}
+
 @media screen and (max-width: 800px) {
   .exercisePage {
     min-width: 0;

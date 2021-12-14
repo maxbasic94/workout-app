@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ExersiceType } from '../../src/types/types';
 import Control from './control/Control';
 import './ExercisePage.css';
@@ -14,6 +14,9 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
   const [url, setUrl] = useState<string>('');
   const [indexExr, setIndexExr] = useState(0);
   const [duration, setDuration] = useState(20);
+  const [isReady, setIsReady] = useState(true);
+  const [isPause, setIsPause] = useState(true);
+  const playerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (allExr.length && indexExr < allExr.length) {
@@ -22,9 +25,20 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
     }
   }, [allExr, indexExr]);
 
+  function changeReadyState() {
+    if (isReady) {
+      setIsReady(false);
+    } else {
+      setIsReady(true);
+    }
+  }
+
   function moveToNextIndex() {
     if (allExr.length > indexExr) {
       setIndexExr(indexExr + 1);
+    }
+    if (allExr.length - 1 > indexExr) {
+      changeReadyState();
     }
   }
 
@@ -48,9 +62,18 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
             id={allExr[indexExr]?.id || 0}
             caption={allExr[indexExr]?.title}
             amountExr={allExr.length}
+            setReady={changeReadyState}
+            isReady={isReady}
+            isPause={isPause}
           />
-          <Player url={url} />
-          <PlayPauseButton />
+          {isReady ? (
+            <div className="loophole" />
+          ) : (
+            <>
+              <Player playerRef={playerRef} url={url} />
+              <PlayPauseButton playerRef={playerRef} setPause={setIsPause} />
+            </>
+          )}
         </>
       )}
     </div>
