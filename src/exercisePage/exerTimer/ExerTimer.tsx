@@ -16,7 +16,6 @@ const ExerTimer: React.FC<ExerTimerProps> = ({
   caption,
   isPause,
 }): JSX.Element => {
-  console.log(isPause);
   return (
     <div className="exerTimerDiv">
       <div className="timerCaption">{caption}</div>
