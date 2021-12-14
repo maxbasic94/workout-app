@@ -1,7 +1,7 @@
 # Workout
 
 This application represents home exercises. \
-You can check how it works here: 
+You can check how it works here: https://workout-everyday.netlify.app/
 
 ## How to run
 
