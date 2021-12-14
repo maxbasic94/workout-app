@@ -16,6 +16,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
   const [duration, setDuration] = useState(20);
   const [isReady, setIsReady] = useState(true);
   const [isPause, setIsPause] = useState(true);
+  const [time, setTime] = useState(0);
   const playerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
     }
     if (allExr.length - 1 > indexExr) {
       changeReadyState();
+      setTime(time + duration);
     }
   }
 
@@ -51,7 +53,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
   return (
     <div className="exercisePage">
       {indexExr === 21 ? (
-        <FinishWorkout />
+        <FinishWorkout time={time} />
       ) : (
         <>
           <Control
