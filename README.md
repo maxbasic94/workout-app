@@ -29,7 +29,8 @@ Have a good day!
 ## Folders structure
     
 ```
-├── build                           
+.
+├── build                           # directory with a production application
 ├── node_modules
 ├── public
 │   ├── favicon.ico
