@@ -3,7 +3,8 @@ import { ExersiceType } from '../../src/types/types';
 import Control from './control/Control';
 import './ExercisePage.css';
 import Player from './player/Player';
-// import PlayPauseButton from './buttons/PlayPauseButton';
+import PlayPauseButton from './buttons/PlayPauseButton';
+import FinishWorkout from './finishWorkout/FinishWorkout';
 
 interface ExrPageProps {
   allExr: Array<ExersiceType>;
@@ -15,17 +16,14 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
   const [duration, setDuration] = useState(20);
 
   useEffect(() => {
-    console.log(indexExr);
-    if (allExr.length) {
+    if (allExr.length && indexExr < allExr.length) {
       setDuration(allExr[indexExr].duration);
       setUrl(allExr[indexExr].video);
     }
   }, [allExr, indexExr]);
 
   function moveToNextIndex() {
-    console.log('here');
-    console.log(allExr);
-    if (allExr.length - 1 > indexExr) {
+    if (allExr.length > indexExr) {
       setIndexExr(indexExr + 1);
     }
   }
@@ -38,16 +36,23 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
 
   return (
     <div className="exercisePage">
-      <Control
-        moveToNext={moveToNextIndex}
-        moveToPrev={moveToPrevIndex}
-        index={indexExr}
-        duration={duration}
-        id={allExr[indexExr]?.id || 0}
-        caption={allExr[indexExr]?.title}
-      />
-      <Player url={url} />
-      {/* <PlayPauseButton /> */}
+      {indexExr === 21 ? (
+        <FinishWorkout />
+      ) : (
+        <>
+          <Control
+            moveToNext={moveToNextIndex}
+            moveToPrev={moveToPrevIndex}
+            index={indexExr}
+            duration={duration}
+            id={allExr[indexExr]?.id || 0}
+            caption={allExr[indexExr]?.title}
+            amountExr={allExr.length}
+          />
+          <Player url={url} />
+          <PlayPauseButton />
+        </>
+      )}
     </div>
   );
 };

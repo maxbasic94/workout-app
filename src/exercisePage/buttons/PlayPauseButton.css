@@ -1,7 +1,18 @@
+.playPauseBtnDiv {
+  flex-grow: 2;
+  text-align: center;
+  position: sticky;
+  bottom: 3%;
+}
+
 .playPauseButton {
-    position: sticky;
-    bottom: 0px;
-    background: none;
-    border: none;
-    padding: 0;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .playPauseBtnDiv {
+    bottom: 10%;
+  }
 }

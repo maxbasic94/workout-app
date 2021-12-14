@@ -1,15 +1,16 @@
 .playerDiv {
-    margin-top: 10px;
-    width:  800px;
+  flex-grow: 5;
+  width: 800px;
+  min-height: 70%;
 }
 
 .video {
-    width: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 800px) {
-    .playerDiv {
-        width:  100vw;
-    }
-    
+  .playerDiv {
+    width: 100vw;
+    min-height: 0px;
+  }
 }

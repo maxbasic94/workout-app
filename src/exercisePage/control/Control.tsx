@@ -11,6 +11,7 @@ interface TimerProps {
   duration: number;
   id: number;
   caption: string;
+  amountExr: number;
 }
 
 const Control: React.FC<TimerProps> = ({
@@ -20,12 +21,13 @@ const Control: React.FC<TimerProps> = ({
   duration,
   id,
   caption,
+  amountExr,
 }): JSX.Element => {
   return (
     <div className="control">
       <PrevButton moveToPrev={moveToPrev} index={index} />
       <ExerTimer time={duration} moveToNext={moveToNext} id={id} caption={caption} />
-      <NextButton moveToNext={moveToNext} index={index} />
+      <NextButton moveToNext={moveToNext} index={index} amountExr={amountExr} />
     </div>
   );
 };

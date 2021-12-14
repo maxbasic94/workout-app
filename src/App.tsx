@@ -18,13 +18,13 @@ function getAllExerArr(allExerArray: Array<QuestionType> | undefined) {
 
 const App: React.FunctionComponent = (): JSX.Element => {
   const [result, setResult] = useState<DataType | null>(null);
-  const [test, setTest] = useState<ExersiceType[]>([]);
+  const [exrArr, setExrArr] = useState<ExersiceType[]>([]);
   const apiPath: string = process.env.REACT_APP_API_PATH || '';
   useEffect(() => {
     fetch(`${apiPath}`)
       .then((res) => res.json())
       .then((data) => {
-        setTest(getAllExerArr(data.data.questions));
+        setExrArr(getAllExerArr(data.data.questions));
         setResult(data.data);
       });
   }, [apiPath]);
@@ -34,7 +34,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<StartPage exerArr={result?.questions} />} />
-          <Route path="/exercise" element={<ExercisePage allExr={test} />} />
+          <Route path="/exercise" element={<ExercisePage allExr={exrArr} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,84 @@
+.endWorkoutDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.completeImg {
+  width: 55px;
+  height: 42px;
+}
+
+.complete {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 56px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+
+.description {
+  font-size: 20px;
+  line-height: 36px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #222222;
+
+  opacity: 0.6;
+}
+
+.timeCompleteCap {
+  font-size: 14px;
+  line-height: 20px;
+
+  text-align: center;
+
+  color: #212121;
+}
+
+.timeComplete {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 56px;
+
+  text-align: center;
+
+  color: #212121;
+}
+
+.endButton {
+  margin-top: 28px;
+  background: #aa00ff;
+  color: white;
+  box-shadow: 0px 16px 32px rgba(170, 0, 255, 0.24);
+  border-radius: 8px;
+
+  height: 56px;
+  line-height: 56px;
+  width: 800px;
+
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .endButton {
+    width: 100%;
+    bottom: 10vh;
+    margin-top: 10vh;
+  }
+
+  .endWorkoutDiv {
+    width: 100vw;
+  }
+}

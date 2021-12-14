@@ -9,7 +9,6 @@ interface ExerTimerProps {
 }
 
 const ExerTimer: React.FC<ExerTimerProps> = ({ time, moveToNext, id, caption }): JSX.Element => {
-  console.log(time);
   return (
     <div className="exerTimerDiv">
       <div className="timerCaption">{caption}</div>
