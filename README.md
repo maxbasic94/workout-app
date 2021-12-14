@@ -28,7 +28,7 @@ Have a good day!
 
 ## Folders structure
     
-``
+```
 ├── build                           
 ├── node_modules
 ├── public
@@ -70,4 +70,4 @@ Have a good day!
 ├── package.json                    
 ├── README.md                      
 └── tsconfig.json
-``              
+```              
