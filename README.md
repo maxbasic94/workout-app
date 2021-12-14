@@ -28,45 +28,45 @@ Have a good day!
 
 ## Folders structure
     
-    .
-    ├── build                           
-    ├── node_modules
-    ├── public
-    │   ├── favicon.ico
-    │   └── index.html                   
-    ├── src                             
-    │   ├── exercisePage
-    │   │   ├── buttons
-    │   │   ├── control
-    │   │   ├── exerTimer
-    │   │   ├── finishWorkout
-    │   │   ├── player
-    │   │   ├── waitTimer
-    │   │   ├── ExercisePage.css
-    │   │   └── ExercisePage.tsx
-    │   ├── notFoundPage
-    │   │   └── NotFoundPage.tsx
-    │   ├── startPage
-    │   │   ├── exercise
-    │   │   ├── exercisesList
-    │   │   ├── exerciseView
-    │   │   ├── ininImg
-    │   │   ├── startButton
-    │   │   ├── startInfo
-    │   │   ├── StartPage.css
-    │   │   └── StartOage.tsx
-    │   ├── types
-    │   │   ├── images.d.ts
-    │   │   └── types.ts                          
-    │   ├── App.css                             
-    │   ├── App.tsx                                    
-    │   ├── index.css                           
-    │   ├── index.tsx                            
-    │   └── react-app-env.d.ts                       
-    ├── .env                        
-    ├── .eslintrc.json                    
-    ├── .gitignore                       
-    ├── package-lock.json               
-    ├── package.json                    
-    ├── README.md                      
-    └── tsconfig.json              
+.
+├── build                           
+├── node_modules
+├── public
+│   ├── favicon.ico
+│   └── index.html                   
+├── src                             
+│   ├── exercisePage
+│   │   ├── buttons
+│   │   ├── control
+│   │   ├── exerTimer
+│   │   ├── finishWorkout
+│   │   ├── player
+│   │   ├── waitTimer
+│   │   ├── ExercisePage.css
+│   │   └── ExercisePage.tsx
+│   ├── notFoundPage
+│   │   └── NotFoundPage.tsx
+│   ├── startPage
+│   │   ├── exercise
+│   │   ├── exercisesList
+│   │   ├── exerciseView
+│   │   ├── ininImg
+│   │   ├── startButton
+│   │   ├── startInfo
+│   │   ├── StartPage.css
+│   │   └── StartOage.tsx
+│   ├── types
+│   │   ├── images.d.ts
+│   │   └── types.ts                          
+│   ├── App.css                             
+│   ├── App.tsx                                    
+│   ├── index.css                           
+│   ├── index.tsx                            
+│   └── react-app-env.d.ts                       
+├── .env                        
+├── .eslintrc.json                    
+├── .gitignore                       
+├── package-lock.json               
+├── package.json                    
+├── README.md                      
+└── tsconfig.json              
