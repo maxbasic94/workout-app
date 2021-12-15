@@ -52,7 +52,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
 
   return (
     <div className="exercisePage">
-      {indexExr === 21 ? (
+      {indexExr === allExr.length && allExr.length ? (
         <FinishWorkout time={time} />
       ) : (
         <>
