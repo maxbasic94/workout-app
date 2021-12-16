@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.1",
-    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.24",
     "@types/node": "^12.20.37",
@@ -26,6 +25,11 @@
     "lint": "eslint --ext .ts, .tsx src --fix",
     "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss|png|jpg)$": "identity-obj-proxy"
+    }
   },
   "prettier": {
     "singleQuote": true,
@@ -55,14 +59,21 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.5",
     "@babel/plugin-transform-react-jsx": "^7.16.0",
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.0",
     "@babel/preset-typescript": "^7.16.5",
+    "@testing-library/react": "^11.2.7",
+    "@types/enzyme": "^3.10.10",
+    "@types/pretty": "^2.0.0",
+    "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "babel-jest": "^27.4.5",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-17-updated": "^1.0.2",
     "eslint": "7.32.0",
     "eslint-config-google": "0.14.0",
     "eslint-config-prettier": "8.3.0",
@@ -70,9 +81,13 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.3.0",
-    "jest": "^27.4.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "26.6.3",
+    "jest-fetch-mock": "^3.0.3",
     "jest-transform-stub": "^2.0.0",
+    "node-fetch": "^3.1.0",
     "prettier": "2.5.0",
+    "pretty": "^2.0.0",
     "regenerator-runtime": "^0.13.9"
   },
   "repository": {

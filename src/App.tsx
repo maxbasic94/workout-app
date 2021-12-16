@@ -3,7 +3,7 @@ import { DataType, QuestionType, ExersiceType } from '../src/types/types';
 import StartPage from './startPage/StartPage';
 import ExercisePage from './exercisePage/ExercisePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 function getAllExerArr(allExerArray: Array<QuestionType> | undefined) {
@@ -31,13 +31,11 @@ const App: React.FunctionComponent = (): JSX.Element => {
 
   return (
     <div className="app">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<StartPage exerArr={result?.questions} />} />
-          <Route path="/exercise" element={<ExercisePage allExr={exrArr} />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<StartPage exerArr={result?.questions} />} />
+        <Route path="/exercise" element={<ExercisePage allExr={exrArr} />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 };
