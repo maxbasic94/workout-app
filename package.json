@@ -25,8 +25,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint --ext .ts, .tsx src --fix",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "prettier": {
     "singleQuote": true,
