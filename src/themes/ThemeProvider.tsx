@@ -12,12 +12,12 @@ function getTestCh(test: string) {
 }
 
 const ThemeContext = React.createContext<ThemeContext>({} as ThemeContext);
-const test = localStorage.getItem('theme') as Theme;
-const testch = getTestCh(test) as boolean;
+const initTheme = localStorage.getItem('theme') as Theme;
+const initSwitchState = getTestCh(initTheme) as boolean;
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState(test);
-  const [checked, setChecked] = useState(testch);
+  const [theme, setTheme] = useState(initTheme);
+  const [checked, setChecked] = useState(initSwitchState);
   const color = theme === 'light' ? '#212121' : '#e4dae9';
   const backgroundColor = theme === 'light' ? '#FFF' : '#121212';
   const toggleTheme = () => {
