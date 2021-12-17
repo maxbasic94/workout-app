@@ -30,13 +30,13 @@ Have a good day!
     
 ```
 .
-├── build                           # directory with a production application
-├── node_modules
-├── public
-│   ├── favicon.ico
-│   └── index.html                   
-├── src                             
-│   ├── exercisePage
+├── build                       # directory with a production application
+├── node_modules                # all downloaded packages from NPM in your computer for the JavaScript project that you have
+├── public                      # folder contains static files such as index.html and favicon.ico
+│   ├── favicon.ico             # website icon
+│   └── index.html              # main html file applications
+├── src                         # folder for contain source files  
+│   ├── exercisePage            # folder with components to Exercise Page
 │   │   ├── buttons
 │   │   ├── control
 │   │   ├── exerTimer
@@ -45,9 +45,9 @@ Have a good day!
 │   │   ├── waitTimer
 │   │   ├── ExercisePage.css
 │   │   └── ExercisePage.tsx
-│   ├── notFoundPage
+│   ├── notFoundPage            # folder with components to Not Found Page
 │   │   └── NotFoundPage.tsx
-│   ├── startPage
+│   ├── startPage               # folder with components to Start Page    
 │   │   ├── exercise
 │   │   ├── exercisesList
 │   │   ├── exerciseView
@@ -56,19 +56,21 @@ Have a good day!
 │   │   ├── startInfo
 │   │   ├── StartPage.css
 │   │   └── StartOage.tsx
-│   ├── types
+│   ├── tests                   # folder for contain unit tests 
+│   ├── types                   # folder with types
 │   │   ├── images.d.ts
 │   │   └── types.ts                          
 │   ├── App.css                             
 │   ├── App.tsx                                    
 │   ├── index.css                           
-│   ├── index.tsx                            
-│   └── react-app-env.d.ts                       
+│   ├── index.tsx               # main js-file app             
+│   └── react-app-env.d.ts
+├── .babelrc                    # file is your local configuration for your code in your project   
 ├── .env                        
-├── .eslintrc.json                    
-├── .gitignore                       
-├── package-lock.json               
-├── package.json                    
-├── README.md                      
+├── .eslintrc.json              # file is a configuration file for a tool      
+├── .gitignore                  # text file that tells Git which files or folders to ignore in a project    
+├── package-lock.json           # file is to keep track of the exact version of every package that is installed   
+├── package.json                # file is used to give information to npm     
+├── README.md                   # file to generate the html summary you see at the bottom of projects  
 └── tsconfig.json
 ```              
