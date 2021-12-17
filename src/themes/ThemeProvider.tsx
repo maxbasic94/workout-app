@@ -18,8 +18,8 @@ const testch = getTestCh(test) as boolean;
 const ThemeProvider: React.FC = ({ children }) => {
   const [theme, setTheme] = useState(test);
   const [checked, setChecked] = useState(testch);
-  const color = theme === 'light' ? '#212121' : '#c8c7cc';
-  const backgroundColor = theme === 'light' ? '#FFF' : '#212121';
+  const color = theme === 'light' ? '#212121' : '#e4dae9';
+  const backgroundColor = theme === 'light' ? '#FFF' : '#121212';
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
     setChecked(checked === false ? true : false);
