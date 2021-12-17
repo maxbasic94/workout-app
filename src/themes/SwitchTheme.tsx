@@ -12,12 +12,15 @@ const SwitchTheme: React.FC = (): JSX.Element => {
       checked={checked}
       uncheckedIcon={
         <div className="switchDiv">
-          <img src="https://img.icons8.com/external-bearicons-flat-bearicons/17/000000/external-moon-halloween-bearicons-flat-bearicons.png" />
+          <img
+            src="https://img.icons8.com/external-bearicons-flat-bearicons/17/000000/external-moon-halloween-bearicons-flat-bearicons.png"
+            alt={'m'}
+          />
         </div>
       }
       checkedIcon={
         <div className="switchDiv">
-          <img src="https://img.icons8.com/officel/17/000000/sun.png" />
+          <img src="https://img.icons8.com/officel/17/000000/sun.png" alt={'s'} />
         </div>
       }
       onColor="#3c3c3c"

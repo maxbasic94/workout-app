@@ -29,11 +29,11 @@ const App: React.FunctionComponent = (): JSX.Element => {
         setResult(data.data);
       });
   }, [apiPath]);
-  // useEffect(() => {
-  //   if (localStorage.getItem('theme') === null) {
-  //     localStorage.setItem('theme', 'light');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem('theme') === null) {
+      localStorage.setItem('theme', 'light');
+    }
+  }, []);
 
   return (
     <div className="app">
