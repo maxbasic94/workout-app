@@ -66,11 +66,11 @@ Have a good day!
 │   ├── index.tsx               # main js-file app             
 │   └── react-app-env.d.ts
 ├── .babelrc                    # file is your local configuration for your code in your project   
-├── .env                        
+├── .env                        # file is a simple text configuration file for controlling environment constants
 ├── .eslintrc.json              # file is a configuration file for a tool      
 ├── .gitignore                  # text file that tells Git which files or folders to ignore in a project    
 ├── package-lock.json           # file is to keep track of the exact version of every package that is installed   
 ├── package.json                # file is used to give information to npm     
 ├── README.md                   # file to generate the html summary you see at the bottom of projects  
-└── tsconfig.json
+└── tsconfig.json               # file specifies the root files and the compiler options required to compile the project
 ```              
