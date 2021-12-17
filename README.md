@@ -57,6 +57,7 @@ Have a good day!
 │   │   ├── StartPage.css
 │   │   └── StartOage.tsx
 │   ├── tests                   # folder for contain unit tests 
+│   ├── themes                  # folder with components to change theme
 │   ├── types                   # folder with types
 │   │   ├── images.d.ts
 │   │   └── types.ts                          
