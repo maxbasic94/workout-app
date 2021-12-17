@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount, configure } from 'enzyme';
-import NotFoundPage from './notFoundPage/NotFoundPage';
-import StartPage from './startPage/StartPage';
-import ExercisePage from './exercisePage/ExercisePage';
+import NotFoundPage from '../notFoundPage/NotFoundPage';
+import StartPage from '../startPage/StartPage';
+import ExercisePage from '../exercisePage/ExercisePage';
 import Adapter from 'enzyme-adapter-react-17-updated';
 import { MemoryRouter } from 'react-router-dom';
-import App from './App';
+import App from '../App';
 import fetchMock from 'jest-fetch-mock';
 
 fetchMock.enableMocks();

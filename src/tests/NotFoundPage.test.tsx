@@ -2,7 +2,7 @@ import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 
-import Exam from './exam';
+import NotFoundPage from '../notFoundPage/NotFoundPage';
 
 let container: Element;
 beforeEach(() => {
@@ -19,12 +19,7 @@ afterEach(() => {
 
 it('renders with or without a name', () => {
   act(() => {
-    render(<Exam />, container);
+    render(<NotFoundPage />, container);
   });
-  expect(container?.textContent).toBe('Hey, stranger');
-
-  act(() => {
-    render(<Exam name="Jenny" />, container);
-  });
-  expect(container.textContent).toBe('Hello, Jenny!');
+  expect(container?.textContent).toBe('Page is not found');
 });
