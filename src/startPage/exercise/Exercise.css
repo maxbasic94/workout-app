@@ -2,7 +2,6 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
-  color: #212121;
   margin: 5px 0 10px 0;
 }
 
@@ -27,12 +26,10 @@
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
-  color: #212121;
 }
 
 .exrDuration {
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: #212121;
 }

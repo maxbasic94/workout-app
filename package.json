@@ -14,8 +14,10 @@
     "react": "^17.0.2",
     "react-countdown-circle-timer": "^2.5.4",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.3.3",
     "typescript": "^4.5.2",
     "web-vitals": "^1.1.2"
   },
@@ -69,6 +71,7 @@
     "@types/enzyme": "^3.10.10",
     "@types/pretty": "^2.0.0",
     "@types/react-test-renderer": "^17.0.1",
+    "@types/styled-components": "^5.1.18",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "babel-jest": "^27.4.5",
@@ -88,6 +91,7 @@
     "node-fetch": "^3.1.0",
     "prettier": "2.5.0",
     "pretty": "^2.0.0",
+    "react-switch": "^6.0.0",
     "regenerator-runtime": "^0.13.9"
   },
   "repository": {

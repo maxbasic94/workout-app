@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { DataType, QuestionType, ExersiceType } from '../src/types/types';
 import StartPage from './startPage/StartPage';
 import ExercisePage from './exercisePage/ExercisePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
 import { Route, Routes } from 'react-router-dom';
+import { ThemeContext } from './themes/ThemeProvider';
+import Switch from 'react-switch';
 import './App.css';
 
 function getAllExerArr(allExerArray: Array<QuestionType> | undefined) {
@@ -17,6 +19,7 @@ function getAllExerArr(allExerArray: Array<QuestionType> | undefined) {
 }
 
 const App: React.FunctionComponent = (): JSX.Element => {
+  const { checked, toggleTheme } = useContext(ThemeContext);
   const [result, setResult] = useState<DataType | null>(null);
   const [exrArr, setExrArr] = useState<ExersiceType[]>([]);
   const apiPath: string = process.env.REACT_APP_API_PATH || '';
@@ -31,6 +34,14 @@ const App: React.FunctionComponent = (): JSX.Element => {
 
   return (
     <div className="app">
+      <Switch
+        className="switch"
+        onChange={toggleTheme}
+        checked={checked}
+        uncheckedIcon={false}
+        checkedIcon={false}
+        onColor="#aa00ff"
+      />
       <Routes>
         <Route path="/" element={<StartPage exerArr={result?.questions} />} />
         <Route path="/exercise" element={<ExercisePage allExr={exrArr} />} />
