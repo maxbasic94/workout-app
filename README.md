@@ -37,35 +37,35 @@ Have a good day!
 │   └── index.html              # main html file applications
 ├── src                         # folder for contain source files  
 │   ├── exercisePage            # folder with components to Exercise Page
-│   │   ├── buttons
-│   │   ├── control
-│   │   ├── exerTimer
-│   │   ├── finishWorkout
-│   │   ├── player
-│   │   ├── waitTimer
-│   │   ├── ExercisePage.css
-│   │   └── ExercisePage.tsx
+│   │   ├── buttons             # folder with components NextButton, PrevButton, PlayPauseButton
+│   │   ├── control             # folder with component Control
+│   │   ├── exerTimer           # folder with component ExerTimer
+│   │   ├── finishWorkout       # folder with component FinishWorkout
+│   │   ├── player              # folder with component Player
+│   │   ├── waitTimer           # folder with component WaitTimer
+│   │   ├── ExercisePage.css    # styles for ExercisePage.tsx
+│   │   └── ExercisePage.tsx    # jsx element ExercisePage
 │   ├── notFoundPage            # folder with components to Not Found Page
-│   │   └── NotFoundPage.tsx
+│   │   └── NotFoundPage.tsx    # jsx element NotFoundPage
 │   ├── startPage               # folder with components to Start Page    
-│   │   ├── exercise
-│   │   ├── exercisesList
-│   │   ├── exerciseView
-│   │   ├── ininImg
-│   │   ├── startButton
-│   │   ├── startInfo
-│   │   ├── StartPage.css
-│   │   └── StartOage.tsx
+│   │   ├── exercise            # folder with component Exercise
+│   │   ├── exercisesList       # folder with component ExerciseList
+│   │   ├── exerciseView        # folder with component ExerciseView
+│   │   ├── ininImg             # folder with component InitImg
+│   │   ├── startButton         # folder with component StartButton
+│   │   ├── startInfo           # folder with component StatInfo
+│   │   ├── StartPage.css       # styles for StartPage.tsx
+│   │   └── StartPage.tsx       # jsx element StartPage
 │   ├── tests                   # folder for contain unit tests 
 │   ├── themes                  # folder with components to change theme
 │   ├── types                   # folder with types
-│   │   ├── images.d.ts
-│   │   └── types.ts                          
-│   ├── App.css                             
-│   ├── App.tsx                                    
-│   ├── index.css                           
+│   │   ├── images.d.ts         # fail for import images
+│   │   └── types.ts            # types for response data            
+│   ├── App.css                 # styles for App.tsx            
+│   ├── App.tsx                 # main jsx element in app                  
+│   ├── index.css               # styles for index.tsx            
 │   ├── index.tsx               # main js-file app             
-│   └── react-app-env.d.ts
+│   └── react-app-env.d.ts      # file references TypeScript types declarations that are specific to projects started with Create React App
 ├── .babelrc                    # file is your local configuration for your code in your project   
 ├── .env                        # file is a simple text configuration file for controlling environment constants
 ├── .eslintrc.json              # file is a configuration file for a tool      
