@@ -30,8 +30,21 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(css|scss|png|jpg)$": "identity-obj-proxy"
-    }
+      "\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    },
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "esnext",
+      "jsx": "react",
+      "sourceMap": false,
+      "experimentalDecorators": true,
+      "noImplicitUseStrict": true,
+      "removeComments": true,
+      "moduleResolution": "node",
+      "lib": ["es2017", "dom"],
+      "typeRoots": ["node_modules/@types", "src/@types"]
+    },
+    "exclude": ["node_modules", "out", ".next"]
   },
   "prettier": {
     "singleQuote": true,
@@ -77,6 +90,7 @@
     "babel-jest": "^27.4.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-17-updated": "^1.0.2",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "7.32.0",
     "eslint-config-google": "0.14.0",
     "eslint-config-prettier": "8.3.0",
