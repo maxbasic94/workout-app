@@ -3,7 +3,7 @@ import PrevButton from '../buttons/PrevButton';
 import NextButton from '../buttons/NextButton';
 import './Control.css';
 import ExerTimer from '../exerTimer/ExerTimer';
-import WaitTimer from '../waitTimer/waitTimer';
+import WaitTimer from '../waitTimer/WaitTimer';
 
 interface TimerProps {
   moveToNext: () => void;

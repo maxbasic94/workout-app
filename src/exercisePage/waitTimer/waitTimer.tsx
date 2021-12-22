@@ -1,5 +1,6 @@
 import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import './WaitTimer.css';
 
 interface WaitTimerProps {
   setReady: () => void;
