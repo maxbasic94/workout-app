@@ -1,5 +1,6 @@
 import React from 'react';
 import nextExr from './images/nextExr.png';
+import './NextButton.css';
 
 interface NextBtnProps {
   moveToNext: () => void;

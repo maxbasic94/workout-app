@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Switch from 'react-switch';
 import { ThemeContext } from './ThemeProvider';
+import './SwitchTheme.css';
 
 const SwitchTheme: React.FC = (): JSX.Element => {
   const { checked, toggleTheme } = useContext(ThemeContext);

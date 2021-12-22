@@ -1,5 +1,6 @@
 import React from 'react';
 import prevExr from './images/prevExr.png';
+import './PrevButton.css';
 
 interface PrevBtnProps {
   moveToPrev: () => void;

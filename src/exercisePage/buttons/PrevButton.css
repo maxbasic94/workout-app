@@ -1,0 +1,12 @@
+.prevButton {
+  height: 48px;
+  width: 74px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.prevButton:active {
+  background: hsla(280, 100%, 50%, 0.123);
+  border-radius: 6px;
+}

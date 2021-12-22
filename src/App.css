@@ -4,15 +4,3 @@
   flex-direction: column;
   align-items: center;
 }
-
-.switch {
-  position: fixed !important;
-  right: 0 !important;
-}
-
-.switchDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
