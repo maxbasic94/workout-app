@@ -8,8 +8,8 @@ interface ExProps {
 
 const ExerciseView: React.FunctionComponent<ExProps> = (props) => {
   return (
-    <div className="exerciseView">
-      <div className="exrCaption">{props.exrList.title}</div>
+    <div className="StartPage-StartInfo-ExerciseView">
+      <div className="StartPage-StartInfo-ExerciseView_exrCaption">{props.exrList.title}</div>
       {props.exrList.exercises.map((item, index) => (
         <Exercise exr={item} key={index} />
       ))}

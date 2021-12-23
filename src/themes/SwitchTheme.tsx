@@ -8,11 +8,11 @@ const SwitchTheme: React.FC = (): JSX.Element => {
 
   return (
     <Switch
-      className="switch"
+      className="App-Switch"
       onChange={toggleTheme}
       checked={checked}
       uncheckedIcon={
-        <div className="switchDiv">
+        <div className="App-Switch-ImgContainer">
           <img
             src="https://img.icons8.com/external-bearicons-flat-bearicons/17/000000/external-moon-halloween-bearicons-flat-bearicons.png"
             alt={'m'}

@@ -1,11 +1,11 @@
-.startPage {
+.StartPage {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   height: 100vh;
 }
 
-.startPage::-webkit-scrollbar {
+.StartPage::-webkit-scrollbar {
   width: 0;
 }
 

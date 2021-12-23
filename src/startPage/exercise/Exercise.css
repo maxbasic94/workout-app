@@ -1,34 +1,27 @@
-.exrCaption {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-  margin: 5px 0 10px 0;
-}
-
-.exercise {
+.StartPage-Exercise {
   display: flex;
   padding-bottom: 5px;
 }
 
-.exrImg {
+.Exercise-ImgContainer_image {
   height: 64px;
   width: 64px;
 }
 
-.exrInfo {
+.Exercise-ExrInfoContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding-left: 10px;
 }
 
-.exrTitle {
+.Exercise-ExrInfoContainer_title {
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
 }
 
-.exrDuration {
+.Exercise-ExrInfoContainer_duration {
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;

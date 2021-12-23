@@ -1,4 +1,5 @@
-.day, .levelInfo{
+.StartPage-StartInfo_text_day,
+.StartPage-StartInfo_text_levelInfo {
   font-family: SF Pro Text;
   font-style: normal;
   font-weight: normal;
@@ -6,7 +7,7 @@
   line-height: 20px;
 }
 
-.caption {
+.StartPage-StartInfo_text_caption {
   font-family: SF Pro Display;
   font-style: normal;
   font-weight: 600;

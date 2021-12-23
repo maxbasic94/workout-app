@@ -3,7 +3,7 @@ import { QuestionType } from '../types/types';
 import InitImgDiv from './initImg/InitImgDiv';
 import StartInfo from './startInfo/StartInfo';
 import StartButton from './startButton/StartButton';
-import ExercisesList from './exercisesList/ExersicesList';
+import ExercisesList from './exercisesList/ExercisesList';
 import './StartPage.css';
 
 interface ExerProps {
@@ -12,7 +12,7 @@ interface ExerProps {
 
 const StartPage: React.FC<ExerProps> = ({ exerArr }): JSX.Element => {
   return (
-    <div className="startPage">
+    <div className="StartPage">
       <InitImgDiv />
       <StartInfo />
       <ExercisesList exerListArr={exerArr} />

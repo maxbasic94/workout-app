@@ -4,8 +4,12 @@ import './InitImg.css';
 
 const InitImgDiv: React.FunctionComponent = (): JSX.Element => {
   return (
-    <div className="initImgDiv">
-      <img className="initImg" src={initImg} alt="initial image"></img>
+    <div className="StartPage-StartInfo-ImgContainer">
+      <img
+        className="StartPage-StartInfo-ImgContainer_image"
+        src={initImg}
+        alt="initial image"
+      ></img>
     </div>
   );
 };

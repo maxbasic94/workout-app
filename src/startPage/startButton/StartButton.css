@@ -1,4 +1,4 @@
-.startButton {
+.StartPage-StartInfo_button_start {
   margin-top: 28px;
   background: #aa00ff;
   color: white;
@@ -18,7 +18,7 @@
 }
 
 @media screen and (max-width: 800px) {
-  .startButton {
+  .StartPage-StartInfo_button_start {
     width: 100%;
     bottom: 10vh;
     margin-top: 10vh;

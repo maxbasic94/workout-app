@@ -7,13 +7,17 @@ interface ExrProps {
 }
 const Exercise: React.FunctionComponent<ExrProps> = (props): JSX.Element => {
   return (
-    <div className="exercise">
-      <div className="exrImgDiv">
-        <img className="exrImg" src={props.exr.photo} alt="exercise name"></img>
+    <div className="StartPage-Exercise">
+      <div className="Exercise-ImgContainer">
+        <img
+          className="Exercise-ImgContainer_image"
+          src={props.exr.photo}
+          alt="exercise name"
+        ></img>
       </div>
-      <div className="exrInfo">
-        <div className="exrTitle">{props.exr.title}</div>
-        <div className="exrDuration">{props.exr.duration} sec</div>
+      <div className="Exercise-ExrInfoContainer">
+        <div className="Exercise-ExrInfoContainer_title">{props.exr.title}</div>
+        <div className="Exercise-ExrInfoContainer_duration">{props.exr.duration} sec</div>
       </div>
     </div>
   );

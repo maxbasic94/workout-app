@@ -8,7 +8,7 @@ interface ExerListProps {
 
 const ExercisesList: React.FC<ExerListProps> = ({ exerListArr }): JSX.Element => {
   return (
-    <div className="exersisesList">
+    <div className="StartPage-ExercisesList">
       {exerListArr?.map((item, index) => (
         <ExerciseView exrList={item} key={index} />
       ))}

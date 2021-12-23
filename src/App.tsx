@@ -37,7 +37,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
   console.log(result?.questions);
 
   return (
-    <div className="app">
+    <div className="App">
       <SwitchTheme />
       <Routes>
         <Route path="/" element={<StartPage exerArr={result?.questions} />} />

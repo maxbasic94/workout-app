@@ -3,10 +3,10 @@ import './StartInfo.css';
 
 const StartInfo: React.FunctionComponent = (): JSX.Element => {
   return (
-    <div className="startInfo">
-      <div className="day">Day1</div>
-      <div className="caption">Morning Flexibility Routine</div>
-      <div className="levelInfo">Easy • 15 min • No equipment</div>
+    <div className="StartPage-StartInfo">
+      <div className="StartPage-StartInfo_text_day">Day1</div>
+      <div className="StartPage-StartInfo_text_caption">Morning Flexibility Routine</div>
+      <div className="StartPage-StartInfo_text_levelInfo">Easy • 15 min • No equipment</div>
       <hr />
     </div>
   );
