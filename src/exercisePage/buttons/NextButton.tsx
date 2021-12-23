@@ -10,7 +10,7 @@ interface NextBtnProps {
 
 const NextButton: React.FC<NextBtnProps> = ({ moveToNext, index, amountExr }): JSX.Element => {
   return (
-    <button className="nextButton" onClick={moveToNext}>
+    <button className="ExersicePage_button_next" onClick={moveToNext}>
       {index !== amountExr && <img src={nextExr} />}
     </button>
   );

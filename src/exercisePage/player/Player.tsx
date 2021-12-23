@@ -8,8 +8,16 @@ interface PlayerProps {
 
 const Player: React.FC<PlayerProps> = ({ url, playerRef }): JSX.Element => {
   return (
-    <div className="playerDiv">
-      <video ref={playerRef} className="video" src={url} playsInline autoPlay muted loop></video>
+    <div className="ExercisePage-Player_container">
+      <video
+        ref={playerRef}
+        className="ExercisePage-Player_video"
+        src={url}
+        playsInline
+        autoPlay
+        muted
+        loop
+      ></video>
     </div>
   );
 };

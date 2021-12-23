@@ -18,8 +18,8 @@ const ExerTimer: React.FC<ExerTimerProps> = ({
   isPause,
 }): JSX.Element => {
   return (
-    <div className="exerTimerDiv">
-      <div className="timerCaption">{caption}</div>
+    <div className="ExercisePage-ExerTimer_container">
+      <div className="ExercisePage-ExerTimer_caption">{caption}</div>
       <CountdownCircleTimer
         isPlaying={isPause}
         duration={time}

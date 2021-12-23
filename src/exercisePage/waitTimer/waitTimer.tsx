@@ -8,8 +8,8 @@ interface WaitTimerProps {
 
 const WaitTimer: React.FC<WaitTimerProps> = ({ setReady }): JSX.Element => {
   return (
-    <div className="waitTimerDiv">
-      <div className="timerCaption">Get Ready</div>
+    <div className="ExercisePage-WaitTimer">
+      <div className="ExercisePage-WaitTimer_caption">Get Ready</div>
       <CountdownCircleTimer
         isPlaying
         duration={5}

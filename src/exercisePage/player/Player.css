@@ -1,15 +1,15 @@
-.playerDiv {
+.ExercisePage-Player_container {
   flex-grow: 5;
   width: 800px;
   min-height: 70%;
 }
 
-.video {
+.ExercisePage-Player_video {
   width: 100%;
 }
 
 @media screen and (max-width: 800px) {
-  .playerDiv {
+  .ExercisePage-Player_container {
     width: 100vw;
     min-height: 0px;
   }

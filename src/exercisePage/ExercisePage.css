@@ -1,10 +1,10 @@
-.exercisePage {
+.ExercisePage {
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.loophole {
+.ExercisePage_loophole {
   height: 80%;
 }
 

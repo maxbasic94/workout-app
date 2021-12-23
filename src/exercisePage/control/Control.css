@@ -1,4 +1,4 @@
-.control {
+.ExercisePage-Control {
   min-height: 200px;
   flex-grow: 1;
   display: flex;
@@ -10,23 +10,8 @@
   justify-content: space-around;
 }
 
-.controls {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-evenly;
-}
-
 @media screen and (max-width: 800px) {
-  .control {
+  .ExercisePage-Control {
     width: 100vw;
-  }
-
-  .waitTimer {
-    width: 100vw;
-  }
-
-  .waitTimerDiv {
-    min-width: 0px;
   }
 }

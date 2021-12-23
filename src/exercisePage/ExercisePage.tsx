@@ -51,7 +51,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
   }
 
   return (
-    <div className="exercisePage">
+    <div className="ExercisePage">
       {indexExr === allExr.length && allExr.length ? (
         <FinishWorkout time={time} />
       ) : (
@@ -69,7 +69,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
             isPause={isPause}
           />
           {isReady ? (
-            <div className="loophole" />
+            <div className="ExercisePage_loophole" />
           ) : (
             <>
               <Player playerRef={playerRef} url={url} />

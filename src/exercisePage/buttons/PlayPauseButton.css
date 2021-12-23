@@ -1,18 +1,18 @@
-.playPauseBtnDiv {
+.ExercisePage-PlayPauseButton_container {
   flex-grow: 2;
   text-align: center;
   position: sticky;
   bottom: 3%;
 }
 
-.playPauseButton {
+.ExercisePage-PlayPauseButton_button_playPause {
   background: none;
   border: none;
   padding: 0;
 }
 
 @media screen and (max-width: 800px) {
-  .playPauseBtnDiv {
+  .ExercisePage-PlayPauseButton_container {
     bottom: 10%;
   }
 }

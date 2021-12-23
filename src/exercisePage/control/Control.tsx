@@ -31,7 +31,7 @@ const Control: React.FC<TimerProps> = ({
   isPause,
 }): JSX.Element => {
   return (
-    <div className="control">
+    <div className="ExercisePage-Control">
       <PrevButton moveToPrev={moveToPrev} index={index} />
       {isReady ? (
         <WaitTimer setReady={setReady} />

@@ -26,9 +26,9 @@ const PlayPauseButton: React.FC<PlayPauseBtnProps> = ({ playerRef, setPause }): 
   }
 
   return (
-    <div className="playPauseBtnDiv">
+    <div className="ExercisePage-PlayPauseButton_container">
       <hr />
-      <button className="playPauseButton" onClick={testFunction}>
+      <button className="ExercisePage-PlayPauseButton_button_playPause" onClick={testFunction}>
         <img src={state}></img>
       </button>
     </div>
