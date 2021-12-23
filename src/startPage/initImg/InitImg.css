@@ -1,13 +1,13 @@
-.StartPage-StartInfo-ImgContainer_image {
+.StartPage-StartInfo_image_initial {
   border-radius: 10px;
 }
 
 @media screen and (max-width: 800px) {
-  .StartPage-StartInfo-ImgContainer {
+  .StartPage-StartInfo_imgContainer {
     border-radius: 0;
   }
 
-  .StartPage-StartInfo-ImgContainer_image {
+  .StartPage-StartInfo_image_initial {
     width: 100vw;
   }
 }
