@@ -1,7 +1,7 @@
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import PrevButton from '../exercisePage/buttons/PrevButton';
-jest.mock('./images/prevExr.png');
+jest.mock('prevExr.png');
 
 let container: Element;
 beforeAll(() => {
