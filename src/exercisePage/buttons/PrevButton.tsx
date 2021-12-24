@@ -3,7 +3,7 @@ import prevExr from './images/prevExr.png';
 import './PrevButton.css';
 
 interface PrevBtnProps {
-  moveToPrev: () => void;
+  moveToPrev?: () => void;
   index: number;
 }
 

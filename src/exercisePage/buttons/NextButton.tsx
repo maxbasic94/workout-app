@@ -3,7 +3,7 @@ import nextExr from './images/nextExr.png';
 import './NextButton.css';
 
 interface NextBtnProps {
-  moveToNext: () => void;
+  moveToNext?: () => void;
   index: number;
   amountExr: number;
 }

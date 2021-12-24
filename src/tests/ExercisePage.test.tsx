@@ -30,12 +30,12 @@ const testArr: Array<TestType> = [
 ];
 
 let container: Element;
-beforeEach(() => {
+beforeAll(() => {
   container = document.createElement('div');
   document.body.appendChild(container);
 });
 
-afterEach(() => {
+afterAll(() => {
   unmountComponentAtNode(container);
   container.remove();
 });
