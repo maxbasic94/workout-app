@@ -20,7 +20,7 @@ const SwitchTheme: React.FC = (): JSX.Element => {
         </div>
       }
       checkedIcon={
-        <div className="switchDiv">
+        <div className="App-Switch-ImgContainer">
           <img src="https://img.icons8.com/officel/17/000000/sun.png" alt={'s'} />
         </div>
       }
