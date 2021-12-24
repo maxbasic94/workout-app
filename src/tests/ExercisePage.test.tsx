@@ -1,4 +1,3 @@
-import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -32,13 +31,11 @@ const testArr: Array<TestType> = [
 
 let container: Element;
 beforeEach(() => {
-  // подготавливаем DOM-элемент, куда будем рендерить
   container = document.createElement('div');
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // подчищаем после завершения
   unmountComponentAtNode(container);
   container.remove();
 });

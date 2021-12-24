@@ -4,7 +4,7 @@ import './ExerTimer.css';
 
 interface ExerTimerProps {
   time: number;
-  moveToNext: () => void;
+  moveToNext?: () => void;
   id: number;
   caption: string;
   isPause: boolean;

@@ -3,7 +3,7 @@ import './Player.css';
 
 interface PlayerProps {
   url: string;
-  playerRef: LegacyRef<HTMLVideoElement>;
+  playerRef?: LegacyRef<HTMLVideoElement>;
 }
 
 const Player: React.FC<PlayerProps> = ({ url, playerRef }): JSX.Element => {

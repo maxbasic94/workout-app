@@ -34,7 +34,6 @@ const App: React.FunctionComponent = (): JSX.Element => {
       localStorage.setItem('theme', 'light');
     }
   }, []);
-  console.log(result?.questions);
 
   return (
     <div className="App">
