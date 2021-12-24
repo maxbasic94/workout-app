@@ -9,6 +9,7 @@ import App from '../App';
 import fetchMock from 'jest-fetch-mock';
 
 fetchMock.enableMocks();
+jest.mock('initImg.jpg');
 
 configure({ adapter: new Adapter() });
 
@@ -31,5 +32,16 @@ test('path "/exercise" should redirect to ExercisePage', () => {
   );
   expect(wrapper.find(StartPage)).toHaveLength(0);
   expect(wrapper.find(ExercisePage)).toHaveLength(1);
+  expect(wrapper.find(NotFoundPage)).toHaveLength(0);
+});
+
+test('path "/exercise" should redirect to ExercisePage', () => {
+  const wrapper = mount(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>
+  );
+  expect(wrapper.find(StartPage)).toHaveLength(1);
+  expect(wrapper.find(ExercisePage)).toHaveLength(0);
   expect(wrapper.find(NotFoundPage)).toHaveLength(0);
 });
