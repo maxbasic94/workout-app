@@ -1,7 +1,7 @@
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import NextButton from '../exercisePage/buttons/NextButton';
-jest.mock('./images/nextExr.png');
+jest.mock('nextExr.png');
 
 let container: Element;
 beforeAll(() => {
