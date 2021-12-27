@@ -1,6 +1,6 @@
-import { unmountComponentAtNode } from 'react-dom';
-import { shallow, configure } from 'enzyme';
-import toJson from 'enzyme-to-json';
+// import { unmountComponentAtNode } from 'react-dom';
+import { configure, mount } from 'enzyme';
+// import toJson from 'enzyme-to-json';
 import ExercisePage from '../exercisePage/ExercisePage';
 import Adapter from 'enzyme-adapter-react-17-updated';
 
@@ -56,19 +56,16 @@ const testArr: Array<TestType> = [
   },
 ];
 
-let container: Element;
-// let instance;
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  unmountComponentAtNode(container);
-  container.remove();
-});
-
-test('should render correctly', () => {
-  const wrapper: any = JSON.stringify(shallow(<ExercisePage allExr={testArr} />));
-  expect(toJson(wrapper)).toMatchSnapshot();
+describe('ExercisePage component', () => {
+  it('dsfds', () => {
+    const component = mount(<ExercisePage allExr={testArr} />);
+    const btn = component.find('.ExersicePage_button_next');
+    expect(component.find('.ExercisePage-Player_video').length).toBe(0);
+    btn.simulate('click');
+    const player = component.find('.ExercisePage-Player_video');
+    expect(component.find('.ExercisePage-Player_video').length).toBe(1);
+    expect(player.html()).toBe(
+      `<video class=\"ExercisePage-Player_video\" src=\"https://player.vimeo.com/external/465732009.sd.mp4?s=d47b0ff1d8fbab547b282ee021fd8acf6db47e99&amp;profile_id=165\" playsinline=\"\" autoplay=\"\" loop=\"\"></video>`
+    );
+  });
 });
