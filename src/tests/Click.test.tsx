@@ -57,9 +57,9 @@ const testArr: Array<TestType> = [
 ];
 
 describe('ExercisePage component', () => {
-  it('dsfds', () => {
-    const component = mount(<ExercisePage allExr={testArr} />);
-    const btn = component.find('.ExersicePage_button_next');
+  it('ClickTest', () => {
+    const component = mount(<ExercisePage allExercises={testArr} />);
+    const btn = component.find('.ExercisePage_button_next');
     expect(component.find('.ExercisePage-Player_video').length).toBe(0);
     btn.simulate('click');
     const player = component.find('.ExercisePage-Player_video');

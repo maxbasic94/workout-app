@@ -6,16 +6,16 @@ import StartButton from './startButton/StartButton';
 import ExercisesList from './exercisesList/ExercisesList';
 import './StartPage.css';
 
-interface ExerProps {
-  exerArr: QuestionType[] | undefined;
+interface ExerciseProps {
+  exerciseArr: QuestionType[] | undefined;
 }
 
-const StartPage: React.FC<ExerProps> = ({ exerArr }): JSX.Element => {
+const StartPage: React.FC<ExerciseProps> = ({ exerciseArr: exerciseArr }): JSX.Element => {
   return (
     <div className="StartPage">
       <InitImgDiv />
       <StartInfo />
-      <ExercisesList exerListArr={exerArr} />
+      <ExercisesList exerciseListArr={exerciseArr} />
       <StartButton />
     </div>
   );

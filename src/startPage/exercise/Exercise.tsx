@@ -1,9 +1,9 @@
 import React from 'react';
-import { ExersiceType } from '../../types/types';
+import { ExerciseType } from '../../types/types';
 import './Exercise.css';
 
 interface ExrProps {
-  exr: ExersiceType;
+  exr: ExerciseType;
 }
 const Exercise: React.FunctionComponent<ExrProps> = (props): JSX.Element => {
   return (

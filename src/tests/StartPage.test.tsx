@@ -38,6 +38,6 @@ afterEach(() => {
 });
 
 test('should render correctly', () => {
-  const wrapper: any = JSON.stringify(shallow(<StartPage exerArr={testArr} />));
+  const wrapper: any = JSON.stringify(shallow(<StartPage exerciseArr={testArr} />));
   expect(toJson(wrapper)).toMatchSnapshot();
 });

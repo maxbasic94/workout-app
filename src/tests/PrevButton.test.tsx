@@ -14,11 +14,11 @@ afterAll(() => {
   container.remove();
 });
 
-it('test disabled Next button', () => {
+it('test disabled Prev button', () => {
   act(() => {
     render(<PrevButton index={0} />, container);
   });
-  const button: HTMLButtonElement | null = container.querySelector('.ExersicePage_button_prev');
+  const button: HTMLButtonElement | null = container.querySelector('.ExercisePage_button_prev');
   expect(button?.disabled).toBe(true);
 
   act(() => {

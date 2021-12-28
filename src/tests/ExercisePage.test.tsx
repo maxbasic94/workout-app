@@ -69,6 +69,6 @@ afterEach(() => {
 });
 
 test('should render correctly', () => {
-  const wrapper: any = JSON.stringify(shallow(<ExercisePage allExr={testArr} />));
+  const wrapper: any = JSON.stringify(shallow(<ExercisePage allExercises={testArr} />));
   expect(toJson(wrapper)).toMatchSnapshot();
 });

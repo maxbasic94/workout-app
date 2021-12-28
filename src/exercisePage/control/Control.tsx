@@ -2,7 +2,7 @@ import React from 'react';
 import PrevButton from '../buttons/PrevButton';
 import NextButton from '../buttons/NextButton';
 import './Control.css';
-import ExerTimer from '../exerTimer/ExerTimer';
+import ExerciseTimer from '../exerciseTimer/ExerciseTimer';
 import WaitTimer from '../waitTimer/WaitTimer';
 
 interface TimerProps {
@@ -13,7 +13,7 @@ interface TimerProps {
   duration: number;
   id: number;
   caption: string;
-  amountExr: number;
+  amountExercise: number;
   isReady: boolean;
   isPause: boolean;
 }
@@ -26,7 +26,7 @@ const Control: React.FC<TimerProps> = ({
   duration,
   id,
   caption,
-  amountExr,
+  amountExercise,
   isReady,
   isPause,
 }): JSX.Element => {
@@ -36,7 +36,7 @@ const Control: React.FC<TimerProps> = ({
       {isReady ? (
         <WaitTimer setReady={setReady} />
       ) : (
-        <ExerTimer
+        <ExerciseTimer
           time={duration}
           moveToNext={moveToNext}
           id={id}
@@ -45,7 +45,7 @@ const Control: React.FC<TimerProps> = ({
         />
       )}
 
-      <NextButton moveToNext={moveToNext} index={index} amountExr={amountExr} />
+      <NextButton moveToNext={moveToNext} index={index} amountExercise={amountExercise} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ExersiceType } from '../../src/types/types';
+import { ExerciseType } from '../../src/types/types';
 import Control from './control/Control';
 import './ExercisePage.css';
 import Player from './player/Player';
@@ -7,10 +7,10 @@ import PlayPauseButton from './buttons/PlayPauseButton';
 import FinishWorkout from './finishWorkout/FinishWorkout';
 
 interface ExrPageProps {
-  allExr: Array<ExersiceType>;
+  allExercises: Array<ExerciseType>;
 }
 
-const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
+const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): JSX.Element => {
   const [url, setUrl] = useState<string>('');
   const [indexExr, setIndexExr] = useState(0);
   const [duration, setDuration] = useState(20);
@@ -20,11 +20,11 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
   const playerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (allExr.length && indexExr < allExr.length) {
-      setDuration(allExr[indexExr].duration);
-      setUrl(allExr[indexExr].video);
+    if (allExercises.length && indexExr < allExercises.length) {
+      setDuration(allExercises[indexExr].duration);
+      setUrl(allExercises[indexExr].video);
     }
-  }, [allExr, indexExr]);
+  }, [allExercises, indexExr]);
 
   function changeReadyState() {
     if (isReady) {
@@ -35,10 +35,10 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
   }
 
   function moveToNextIndex() {
-    if (allExr.length > indexExr) {
+    if (allExercises.length > indexExr) {
       setIndexExr(indexExr + 1);
     }
-    if (allExr.length - 1 > indexExr) {
+    if (allExercises.length - 1 > indexExr) {
       changeReadyState();
       setTime(time + duration);
     }
@@ -52,7 +52,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
 
   return (
     <div className="ExercisePage">
-      {indexExr === allExr.length && allExr.length ? (
+      {indexExr === allExercises.length && allExercises.length ? (
         <FinishWorkout time={time} />
       ) : (
         <>
@@ -61,9 +61,9 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExr }): JSX.Element => {
             moveToPrev={moveToPrevIndex}
             index={indexExr}
             duration={duration}
-            id={allExr[indexExr]?.id || 0}
-            caption={allExr[indexExr]?.title}
-            amountExr={allExr.length}
+            id={allExercises[indexExr]?.id || 0}
+            caption={allExercises[indexExr]?.title}
+            amountExercise={allExercises.length}
             setReady={changeReadyState}
             isReady={isReady}
             isPause={isPause}

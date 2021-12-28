@@ -1,4 +1,4 @@
-.ExersicePage_button_prev {
+.ExercisePage_button_prev {
   height: 48px;
   width: 74px;
   background: none;
@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-.ExersicePage_button_prev:active {
+.ExercisePage_button_prev:active {
   background: hsla(280, 100%, 50%, 0.123);
   border-radius: 6px;
 }

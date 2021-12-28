@@ -5,17 +5,17 @@ import './NextButton.css';
 interface NextBtnProps {
   moveToNext?: () => void;
   index: number;
-  amountExr: number;
+  amountExercise: number;
 }
 
-const NextButton: React.FC<NextBtnProps> = ({ moveToNext, index, amountExr }): JSX.Element => {
+const NextButton: React.FC<NextBtnProps> = ({ moveToNext, index, amountExercise }): JSX.Element => {
   return (
     <button
-      className="ExersicePage_button_next"
+      className="ExercisePage_button_next"
       onClick={moveToNext}
-      disabled={index !== amountExr ? false : true}
+      disabled={index !== amountExercise ? false : true}
     >
-      {index !== amountExr && <img src={nextExr} />}
+      {index !== amountExercise && <img src={nextExr} />}
     </button>
   );
 };

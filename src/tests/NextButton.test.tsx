@@ -16,13 +16,13 @@ afterAll(() => {
 
 it('test disabled Next button', () => {
   act(() => {
-    render(<NextButton index={0} amountExr={10} />, container);
+    render(<NextButton index={0} amountExercise={10} />, container);
   });
-  const button: HTMLButtonElement | null = container.querySelector('.ExersicePage_button_next');
+  const button: HTMLButtonElement | null = container.querySelector('.ExercisePage_button_next');
   expect(button?.disabled).toBe(false);
 
   act(() => {
-    render(<NextButton index={10} amountExr={10} />, container);
+    render(<NextButton index={10} amountExercise={10} />, container);
   });
   expect(button?.disabled).toBe(true);
 });

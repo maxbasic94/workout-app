@@ -1,8 +1,8 @@
 import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import './ExerTimer.css';
+import './ExerciseTimer.css';
 
-interface ExerTimerProps {
+interface ExerciseTimerProps {
   time: number;
   moveToNext?: () => void;
   id: number;
@@ -10,7 +10,7 @@ interface ExerTimerProps {
   isPause: boolean;
 }
 
-const ExerTimer: React.FC<ExerTimerProps> = ({
+const ExerciseTimer: React.FC<ExerciseTimerProps> = ({
   time,
   moveToNext,
   id,
@@ -18,8 +18,8 @@ const ExerTimer: React.FC<ExerTimerProps> = ({
   isPause,
 }): JSX.Element => {
   return (
-    <div className="ExercisePage-ExerTimer_container">
-      <div className="ExercisePage-ExerTimer_caption">{caption}</div>
+    <div className="ExercisePage-ExerciseTimer_container">
+      <div className="ExercisePage-ExerciseTimer_caption">{caption}</div>
       <CountdownCircleTimer
         isPlaying={isPause}
         duration={time}
@@ -34,4 +34,4 @@ const ExerTimer: React.FC<ExerTimerProps> = ({
   );
 };
 
-export default ExerTimer;
+export default ExerciseTimer;

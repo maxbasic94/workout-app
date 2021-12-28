@@ -2,14 +2,16 @@ import React from 'react';
 import { QuestionType } from '../../types/types';
 import ExerciseView from '../exerciseView/ExerciseView';
 
-interface ExerListProps {
-  exerListArr: QuestionType[] | undefined;
+interface ExerciseListProps {
+  exerciseListArr: QuestionType[] | undefined;
 }
 
-const ExercisesList: React.FC<ExerListProps> = ({ exerListArr }): JSX.Element => {
+const ExercisesList: React.FC<ExerciseListProps> = ({
+  exerciseListArr: exerciseListArr,
+}): JSX.Element => {
   return (
     <div className="StartPage-ExercisesList">
-      {exerListArr?.map((item, index) => (
+      {exerciseListArr?.map((item, index) => (
         <ExerciseView exrList={item} key={index} />
       ))}
     </div>

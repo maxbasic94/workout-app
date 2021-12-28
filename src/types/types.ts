@@ -1,4 +1,4 @@
-export type ExersiceType = {
+export type ExerciseType = {
   description: string;
   duration: number;
   id: number;
@@ -9,7 +9,7 @@ export type ExersiceType = {
 
 export type QuestionType = {
   title: string;
-  exercises: Array<ExersiceType>;
+  exercises: Array<ExerciseType>;
 };
 
 export type DataType = {
