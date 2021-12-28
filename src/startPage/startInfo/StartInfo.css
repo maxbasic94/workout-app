@@ -14,3 +14,18 @@
   font-size: 24px;
   line-height: 32px;
 }
+
+.StartPage-InitImgDiv_image_initial {
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .StartPage-InitImgDiv_imgContainer {
+    border-radius: 0;
+  }
+
+  .StartPage-InitImgDiv_image_initial {
+    width: 100vw;
+  }
+}
+

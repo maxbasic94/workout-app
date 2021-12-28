@@ -2,12 +2,7 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
   height: 100vh;
-}
-
-.StartPage::-webkit-scrollbar {
-  width: 0;
 }
 
 hr {
