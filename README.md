@@ -37,9 +37,9 @@ Have a good day!
 │   └── index.html              # main html file applications
 ├── src                         # folder for contain source files  
 │   ├── exercisePage            # folder with components to Exercise Page
-│   │   ├── buttons             # folder with components NextButton, PrevButton, PlayPauseButton
+│   │   ├── buttons             # folder with components Button, PlayPauseButton
 │   │   ├── control             # folder with component Control
-│   │   ├── exerTimer           # folder with component ExerTimer
+│   │   ├── exerciseTimer       # folder with component ExerciseTimer
 │   │   ├── finishWorkout       # folder with component FinishWorkout
 │   │   ├── player              # folder with component Player
 │   │   ├── waitTimer           # folder with component WaitTimer
@@ -51,7 +51,6 @@ Have a good day!
 │   │   ├── exercise            # folder with component Exercise
 │   │   ├── exercisesList       # folder with component ExerciseList
 │   │   ├── exerciseView        # folder with component ExerciseView
-│   │   ├── ininImg             # folder with component InitImg
 │   │   ├── startButton         # folder with component StartButton
 │   │   ├── startInfo           # folder with component StatInfo
 │   │   ├── StartPage.css       # styles for StartPage.tsx
