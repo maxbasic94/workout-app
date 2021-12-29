@@ -6,7 +6,7 @@ import ExercisesList from './exercisesList/ExercisesList';
 import './StartPage.css';
 
 interface ExerciseProps {
-  exerciseArr: QuestionType[] | undefined;
+  exerciseArr: QuestionType[];
 }
 
 const StartPage: React.FC<ExerciseProps> = ({ exerciseArr: exerciseArr }): JSX.Element => {

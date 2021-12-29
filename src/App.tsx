@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DataType, QuestionType, ExerciseType as ExerciseType } from '../src/types/types';
+import { QuestionType, ExerciseType as ExerciseType } from '../src/types/types';
 import StartPage from './startPage/StartPage';
 import ExercisePage from './exercisePage/ExercisePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
@@ -18,7 +18,7 @@ function getAllExerciseArray(allExerciseArray: Array<QuestionType> | undefined) 
 }
 
 const App: React.FunctionComponent = (): JSX.Element => {
-  const [result, setResult] = useState<DataType | null>(null);
+  const [result, setResult] = useState<QuestionType[]>([]);
   const [exrArr, setExrArr] = useState<ExerciseType[]>([]);
   const apiPath: string = process.env.REACT_APP_API_PATH || '';
   useEffect(() => {
@@ -26,7 +26,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
       .then((res) => res.json())
       .then((data) => {
         setExrArr(getAllExerciseArray(data.data.questions));
-        setResult(data.data);
+        setResult(data.data.questions);
       });
   }, [apiPath]);
   useEffect(() => {
@@ -39,7 +39,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
     <div className="App">
       <SwitchTheme />
       <Routes>
-        <Route path="/" element={<StartPage exerciseArr={result?.questions} />} />
+        <Route path="/" element={<StartPage exerciseArr={result} />} />
         <Route path="/exercise" element={<ExercisePage allExercises={exrArr} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

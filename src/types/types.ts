@@ -11,9 +11,3 @@ export type QuestionType = {
   title: string;
   exercises: Array<ExerciseType>;
 };
-
-export type DataType = {
-  questions: QuestionType[];
-  name: string;
-  slug: string;
-};

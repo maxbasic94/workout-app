@@ -3,7 +3,7 @@ import { QuestionType } from '../../types/types';
 import ExerciseView from '../exerciseView/ExerciseView';
 
 interface ExerciseListProps {
-  exerciseListArr: QuestionType[] | undefined;
+  exerciseListArr: QuestionType[];
 }
 
 const ExercisesList: React.FC<ExerciseListProps> = ({
