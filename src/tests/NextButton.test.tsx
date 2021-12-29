@@ -1,6 +1,6 @@
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import NextButton from '../exercisePage/buttons/NextButton';
+import Button from '../exercisePage/buttons/Button';
 jest.mock('nextExr.png');
 
 let container: Element;
@@ -16,13 +16,13 @@ afterAll(() => {
 
 it('test disabled Next button', () => {
   act(() => {
-    render(<NextButton index={0} amountExercise={10} />, container);
+    render(<Button index={0} amountExercise={10} isNext />, container);
   });
   const button: HTMLButtonElement | null = container.querySelector('.ExercisePage_button_next');
   expect(button?.disabled).toBe(false);
 
   act(() => {
-    render(<NextButton index={10} amountExercise={10} />, container);
+    render(<Button index={10} amountExercise={10} isNext />, container);
   });
   expect(button?.disabled).toBe(true);
 });

@@ -1,9 +1,8 @@
 import React from 'react';
-import PrevButton from '../buttons/PrevButton';
-import NextButton from '../buttons/NextButton';
 import './Control.css';
-import ExerciseTimer from '../exerciseTimer/ExerciseTimer';
 import WaitTimer from '../waitTimer/WaitTimer';
+import ExerciseTimer from '../exerciseTimer/ExerciseTimer';
+import Button from '../buttons/Button';
 
 interface TimerProps {
   moveToNext: () => void;
@@ -32,7 +31,7 @@ const Control: React.FC<TimerProps> = ({
 }): JSX.Element => {
   return (
     <div className="ExercisePage-Control">
-      <PrevButton moveToPrev={moveToPrev} index={index} />
+      <Button index={index} moveTo={moveToPrev} />
       {isReady ? (
         <WaitTimer setReady={setReady} />
       ) : (
@@ -44,8 +43,7 @@ const Control: React.FC<TimerProps> = ({
           isPause={isPause}
         />
       )}
-
-      <NextButton moveToNext={moveToNext} index={index} amountExercise={amountExercise} />
+      <Button index={index} moveTo={moveToNext} amountExercise={amountExercise} isNext />
     </div>
   );
 };

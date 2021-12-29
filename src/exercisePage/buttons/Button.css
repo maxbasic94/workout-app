@@ -1,0 +1,25 @@
+.ExercisePage_button_prev {
+  height: 48px;
+  width: 74px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.ExercisePage_button_prev:active {
+  background: hsla(280, 100%, 50%, 0.123);
+  border-radius: 6px;
+}
+
+.ExercisePage_button_next {
+  height: 48px;
+  width: 74px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.ExercisePage_button_next:active {
+  background: hsla(280, 100%, 50%, 0.123);
+  border-radius: 6px;
+}

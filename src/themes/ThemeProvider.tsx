@@ -5,9 +5,9 @@ type ThemeContext = { checked: boolean; theme: Theme; toggleTheme: () => void };
 
 function getTestCh(test: string) {
   if (test === 'light') {
-    return false;
-  } else {
     return true;
+  } else {
+    return false;
   }
 }
 
@@ -18,8 +18,8 @@ const initSwitchState = getTestCh(initTheme) as boolean;
 const ThemeProvider: React.FC = ({ children }) => {
   const [theme, setTheme] = useState(initTheme);
   const [checked, setChecked] = useState(initSwitchState);
-  const color = theme === 'light' ? '#212121' : '#e4dae9';
-  const backgroundColor = theme === 'light' ? '#FFF' : '#121212';
+  const color = theme === 'light' ? '#e4dae9' : '#212121';
+  const backgroundColor = theme === 'light' ? '#121212' : '#FFF';
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
     setChecked(checked === false ? true : false);
