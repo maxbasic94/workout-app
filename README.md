@@ -23,7 +23,7 @@ On home page you can see exercise list. \
 For start exercise click button `Start Workout`. \
 After that you will be taken to the page of the first exercise. \
 For change exercise click button `next button`, `prev button` or wait finish exercise. \
-After finishing your workout ckick button `save & continue`. \
+After finishing your workout click button `save & continue`. \
 Have a good day!
 
 ## Folders structure
