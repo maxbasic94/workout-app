@@ -47,6 +47,8 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): J
   function moveToPrevIndex() {
     if (indexExr > 0) {
       setIndexExr(indexExr - 1);
+      setTime(time - duration);
+      changeReadyState();
     }
   }
 

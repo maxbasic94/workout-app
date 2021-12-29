@@ -1,6 +1,6 @@
 import React from 'react';
-import prevExr from './images/prevExr.png';
-import nextExr from './images/nextExr.png';
+import prevExercise from './images/prevExercise.png';
+import nextExercise from './images/nextExercise.png';
 import './Button.css';
 
 interface BtnProps {
@@ -18,7 +18,13 @@ const Button: React.FC<BtnProps> = ({ moveTo, index, isNext, amountExercise }): 
       disabled={isNext && index !== amountExercise ? false : !isNext && index !== 0 ? false : true}
     >
       <img
-        src={isNext && index !== amountExercise ? nextExr : !isNext && index !== 0 ? prevExr : ''}
+        src={
+          isNext && index !== amountExercise
+            ? nextExercise
+            : !isNext && index !== 0
+            ? prevExercise
+            : ''
+        }
       />
     </button>
   );

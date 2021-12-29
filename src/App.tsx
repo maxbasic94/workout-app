@@ -19,13 +19,13 @@ function getAllExerciseArray(allExerciseArray: Array<QuestionType> | undefined) 
 
 const App: React.FunctionComponent = (): JSX.Element => {
   const [result, setResult] = useState<QuestionType[]>([]);
-  const [exrArr, setExrArr] = useState<ExerciseType[]>([]);
+  const [exerciseArray, setExerciseArray] = useState<ExerciseType[]>([]);
   const apiPath: string = process.env.REACT_APP_API_PATH || '';
   useEffect(() => {
     fetch(`${apiPath}`)
       .then((res) => res.json())
       .then((data) => {
-        setExrArr(getAllExerciseArray(data.data.questions));
+        setExerciseArray(getAllExerciseArray(data.data.questions));
         setResult(data.data.questions);
       });
   }, [apiPath]);
@@ -40,7 +40,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
       <SwitchTheme />
       <Routes>
         <Route path="/" element={<StartPage exerciseArr={result} />} />
-        <Route path="/exercise" element={<ExercisePage allExercises={exrArr} />} />
+        <Route path="/exercise" element={<ExercisePage allExercises={exerciseArray} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
