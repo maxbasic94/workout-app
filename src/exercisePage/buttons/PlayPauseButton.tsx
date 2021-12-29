@@ -3,12 +3,12 @@ import play from './images/play.png';
 import pause from './images/pause.png';
 import './PlayPauseButton.css';
 
-interface PlayPauseBtnProps {
+interface PlayPauseButtonProps {
   playerRef: RefObject<HTMLVideoElement>;
   setPause: Dispatch<SetStateAction<boolean>>;
 }
 
-const PlayPauseButton: React.FC<PlayPauseBtnProps> = ({ playerRef, setPause }): JSX.Element => {
+const PlayPauseButton: React.FC<PlayPauseButtonProps> = ({ playerRef, setPause }): JSX.Element => {
   const [state, setState] = useState(pause);
 
   function testFunction() {

@@ -12,7 +12,7 @@ const ExercisesList: React.FC<ExerciseListProps> = ({
   return (
     <div className="StartPage-ExercisesList">
       {exerciseListArr?.map((item, index) => (
-        <ExerciseView exrList={item} key={index} />
+        <ExerciseView exerciseList={item} key={index} />
       ))}
     </div>
   );

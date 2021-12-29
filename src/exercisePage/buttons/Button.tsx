@@ -3,14 +3,14 @@ import prevExercise from './images/prevExercise.png';
 import nextExercise from './images/nextExercise.png';
 import './Button.css';
 
-interface BtnProps {
+interface ButtonProps {
   moveTo?: () => void;
   index: number;
   isNext?: boolean;
   amountExercise?: number;
 }
 
-const Button: React.FC<BtnProps> = ({ moveTo, index, isNext, amountExercise }): JSX.Element => {
+const Button: React.FC<ButtonProps> = ({ moveTo, index, isNext, amountExercise }): JSX.Element => {
   return (
     <button
       className={isNext ? 'ExercisePage_button_next' : 'ExercisePage_button_prev'}

@@ -1,12 +1,16 @@
 import React from 'react';
 import './StartInfo.css';
-import initImg from './initImg.jpg';
+import initialImg from './initialImg.jpg';
 
 const StartInfo: React.FunctionComponent = (): JSX.Element => {
   return (
     <>
       <div className="StartPage-InitImgDiv_imgContainer">
-        <img className="StartPage-InitImgDiv_image_initial" src={initImg} alt="initial image"></img>
+        <img
+          className="StartPage-InitImgDiv_image_initial"
+          src={initialImg}
+          alt="initial image"
+        ></img>
       </div>
       <div className="StartPage-StartInfo">
         <div className="StartPage-StartInfo_text_day">Day1</div>

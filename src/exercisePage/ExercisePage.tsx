@@ -12,7 +12,7 @@ interface ExrPageProps {
 
 const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): JSX.Element => {
   const [url, setUrl] = useState<string>('');
-  const [indexExr, setIndexExr] = useState(0);
+  const [indexExercise, setIndexExercise] = useState(0);
   const [duration, setDuration] = useState(20);
   const [isReady, setIsReady] = useState(true);
   const [isPause, setIsPause] = useState(true);
@@ -20,11 +20,11 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): J
   const playerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (allExercises.length && indexExr < allExercises.length) {
-      setDuration(allExercises[indexExr].duration);
-      setUrl(allExercises[indexExr].video);
+    if (allExercises.length && indexExercise < allExercises.length) {
+      setDuration(allExercises[indexExercise].duration);
+      setUrl(allExercises[indexExercise].video);
     }
-  }, [allExercises, indexExr]);
+  }, [allExercises, indexExercise]);
 
   function changeReadyState() {
     if (isReady) {
@@ -35,18 +35,18 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): J
   }
 
   function moveToNextIndex() {
-    if (allExercises.length > indexExr) {
-      setIndexExr(indexExr + 1);
+    if (allExercises.length > indexExercise) {
+      setIndexExercise(indexExercise + 1);
     }
-    if (allExercises.length - 1 > indexExr) {
+    if (allExercises.length - 1 > indexExercise) {
       changeReadyState();
       setTime(time + duration);
     }
   }
 
   function moveToPrevIndex() {
-    if (indexExr > 0) {
-      setIndexExr(indexExr - 1);
+    if (indexExercise > 0) {
+      setIndexExercise(indexExercise - 1);
       setTime(time - duration);
       changeReadyState();
     }
@@ -54,17 +54,17 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): J
 
   return (
     <div className="ExercisePage">
-      {indexExr === allExercises.length && allExercises.length ? (
+      {indexExercise === allExercises.length && allExercises.length ? (
         <FinishWorkout time={time} />
       ) : (
         <>
           <Control
             moveToNext={moveToNextIndex}
             moveToPrev={moveToPrevIndex}
-            index={indexExr}
+            index={indexExercise}
             duration={duration}
-            id={allExercises[indexExr]?.id || 0}
-            caption={allExercises[indexExr]?.title}
+            id={allExercises[indexExercise]?.id || 0}
+            caption={allExercises[indexExercise]?.title}
             amountExercise={allExercises.length}
             setReady={changeReadyState}
             isReady={isReady}
