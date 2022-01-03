@@ -38,7 +38,6 @@ const BaseTimer: React.FC<BaseTimerProps> = ({
     const rawTimeFraction = Number(((timer * 283) / duration).toFixed(0));
     return rawTimeFraction;
   }
-  console.log(calculateTimeFraction());
   const circleDasharray = Number(calculateTimeFraction());
   return (
     <div className="ExercisePage-BaseTimer">
