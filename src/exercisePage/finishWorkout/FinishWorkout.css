@@ -12,6 +12,7 @@
 }
 
 .ExercisePage-FinishWorkout_complete {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   font-size: 40px;
   line-height: 56px;
@@ -22,6 +23,7 @@
 }
 
 .ExercisePage-FinishWorkout_description {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 20px;
   line-height: 36px;
 
@@ -32,6 +34,7 @@
 }
 
 .ExercisePage-FinishWorkout_text_timeCaption {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 14px;
   line-height: 20px;
 
@@ -39,6 +42,7 @@
 }
 
 .ExercisePage-FinishWorkout_text_time {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   font-size: 40px;
   line-height: 56px;

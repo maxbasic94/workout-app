@@ -16,12 +16,17 @@
 }
 
 .Exercise-ExrInfoContainer_title {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-style: normal;
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
 }
 
 .Exercise-ExrInfoContainer_duration {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: normal;
+  font-style: normal;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
