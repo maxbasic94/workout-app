@@ -1,6 +1,7 @@
 .App-Switch {
   position: fixed !important;
-  right: 0 !important;
+  right:10px;
+  top: 10px;
 }
 
 .App-Switch-ImgContainer {
