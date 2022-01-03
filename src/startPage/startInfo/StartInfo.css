@@ -1,6 +1,6 @@
 .StartPage-StartInfo_text_day,
 .StartPage-StartInfo_text_levelInfo {
-  font-family: SF Pro Text;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -8,7 +8,7 @@
 }
 
 .StartPage-StartInfo_text_caption {
-  font-family: SF Pro Display;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
