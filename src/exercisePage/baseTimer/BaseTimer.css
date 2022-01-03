@@ -1,0 +1,47 @@
+.ExercisePage-BaseTimer {
+  position: relative;
+  height: 128px;
+  width: 128px;
+}
+
+.ExercisePage-BaseTimer_circle {
+  fill: none;
+  stroke: none;
+}
+
+.ExercisePage-BaseTimer_pathElapsed {
+  stroke-width: 8px;
+  stroke: #EEEEEE;
+}
+
+.ExercisePage-BaseTimer_label {
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 56px;
+  position: absolute;
+
+  width: 128px;
+  height: 128px;
+
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.ExercisePage-BaseTimer_pathRemaining {
+  stroke-width: 8px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  stroke: currentColor;
+}
+
+.ExercisePage-BaseTimer_svg {
+  transform: scaleX(-1);
+}

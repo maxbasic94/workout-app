@@ -1,11 +1,11 @@
 import React from 'react';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+// import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import './ExerciseTimer.css';
+import BaseTimer from '../baseTimer/BaseTimer';
 
 interface ExerciseTimerProps {
   time: number;
-  moveToNext?: () => void;
-  id: number;
+  moveToNext: () => void;
   caption: string;
   isPause: boolean;
 }
@@ -13,14 +13,14 @@ interface ExerciseTimerProps {
 const ExerciseTimer: React.FC<ExerciseTimerProps> = ({
   time,
   moveToNext,
-  id,
   caption,
   isPause,
 }): JSX.Element => {
   return (
     <div className="ExercisePage-ExerciseTimer_container">
       <div className="ExercisePage-ExerciseTimer_caption">{caption}</div>
-      <CountdownCircleTimer
+      <BaseTimer duration={time} isPaused={isPause} color="#FF4081" moveToNext={moveToNext} />
+      {/* <CountdownCircleTimer
         isPlaying={isPause}
         duration={time}
         key={id}
@@ -29,7 +29,7 @@ const ExerciseTimer: React.FC<ExerciseTimerProps> = ({
         onComplete={moveToNext}
       >
         {({ remainingTime }) => remainingTime}
-      </CountdownCircleTimer>
+      </CountdownCircleTimer> */}
     </div>
   );
 };

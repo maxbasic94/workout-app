@@ -1,5 +1,6 @@
 import React from 'react';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+// import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import BaseTimer from '../baseTimer/BaseTimer';
 import './WaitTimer.css';
 
 interface WaitTimerProps {
@@ -10,7 +11,8 @@ const WaitTimer: React.FC<WaitTimerProps> = ({ setReady }): JSX.Element => {
   return (
     <div className="ExercisePage-WaitTimer">
       <div className="ExercisePage-WaitTimer_caption">Get Ready</div>
-      <CountdownCircleTimer
+      <BaseTimer duration={5} color="#1DE9B6" moveToNext={setReady} isPaused />
+      {/* <CountdownCircleTimer
         isPlaying
         duration={5}
         colors={'#1DE9B6'}
@@ -20,7 +22,7 @@ const WaitTimer: React.FC<WaitTimerProps> = ({ setReady }): JSX.Element => {
         }}
       >
         {({ remainingTime }) => remainingTime}
-      </CountdownCircleTimer>
+      </CountdownCircleTimer> */}
     </div>
   );
 };

@@ -10,7 +10,7 @@ interface TimerProps {
   setReady: () => void;
   index: number;
   duration: number;
-  id: number;
+  id?: number;
   caption: string;
   amountExercise: number;
   isReady: boolean;
@@ -23,7 +23,6 @@ const Control: React.FC<TimerProps> = ({
   setReady,
   index,
   duration,
-  id,
   caption,
   amountExercise,
   isReady,
@@ -38,7 +37,6 @@ const Control: React.FC<TimerProps> = ({
         <ExerciseTimer
           time={duration}
           moveToNext={moveToNext}
-          id={id}
           caption={caption}
           isPause={isPause}
         />
