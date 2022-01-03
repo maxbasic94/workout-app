@@ -36,9 +36,13 @@ const BaseTimer: React.FC<BaseTimerProps> = ({
 
   function calculateTimeFraction() {
     const rawTimeFraction = Number(((timer * 283) / duration).toFixed(0));
-    return rawTimeFraction;
+    if (rawTimeFraction - (duration - timer) > 0) {
+      return rawTimeFraction - (duration - timer);
+    } else {
+      return 0;
+    }
   }
-  const circleDasharray = Number(calculateTimeFraction());
+
   return (
     <div className="ExercisePage-BaseTimer">
       <svg
@@ -50,7 +54,7 @@ const BaseTimer: React.FC<BaseTimerProps> = ({
           <circle className="ExercisePage-BaseTimer_pathElapsed" cx="50" cy="50" r="45" />
           <path
             id="ExercisePage-BaseTimer_pathRemaining"
-            strokeDasharray={`${circleDasharray} 283`}
+            strokeDasharray={`${calculateTimeFraction()} 283`}
             style={{
               color: color,
             }}
