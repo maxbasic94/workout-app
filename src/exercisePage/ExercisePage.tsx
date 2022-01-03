@@ -42,6 +42,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): J
       changeReadyState();
       setTime(time + duration);
     }
+    setIsPause(true);
   }
 
   function moveToPrevIndex() {
@@ -50,6 +51,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): J
       setTime(time - duration);
       changeReadyState();
     }
+    setIsPause(true);
   }
 
   return (
