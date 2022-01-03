@@ -2,7 +2,7 @@ import React from 'react';
 import './Control.css';
 import ExerciseTimer from '../exerciseTimer/ExerciseTimer';
 import Button from '../buttons/Button';
-import WaitTimer from '../waitTimer/WaitTimer';
+import WaitTimer from '../../WaitTimer';
 
 interface TimerProps {
   moveToNext: () => void;
