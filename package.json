@@ -41,10 +41,20 @@
       "noImplicitUseStrict": true,
       "removeComments": true,
       "moduleResolution": "node",
-      "lib": ["es2017", "dom"],
-      "typeRoots": ["node_modules/@types", "src/@types"]
+      "lib": [
+        "es2017",
+        "dom"
+      ],
+      "typeRoots": [
+        "node_modules/@types",
+        "src/@types"
+      ]
     },
-    "exclude": ["node_modules", "out", ".next"]
+    "exclude": [
+      "node_modules",
+      "out",
+      ".next"
+    ]
   },
   "prettier": {
     "singleQuote": true,
@@ -116,5 +126,14 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/maxbasic94/workout-app/issues"
+  },
+  "cspell": {
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [],
+    "ignoreWords": ["Maksim", "Ashmiana", "browserslist", "styl"],
+    "import": []
   }
 }
