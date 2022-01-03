@@ -1,7 +1,7 @@
 import React from 'react';
 // import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import BaseTimer from './exercisePage/baseTimer/BaseTimer';
-import './exercisePage/waitTimer/WaitTimer.css';
+import BaseTimer from '../baseTimer/BaseTimer';
+import './WaitTimer.css';
 
 interface WaitTimerProps {
   setReady: () => void;
