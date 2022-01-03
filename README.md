@@ -37,6 +37,7 @@ Have a good day!
 │   └── index.html              # main html file applications
 ├── src                         # folder for contain source files  
 │   ├── exercisePage            # folder with components to Exercise Page
+│   │   ├── baseTimer           # folder with component BaseTimer
 │   │   ├── buttons             # folder with components Button, PlayPauseButton
 │   │   ├── control             # folder with component Control
 │   │   ├── exerciseTimer       # folder with component ExerciseTimer
