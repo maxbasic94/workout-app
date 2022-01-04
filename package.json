@@ -118,12 +118,10 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.3.0",
-    "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "26.6.0",
     "jest-fetch-mock": "^3.0.3",
     "jest-transform-stub": "^2.0.0",
-    "lint-staged": "^12.1.5",
     "node-fetch": "^3.1.0",
     "prettier": "2.5.0",
     "pretty": "^2.0.0",
@@ -153,17 +151,5 @@
       "precommit"
     ],
     "import": []
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ]
   }
 }
