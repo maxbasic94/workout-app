@@ -21,12 +21,6 @@
     "typescript": "^4.5.2",
     "web-vitals": "^1.1.2"
   },
-  "lint-staged": {
-    "*.{ts, tsx}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -34,6 +28,13 @@
     "test": "jest",
     "eject": "react-scripts eject",
     "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ]
   },
   "jest": {
     "moduleNameMapper": {
