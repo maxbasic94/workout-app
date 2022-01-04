@@ -23,7 +23,6 @@
   },
   "lint-staged": {
     "*.{ts, tsx}": [
-      "node_modules/.bin/eslint --max-warnings=0",
       "prettier --write",
       "git add"
     ]
@@ -34,8 +33,7 @@
     "lint": "eslint --ext .ts, .tsx src --fix",
     "test": "jest",
     "eject": "react-scripts eject",
-    "pre-commit": "lint-staged",
-    "eslint": "node_modules/.bin/eslint src/"
+    "pre-commit": "lint-staged"
   },
   "jest": {
     "moduleNameMapper": {
