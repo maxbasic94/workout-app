@@ -155,11 +155,12 @@
     ],
     "import": []
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*.{ts, tsx}": [
-      "node_modules/.bin/eslint --max-warnings=0",
-      "prettier --write",
-      "git add"
-    ]
+    "*.(ts|tsx)": ["npm run lint:write", "git add"]
   }
 }
