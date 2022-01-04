@@ -26,8 +26,7 @@
     "build": "react-scripts build",
     "lint": "eslint --ext .ts, .tsx src --fix",
     "test": "jest",
-    "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "eject": "react-scripts eject"
   },
   "jest": {
     "moduleNameMapper": {
@@ -161,6 +160,10 @@
     }
   },
   "lint-staged": {
-    "*.(ts|tsx)": ["npm run lint", "git add"]
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
