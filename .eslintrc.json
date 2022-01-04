@@ -13,7 +13,6 @@
     "plugin:import/typescript",
     "google",
     "plugin:prettier/recommended",
-    "react-app",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",

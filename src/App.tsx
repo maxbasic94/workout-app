@@ -17,8 +17,6 @@ function getAllExerciseArray(allExerciseArray: Array<QuestionType> | undefined) 
   return resultArr;
 }
 
-let dsfds;
-
 const App: React.FunctionComponent = (): JSX.Element => {
   const [result, setResult] = useState<QuestionType[]>([]);
   const [exerciseArray, setExerciseArray] = useState<ExerciseType[]>([]);
