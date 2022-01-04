@@ -31,16 +31,6 @@
     "react/react-in-jsx-scope": "off",
     "jsx-quotes": [1, "prefer-double"],
 
-    "linebreak-style": "off", 
-
-    "arrow-parens": "off", 
-    "object-curly-newline": "off", 
-    "no-mixed-operators": "off", 
-    "arrow-body-style": "off", 
-    "function-paren-newline": "off", 
-    "no-plusplus": "off",
-    "space-before-function-paren": 0, 
-
     "max-len": ["error", 100, 2, { "ignoreUrls": "true" }], 
     "no-console": "error", 
     "no-alert": "error", 
