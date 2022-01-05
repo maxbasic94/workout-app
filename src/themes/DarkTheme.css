@@ -1,0 +1,12 @@
+.App-Switch {
+  position: fixed !important;
+  right:10px;
+  top: 10px;
+}
+
+.App-Switch-ImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

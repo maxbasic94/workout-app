@@ -6,12 +6,12 @@ interface ExerciseViewProps {
   exerciseList: Workout;
 }
 
-const ExerciseView: React.FunctionComponent<ExerciseViewProps> = (props) => {
+const ExerciseView: React.FunctionComponent<ExerciseViewProps> = ({ exerciseList }) => {
   return (
     <div className="StartPage-ExerciseView">
-      <div className="StartPage-ExerciseView_exrCaption">{props.exerciseList.title}</div>
-      {props.exerciseList.exercises.map((item, index) => (
-        <Exercise exercise={item} key={index} />
+      <div className="StartPage-ExerciseView_exrCaption">{exerciseList.title}</div>
+      {exerciseList.exercises.map((item) => (
+        <Exercise exercise={item} key={item.id} />
       ))}
       <hr />
     </div>
