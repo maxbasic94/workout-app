@@ -33,7 +33,8 @@
     "src/**/*.{ts,tsx}": [
       "prettier --write",
       "eslint --fix",
-      "git add"
+      "git add",
+      "jest --bail --findRelatedTests"
     ]
   },
   "jest": {
