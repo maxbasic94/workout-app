@@ -1,9 +1,9 @@
 import React from 'react';
-import { QuestionType } from '../../types/types';
+import { Workout } from '../../types/types';
 import Exercise from '../exercise/Exercise';
 
 interface ExerciseViewProps {
-  exerciseList: QuestionType;
+  exerciseList: Workout;
 }
 
 const ExerciseView: React.FunctionComponent<ExerciseViewProps> = (props) => {

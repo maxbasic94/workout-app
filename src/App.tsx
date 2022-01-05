@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { QuestionType, ExerciseType as ExerciseType } from '../src/types/types';
+import { Workout, ExerciseList as ExerciseList } from '../src/types/types';
 import StartPage from './startPage/StartPage';
 import ExercisePage from './exercisePage/ExercisePage';
 import NotFoundPage from './notFoundPage/NotFoundPage';
@@ -7,10 +7,10 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import SwitchTheme from './themes/SwitchTheme';
 
-function getAllExerciseArray(allExerciseArray: Array<QuestionType> | undefined) {
-  const resultArr: Array<ExerciseType> = [];
-  allExerciseArray?.forEach((item: QuestionType) => {
-    item.exercises.forEach((exr: ExerciseType) => {
+function getAllExerciseArray(allExerciseArray: Array<Workout> | undefined) {
+  const resultArr: Array<ExerciseList> = [];
+  allExerciseArray?.forEach((item: Workout) => {
+    item.exercises.forEach((exr: ExerciseList) => {
       resultArr.push(exr);
     });
   });
@@ -18,8 +18,8 @@ function getAllExerciseArray(allExerciseArray: Array<QuestionType> | undefined) 
 }
 
 const App: React.FunctionComponent = (): JSX.Element => {
-  const [result, setResult] = useState<QuestionType[]>([]);
-  const [exerciseArray, setExerciseArray] = useState<ExerciseType[]>([]);
+  const [result, setResult] = useState<Workout[]>([]);
+  const [exerciseArray, setExerciseArray] = useState<ExerciseList[]>([]);
   const apiPath: string = process.env.REACT_APP_API_PATH || '';
   useEffect(() => {
     fetch(`${apiPath}`)

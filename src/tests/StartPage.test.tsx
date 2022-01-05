@@ -1,4 +1,4 @@
-import { QuestionType } from '../types/types';
+import { Workout } from '../types/types';
 import { unmountComponentAtNode } from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -23,7 +23,7 @@ const testArr = [
       },
     ],
     title: 'Warm up',
-  } as QuestionType,
+  } as Workout,
 ];
 
 let container: Element;

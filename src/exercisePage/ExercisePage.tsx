@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ExerciseType } from '../../src/types/types';
+import { ExerciseList } from '../../src/types/types';
 import Control from './control/Control';
 import './ExercisePage.css';
 import Player from './player/Player';
@@ -7,7 +7,7 @@ import PlayPauseButton from './buttons/PlayPauseButton';
 import FinishWorkout from './finishWorkout/FinishWorkout';
 
 interface ExrPageProps {
-  allExercises: Array<ExerciseType>;
+  allExercises: Array<ExerciseList>;
 }
 
 const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): JSX.Element => {
