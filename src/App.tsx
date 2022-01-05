@@ -39,16 +39,14 @@ const App: React.FunctionComponent = (): JSX.Element => {
   }, [apiPath]);
 
   return (
-    <>
-      <div className="App" data-theme={theme}>
-        <SwitchTheme changeTheme={switchTheme} />
-        <Routes>
-          <Route path="/" element={<StartPage exerciseArr={result} />} />
-          <Route path="/exercise" element={<ExercisePage allExercises={exerciseArray} />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
-    </>
+    <div className="App" data-theme={theme}>
+      <SwitchTheme theme={theme} changeTheme={switchTheme} />
+      <Routes>
+        <Route path="/" element={<StartPage exerciseArr={result} />} />
+        <Route path="/exercise" element={<ExercisePage allExercises={exerciseArray} />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </div>
   );
 };
 

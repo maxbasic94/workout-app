@@ -3,11 +3,13 @@ import Switch from 'react-switch';
 import './SwitchTheme.css';
 
 interface SwitchThemeProps {
+  theme: string;
   changeTheme: () => void;
 }
 
-const SwitchTheme: React.FC<SwitchThemeProps> = ({ changeTheme }): JSX.Element => {
-  const [checked, setChecked] = useState(true);
+const SwitchTheme: React.FC<SwitchThemeProps> = ({ theme, changeTheme }): JSX.Element => {
+  const initialState = theme === 'light' ? false : true;
+  const [checked, setChecked] = useState(initialState);
   function toggleTheme() {
     checked ? setChecked(false) : setChecked(true);
     changeTheme();
