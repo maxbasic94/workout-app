@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Workout, ExerciseList as ExerciseList } from '../src/types/types';
-import StartPage from './startPage/StartPage';
-import ExercisePage from './exercisePage/ExercisePage';
-import NotFoundPage from './notFoundPage/NotFoundPage';
+import StartPage from './pages/startPage/StartPage';
+import ExercisePage from './pages/exercisePage/ExercisePage';
+import NotFoundPage from './pages/notFoundPage/NotFoundPage';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import SwitchTheme from './themes/SwitchTheme';

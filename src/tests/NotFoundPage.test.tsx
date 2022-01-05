@@ -1,8 +1,7 @@
-import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 
-import NotFoundPage from '../notFoundPage/NotFoundPage';
+import NotFoundPage from '../pages/notFoundPage/NotFoundPage';
 
 let container: Element;
 beforeEach(() => {

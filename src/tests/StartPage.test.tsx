@@ -2,7 +2,7 @@ import { Workout } from '../types/types';
 import { unmountComponentAtNode } from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import StartPage from '../startPage/StartPage';
+import StartPage from '../pages/startPage/StartPage';
 import Adapter from 'enzyme-adapter-react-17-updated';
 
 configure({ adapter: new Adapter() });

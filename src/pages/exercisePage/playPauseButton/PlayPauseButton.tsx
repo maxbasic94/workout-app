@@ -1,6 +1,6 @@
 import React, { Dispatch, RefObject, SetStateAction, useState } from 'react';
-import play from './images/play.png';
-import pause from './images/pause.png';
+import play from './play.png';
+import pause from './pause.png';
 import './PlayPauseButton.css';
 
 interface PlayPauseButtonProps {

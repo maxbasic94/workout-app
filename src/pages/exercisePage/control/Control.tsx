@@ -1,7 +1,7 @@
 import React from 'react';
 import './Control.css';
 import ExerciseTimer from '../exerciseTimer/ExerciseTimer';
-import Button from '../buttons/Button';
+import Button from '../nextPrevButton/Button';
 import WaitTimer from '../waitTimer/WaitTimer';
 
 interface TimerProps {

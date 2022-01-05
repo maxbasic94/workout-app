@@ -1,7 +1,7 @@
 import { unmountComponentAtNode } from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import ExercisePage from '../exercisePage/ExercisePage';
+import ExercisePage from '../pages/exercisePage/ExercisePage';
 import Adapter from 'enzyme-adapter-react-17-updated';
 
 jest.mock('nextExr.png');

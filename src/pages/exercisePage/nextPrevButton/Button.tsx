@@ -1,6 +1,6 @@
 import React from 'react';
-import prevExercise from './images/prevExercise.png';
-import nextExercise from './images/nextExercise.png';
+import prevExercise from './prevExercise.png';
+import nextExercise from './nextExercise.png';
 import './Button.css';
 
 interface ButtonProps {

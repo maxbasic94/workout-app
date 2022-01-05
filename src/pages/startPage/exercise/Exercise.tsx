@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExerciseList } from '../../types/types';
+import { ExerciseList } from '../../../types/types';
 import './Exercise.css';
 
 interface ExerciseProps {

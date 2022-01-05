@@ -1,7 +1,7 @@
 import { configure } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { render, unmountComponentAtNode } from 'react-dom';
-import ExerciseTimer from '../exercisePage/exerciseTimer/ExerciseTimer';
+import ExerciseTimer from '../pages/exercisePage/exerciseTimer/ExerciseTimer';
 import Adapter from 'enzyme-adapter-react-17-updated';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 

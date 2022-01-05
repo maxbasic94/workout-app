@@ -1,5 +1,5 @@
 import React from 'react';
-import { Workout } from '../types/types';
+import { Workout } from '../../types/types';
 import StartInfo from './startInfo/StartInfo';
 import StartButton from './startButton/StartButton';
 import ExercisesList from './exercisesList/ExercisesList';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Workout } from '../../types/types';
+import { Workout } from '../../../types/types';
 import ExerciseView from '../exerciseView/ExerciseView';
 
 interface ExerciseListProps {

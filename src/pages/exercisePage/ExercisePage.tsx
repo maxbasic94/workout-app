@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ExerciseList } from '../../src/types/types';
+import { ExerciseList } from '../../types/types';
 import Control from './control/Control';
 import './ExercisePage.css';
 import Player from './player/Player';
-import PlayPauseButton from './buttons/PlayPauseButton';
+import PlayPauseButton from './playPauseButton/PlayPauseButton';
 import FinishWorkout from './finishWorkout/FinishWorkout';
 
 interface ExrPageProps {

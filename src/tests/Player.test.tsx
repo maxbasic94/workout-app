@@ -1,7 +1,7 @@
 import { configure } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { render, unmountComponentAtNode } from 'react-dom';
-import Player from '../exercisePage/player/Player';
+import Player from '../pages/exercisePage/player/Player';
 import Adapter from 'enzyme-adapter-react-17-updated';
 
 configure({ adapter: new Adapter() });

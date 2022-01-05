@@ -1,6 +1,6 @@
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import Button from '../exercisePage/buttons/Button';
+import Button from '../pages/exercisePage/nextPrevButton/Button';
 jest.mock('nextExr.png');
 
 let container: Element;
