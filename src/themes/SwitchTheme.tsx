@@ -1,11 +1,17 @@
-import { useContext } from 'react';
+import React, { useState } from 'react';
 import Switch from 'react-switch';
-import { ThemeContext } from './ThemeProvider';
 import './SwitchTheme.css';
 
-const SwitchTheme: React.FC = (): JSX.Element => {
-  const { checked, toggleTheme } = useContext(ThemeContext);
+interface SwitchThemeProps {
+  changeTheme: () => void;
+}
 
+const SwitchTheme: React.FC<SwitchThemeProps> = ({ changeTheme }): JSX.Element => {
+  const [checked, setChecked] = useState(true);
+  function toggleTheme() {
+    checked ? setChecked(false) : setChecked(true);
+    changeTheme();
+  }
   return (
     <Switch
       className="App-Switch"

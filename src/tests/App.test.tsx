@@ -13,6 +13,15 @@ jest.mock('initImg.jpg');
 
 configure({ adapter: new Adapter() });
 
+beforeAll(() => {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: jest.fn().mockImplementation(() => ({
+      matches: false,
+    })),
+  });
+});
+
 test('invalid path should redirect to NotFoundPage', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/random']}>

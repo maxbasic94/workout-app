@@ -1,6 +1,17 @@
 .App {
+  height: max-content;
+  color: var(--text-primary);
+  background-color: var(--background);
   display: flex;
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
+}
+
+button {
+  color: var(--text-primary);
+  background-color: var(--background);
+  border: 2px var(--text-primary) solid;
+  float: right;
+  transition: all 0.5s;
 }
