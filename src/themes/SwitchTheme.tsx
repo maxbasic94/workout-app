@@ -15,13 +15,13 @@ const SwitchTheme: React.FC = (): JSX.Element => {
         <div className="App-Switch-ImgContainer">
           <img
             src="https://img.icons8.com/external-bearicons-flat-bearicons/17/000000/external-moon-halloween-bearicons-flat-bearicons.png"
-            alt={'m'}
+            alt={'moon'}
           />
         </div>
       }
       checkedIcon={
         <div className="App-Switch-ImgContainer">
-          <img src="https://img.icons8.com/officel/17/000000/sun.png" alt={'s'} />
+          <img src="https://img.icons8.com/officel/17/000000/sun.png" alt={'sun'} />
         </div>
       }
       onColor="#3c3c3c"

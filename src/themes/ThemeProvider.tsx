@@ -3,17 +3,13 @@ import React, { useEffect, useState } from 'react';
 type Theme = 'light' | 'dark';
 type ThemeContext = { checked: boolean; theme: Theme; toggleTheme: () => void };
 
-function getTestCh(test: string) {
-  if (test === 'light') {
-    return true;
-  } else {
-    return false;
-  }
+function getSwitchState(test: string) {
+  return test === 'light';
 }
 
 const ThemeContext = React.createContext<ThemeContext>({} as ThemeContext);
 const initTheme = localStorage.getItem('theme') as Theme;
-const initSwitchState = getTestCh(initTheme) as boolean;
+const initSwitchState = getSwitchState(initTheme) as boolean;
 
 const ThemeProvider: React.FC = ({ children }) => {
   const [theme, setTheme] = useState(initTheme);
