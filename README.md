@@ -30,11 +30,15 @@ Have a good day!
     
 ```
 .
+├─ .husky              # Folder for husky settings(pre-commit hook)
 ├─ src                          
-│  ├─ pages          # Application pages. All of the pages contain folder "components" with components
-|  |                   with components necessary for this page. 
-│  ├─ tests          # Folder for contain unit tests 
-│  ├─ themes         # Folder with components to change theme
-│  ├─ types          # Folder with types                
-
+│  ├─ pages            # Application pages
+│  │  ├─ page          # Application pages
+│  │  │  ├─ components # Folder with components necessary for this page.
+│  │  │  ...
+│  │ ...                 
+│  ├─ tests            # Folder for contain unit tests 
+│  ├─ themes           # Folder with components to change theme
+│  ├─ types            # Folder with types                
+│ ...
 ```              
