@@ -33,7 +33,7 @@ Have a good day!
 ├─ .husky              # Folder for husky settings(pre-commit hook)
 ├─ src                          
 │  ├─ pages            # Application pages
-│  │  ├─ page          # Application pages
+│  │  ├─ page          # Application page
 │  │  │  ├─ components # Folder with components necessary for this page.
 │  │  │  ...
 │  │ ...                 
