@@ -1,8 +1,8 @@
 import React from 'react';
 import { Workout } from '../../types/types';
-import StartInfo from './startInfo/StartInfo';
-import StartButton from './startButton/StartButton';
-import ExercisesList from './exercisesList/ExercisesList';
+import StartInfo from './components/startInfo/StartInfo';
+import StartButton from './components/startButton/StartButton';
+import ExercisesList from './components/exercisesList/ExercisesList';
 import './StartPage.css';
 
 interface ExerciseProps {

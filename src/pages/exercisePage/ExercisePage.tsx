@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ExerciseList } from '../../types/types';
-import Control from './control/Control';
+import Control from './components/control/Control';
 import './ExercisePage.css';
-import Player from './player/Player';
-import PlayPauseButton from './playPauseButton/PlayPauseButton';
-import FinishWorkout from './finishWorkout/FinishWorkout';
+import Player from './components/player/Player';
+import PlayPauseButton from './components/playPauseButton/PlayPauseButton';
+import FinishWorkout from './components/finishWorkout/FinishWorkout';
 
 interface ExrPageProps {
   allExercises: Array<ExerciseList>;

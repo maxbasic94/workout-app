@@ -1,6 +1,4 @@
-// import { unmountComponentAtNode } from 'react-dom';
 import { configure, mount } from 'enzyme';
-// import toJson from 'enzyme-to-json';
 import ExercisePage from '../pages/exercisePage/ExercisePage';
 import Adapter from 'enzyme-adapter-react-17-updated';
 
