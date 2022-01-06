@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './StartInfo.css';
 import initialImg from './initialImg.jpg';
 
@@ -18,6 +19,9 @@ const StartInfo: React.FunctionComponent = (): JSX.Element => {
         <div className="StartPage-StartInfo_text_levelInfo">Easy • 15 min • No equipment</div>
         <hr />
       </div>
+      <Link className="StartPage-StartButton_button_start" to={'/exercise'}>
+        Start Workout
+      </Link>
     </>
   );
 };
