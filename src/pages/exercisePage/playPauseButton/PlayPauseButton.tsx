@@ -11,7 +11,7 @@ interface PlayPauseButtonProps {
 const PlayPauseButton: React.FC<PlayPauseButtonProps> = ({ playerRef, setPause }): JSX.Element => {
   const [state, setState] = useState(pause);
 
-  function testFunction() {
+  function changeProperties() {
     if (playerRef.current !== null) {
       if (state === play) {
         playerRef?.current.play();
@@ -28,7 +28,7 @@ const PlayPauseButton: React.FC<PlayPauseButtonProps> = ({ playerRef, setPause }
   return (
     <div className="ExercisePage-PlayPauseButton_container">
       <hr />
-      <button className="ExercisePage-PlayPauseButton_button_playPause" onClick={testFunction}>
+      <button className="ExercisePage-PlayPauseButton_button_playPause" onClick={changeProperties}>
         <img src={state}></img>
       </button>
     </div>
