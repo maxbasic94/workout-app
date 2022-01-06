@@ -32,7 +32,7 @@ Have a good day!
 .
 ├─ src                          
 │  ├─ pages          # Application pages. All of the pages contain folder "components" with components
-                       with components necessary for this page. 
+|  |                   with components necessary for this page. 
 │  ├─ tests          # Folder for contain unit tests 
 │  ├─ themes         # Folder with components to change theme
 │  ├─ types          # Folder with types                
