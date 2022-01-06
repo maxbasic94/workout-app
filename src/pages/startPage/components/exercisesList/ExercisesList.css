@@ -1,0 +1,9 @@
+.StartPage-ExercisesList {
+  padding-bottom: 100px;
+}
+
+@media screen and (max-width: 800px) {
+  .StartPage-ExercisesList {
+    padding-bottom: 200px;
+  }
+}

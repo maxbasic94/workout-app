@@ -1,6 +1,7 @@
 import React from 'react';
 import { Workout } from '../../../../types/types';
 import ExerciseView from '../exerciseView/ExerciseView';
+import './ExercisesList.css';
 
 interface ExerciseListProps {
   exerciseListArr: Workout[];
