@@ -3,6 +3,8 @@ import { Workout, ExerciseList as ExerciseList } from '../src/types/types';
 import StartPage from './pages/startPage/StartPage';
 import ExercisePage from './pages/exercisePage/ExercisePage';
 import NotFoundPage from './pages/notFoundPage/NotFoundPage';
+import LoginPage from './pages/loginPage/LoginPage';
+import RegisterPage from './pages/registerPage/RegisterPage';
 import { Route, Routes } from 'react-router-dom';
 import useLocalStorage from 'use-local-storage';
 import './App.css';
@@ -44,6 +46,8 @@ const App: React.FunctionComponent = (): JSX.Element => {
       <Routes>
         <Route path="/" element={<StartPage exerciseArr={result} />} />
         <Route path="/exercise" element={<ExercisePage allExercises={exerciseArray} />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
