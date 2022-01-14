@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SingUp from '../../components/singUp/SignUp';
+import SingUp from './components/singUp/SignUp';
 import './RegisterPage.css';
 
 const RegisterPage: React.FC = (): JSX.Element => {

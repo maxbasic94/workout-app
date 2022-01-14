@@ -1,0 +1,24 @@
+.AdminPage {
+  display: flex;
+  align-self: center;
+  height: 100vh;
+  width: 800px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AdminPage-inputContainer {
+  text-align: center;
+  width: 800px;
+}
+
+.AdminPage-input_workoutName {
+  width: 94%;
+}
+
+@media screen and (max-width: 800px) {
+  .AdminPage {
+    width: 100%;
+  }
+
+}

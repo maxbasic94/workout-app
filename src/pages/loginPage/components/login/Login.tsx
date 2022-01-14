@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Form from '../form/Form';
+import Form from '../../../../components/form/Form';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { setUser } from '../../store/slices/userSlice';
-import { useAppDispatch } from '../../hooks/redux-hooks';
+import { setUser } from '../../../../store/slices/userSlice';
+import { useAppDispatch } from '../../../../hooks/redux-hooks';
 
 const Login: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -22,7 +22,8 @@ const Login: React.FC = (): JSX.Element => {
             token: user.refreshToken,
           })
         );
-        push('/');
+        user.uid === 'mJoRjxmNeJTgBy2iR0TD2kVrklX2' ? push('/admin') : push('/');
+        // push('/');
       })
       .catch(() => alert('Invalid user!'));
   };

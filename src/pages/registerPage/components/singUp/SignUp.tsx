@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Form from '../form/Form';
+import Form from '../../../../components/form/Form';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { setUser } from '../../store/slices/userSlice';
-import { useAppDispatch } from '../../hooks/redux-hooks';
+import { setUser } from '../../../../store/slices/userSlice';
+import { useAppDispatch } from '../../../../hooks/redux-hooks';
 
 const SingUp: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();

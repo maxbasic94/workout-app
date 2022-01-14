@@ -163,7 +163,8 @@
       "browserslist",
       "styl",
       "precommit",
-      "reduxjs"
+      "reduxjs",
+      "firestore"
     ],
     "import": []
   }
