@@ -6,8 +6,8 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ title, handleClick }): JSX.Element => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin@gmail.com');
+  const [password, setPassword] = useState('123456');
 
   return (
     <div className="Form">

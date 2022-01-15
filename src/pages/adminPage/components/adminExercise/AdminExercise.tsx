@@ -4,11 +4,22 @@ import './AdminExercise.css';
 
 interface AdminExerciseProps {
   exercise: ExerciseList;
+  setIdToArray: (exercise: ExerciseList) => void;
+  removeIdToArray: (id: number) => void;
 }
-const AdminExercise: React.FunctionComponent<AdminExerciseProps> = ({ exercise }): JSX.Element => {
+const AdminExercise: React.FunctionComponent<AdminExerciseProps> = ({
+  exercise,
+  setIdToArray,
+  removeIdToArray,
+}): JSX.Element => {
   const [isChecked, setIsChecked] = useState(false);
   function handleClick(event: ChangeEvent<HTMLInputElement>) {
     setIsChecked(event.currentTarget.checked);
+    if (event.currentTarget.checked) {
+      setIdToArray(exercise);
+    } else {
+      removeIdToArray(exercise.id);
+    }
   }
 
   return (

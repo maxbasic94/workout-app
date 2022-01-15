@@ -16,8 +16,11 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
         <h1>Admin Page</h1>
         <input className="AdminPage-input_workoutName" type="text" />
       </div>
-      <div>
+      <div className="AdminPage-div_exerciseContainer">
         <AdminExercisesList exerciseListArr={exerciseArr} />
+      </div>
+      <div className="AdminPage-div_buttonContainer">
+        <button className="AdminPage-button_createWorkout">Create Workout</button>
       </div>
     </div>
   );

@@ -75,6 +75,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
           ? workoutArray.unshift(exerciseViewObject)
           : workoutArray.push(exerciseViewObject);
       });
+      console.log(workoutArray);
       const allExerciseArray = getAllExerciseArray(workoutArray);
       setExerciseArray(allExerciseArray);
       setResult(workoutArray);
