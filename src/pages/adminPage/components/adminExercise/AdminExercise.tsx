@@ -13,7 +13,7 @@ const AdminExercise: React.FunctionComponent<AdminExerciseProps> = ({
   removeIdToArray,
 }): JSX.Element => {
   const [isChecked, setIsChecked] = useState(false);
-  function handleClick(event: ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setIsChecked(event.currentTarget.checked);
     if (event.currentTarget.checked) {
       setIdToArray(exercise);
@@ -40,7 +40,7 @@ const AdminExercise: React.FunctionComponent<AdminExerciseProps> = ({
           className="AdminPage-checkbox"
           type="checkbox"
           checked={isChecked}
-          onChange={handleClick}
+          onChange={handleChange}
         />
       </div>
     </div>

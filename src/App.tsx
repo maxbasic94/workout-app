@@ -12,6 +12,7 @@ import './App.css';
 import SwitchTheme from './themes/SwitchTheme';
 import { dataBase } from './firebase/firebase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
+import UserPage from './pages/userPage/UserPage';
 // import { doc, setDoc } from 'firebase/firestore';
 
 // async function setDocToFirestore(data: Array<Workout>) {
@@ -91,6 +92,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin" element={<AdminPage exerciseArr={result} />} />
+        <Route path="/user" element={<UserPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

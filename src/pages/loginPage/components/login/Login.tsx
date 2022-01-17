@@ -22,7 +22,7 @@ const Login: React.FC = (): JSX.Element => {
             token: user.refreshToken,
           })
         );
-        user.uid === 'mJoRjxmNeJTgBy2iR0TD2kVrklX2' ? push('/admin') : push('/');
+        user.uid === 'mJoRjxmNeJTgBy2iR0TD2kVrklX2' ? push('/admin') : push('/user');
         // push('/');
       })
       .catch(() => alert('Invalid user!'));

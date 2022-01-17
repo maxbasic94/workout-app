@@ -4,10 +4,12 @@ import AdminExerciseView from '../adminExerciseView/AdminExerciseView';
 
 interface AdminExercisesListProps {
   exerciseListArr: Workout[];
+  setExerciseWorkoutArray: (exerciseCollectionsArray: Array<Workout>) => void;
 }
 
 const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
   exerciseListArr: exerciseListArr,
+  setExerciseWorkoutArray,
 }): JSX.Element => {
   const [workoutArray, setWorkoutArray] = useState<Array<Workout>>([]);
 
@@ -30,7 +32,7 @@ const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
       }
     }
     setWorkoutArray(result);
-    console.log(workoutArray);
+    setExerciseWorkoutArray(workoutArray);
   }
 
   return (
