@@ -12,16 +12,11 @@ import { query, collection, onSnapshot, doc } from 'firebase/firestore';
 import Loader from '../../components/loader/Loader';
 
 interface ExerciseProps {
-  // exerciseArr: Workout[];
   workoutName?: string;
   setExerciseArray: Dispatch<SetStateAction<ExerciseList[]>>;
 }
 
-const StartPage: React.FC<ExerciseProps> = ({
-  // exerciseArr: exerciseArr,
-  workoutName,
-  setExerciseArray,
-}): JSX.Element => {
+const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): JSX.Element => {
   const [exerciseArr, setExerciseArr] = useState<Workout[]>([]);
   const dispatch = useAppDispatch();
   const { isAuth, email } = useAuth();
@@ -54,7 +49,6 @@ const StartPage: React.FC<ExerciseProps> = ({
               title: item,
               exercises: exercisesArray,
             };
-            // console.log(exerciseViewObject);
             exerciseViewObject.title === 'Warm up'
               ? workoutArray.unshift(exerciseViewObject)
               : workoutArray.push(exerciseViewObject);
@@ -79,7 +73,7 @@ const StartPage: React.FC<ExerciseProps> = ({
           <ExercisesList exerciseListArr={exerciseArr} />
         </>
       ) : (
-        <Loader color="black" />
+        <Loader color="#aa00ff" />
       )}
     </div>
   ) : (

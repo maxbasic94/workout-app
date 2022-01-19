@@ -1,4 +1,5 @@
 import React from 'react';
+import './Loader.css';
 
 interface LoaderProps {
   color: string;

@@ -60,13 +60,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
       <Routes>
         <Route
           path="/"
-          element={
-            <StartPage
-              // exerciseArr={result}
-              workoutName={workoutName}
-              setExerciseArray={setExerciseArray}
-            />
-          }
+          element={<StartPage workoutName={workoutName} setExerciseArray={setExerciseArray} />}
         />
         <Route path="/exercise" element={<ExercisePage allExercises={exerciseArray} />} />
         <Route path="/login" element={<LoginPage />} />

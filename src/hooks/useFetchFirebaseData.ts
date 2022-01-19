@@ -26,7 +26,6 @@ const useFetchFirebaseData = (): Array<Workout> => {
           title: exerciseViewItem.data().title,
           exercises: exercisesArray,
         });
-        // setWorkoutList(workoutArray);
       });
     });
     setTimeout(() => {
