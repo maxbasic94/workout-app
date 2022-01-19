@@ -10,28 +10,28 @@ const useFetchFirebaseData = (): Array<Workout> => {
     const workoutArray: Array<Workout> = [];
     const exerciseViewCollection = query(collection(dataBase, 'workout'));
     onSnapshot(exerciseViewCollection, (querySnapshot) => {
-      querySnapshot.forEach(async (exerciseViewItem) => {
+      querySnapshot.forEach((exerciseViewItem) => {
         const exercisesArray: Array<ExerciseList> = [];
-        const exerciseViewArray: Array<string> = exerciseViewItem.data().collection;
-        exerciseViewArray.forEach((item) => {
+        exerciseViewItem.data().collection.forEach((item: string) => {
           const exerciseViewCollection = query(
             collection(dataBase, `workout`, exerciseViewItem.data().title, `${item}`)
           );
           onSnapshot(exerciseViewCollection, (snapshot) => {
             snapshot.forEach((item) => {
-              const exercise = item.data() as ExerciseList;
-              exercisesArray.push(exercise);
+              exercisesArray.push(item.data() as ExerciseList);
             });
           });
         });
-        const exerciseViewObject = {
+        workoutArray.push({
           title: exerciseViewItem.data().title,
           exercises: exercisesArray,
-        };
-        workoutArray.push(exerciseViewObject);
+        });
+        // setWorkoutList(workoutArray);
       });
     });
-    setWorkoutList(workoutArray);
+    setTimeout(() => {
+      setWorkoutList(workoutArray);
+    }, 1000);
   }, []);
 
   return workoutList;

@@ -13,33 +13,6 @@ import SwitchTheme from './themes/SwitchTheme';
 import { dataBase } from './firebase/firebase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import UserPage from './pages/userPage/UserPage';
-// import { doc, setDoc } from 'firebase/firestore';
-
-// async function setDocToFirestore(data: Array<Workout>) {
-//   data.forEach(async (item) => {
-//     const workoutDoc = doc(dataBase, `api`, `${item.title}`);
-//     item.exercises.forEach(async (elem) => {
-//       await setDoc(doc(workoutDoc, `exercises`, `exercise${elem.id}`), {
-//         id: elem.id,
-//         duration: elem.duration,
-//         description: elem.description,
-//         photo: elem.photo,
-//         title: elem.title,
-//         video: elem.video,
-//       });
-//     });
-//   });
-// }
-
-function getAllExerciseArray(allExerciseArray: Array<Workout> | undefined) {
-  const resultArr: Array<ExerciseList> = [];
-  allExerciseArray?.forEach((item: Workout) => {
-    item.exercises.forEach((exr: ExerciseList) => {
-      resultArr.push(exr);
-    });
-  });
-  return resultArr;
-}
 
 const App: React.FunctionComponent = (): JSX.Element => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -51,6 +24,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
 
   const [result, setResult] = useState<Workout[]>([]);
   const [exerciseArray, setExerciseArray] = useState<ExerciseList[]>([]);
+  const [workoutName, setWorkoutName] = useState<string>('');
 
   useEffect(() => {
     const exerciseViewCollection = query(collection(dataBase, 'api'));
@@ -76,9 +50,6 @@ const App: React.FunctionComponent = (): JSX.Element => {
           ? workoutArray.unshift(exerciseViewObject)
           : workoutArray.push(exerciseViewObject);
       });
-      console.log(workoutArray);
-      const allExerciseArray = getAllExerciseArray(workoutArray);
-      setExerciseArray(allExerciseArray);
       setResult(workoutArray);
     });
   }, []);
@@ -87,12 +58,21 @@ const App: React.FunctionComponent = (): JSX.Element => {
     <div className="App" data-theme={theme}>
       <SwitchTheme theme={theme} changeTheme={switchTheme} />
       <Routes>
-        <Route path="/" element={<StartPage exerciseArr={result} />} />
+        <Route
+          path="/"
+          element={
+            <StartPage
+              // exerciseArr={result}
+              workoutName={workoutName}
+              setExerciseArray={setExerciseArray}
+            />
+          }
+        />
         <Route path="/exercise" element={<ExercisePage allExercises={exerciseArray} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin" element={<AdminPage exerciseArr={result} />} />
-        <Route path="/user" element={<UserPage />} />
+        <Route path="/user" element={<UserPage setWorkoutName={setWorkoutName} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
