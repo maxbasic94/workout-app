@@ -19,8 +19,6 @@ const Login: React.FC = (): JSX.Element => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(user);
-        console.log(user.refreshToken);
         dispatch(
           setUser({
             email: user.email,

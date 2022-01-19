@@ -7,9 +7,10 @@ const useFetchFirebaseData = (): Array<Workout> => {
   const [workoutList, setWorkoutList] = useState<Array<Workout>>([]);
 
   useEffect(() => {
-    const workoutArray: Array<Workout> = [];
     const exerciseViewCollection = query(collection(dataBase, 'workout'));
     onSnapshot(exerciseViewCollection, (querySnapshot) => {
+      console.log('snapshot');
+      const workoutArray: Array<Workout> = [];
       querySnapshot.forEach((exerciseViewItem) => {
         const exercisesArray: Array<ExerciseList> = [];
         exerciseViewItem.data().collection.forEach((item: string) => {
@@ -27,10 +28,10 @@ const useFetchFirebaseData = (): Array<Workout> => {
           exercises: exercisesArray,
         });
       });
+      setTimeout(() => {
+        setWorkoutList(workoutArray);
+      }, 1000);
     });
-    setTimeout(() => {
-      setWorkoutList(workoutArray);
-    }, 1000);
   }, []);
 
   return workoutList;
