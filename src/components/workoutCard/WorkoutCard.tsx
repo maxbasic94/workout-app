@@ -1,16 +1,16 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { ExerciseList } from '../../types/types';
 import { useNavigate } from 'react-router-dom';
 import './WorkoutCard.css';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { dataBase } from '../../firebase/firebase';
-import Modal from '../modal/Modal';
 
 interface WorkoutCardProps {
   title: string;
   exercises: Array<ExerciseList>;
   setWorkoutName?: Dispatch<SetStateAction<string>>;
   isAdminPage: boolean;
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const WorkoutCard: React.FC<WorkoutCardProps> = ({
@@ -18,8 +18,8 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
   exercises,
   setWorkoutName,
   isAdminPage,
+  setIsOpen,
 }): JSX.Element => {
-  const [isOpen, setIsOpen] = useState(false);
   const classPage = isAdminPage ? 'AdminPage' : 'UserPage';
   const push = useNavigate();
   const handleClickGoToWorkoutButton = () => {
@@ -29,8 +29,10 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
     }
   };
   const handleClickEditButton = () => {
-    setIsOpen(true);
-    console.log('editButton', title);
+    if (setIsOpen && setWorkoutName) {
+      setIsOpen(true);
+      setWorkoutName(title);
+    }
   };
   const handleClickDeleteButton = async () => {
     await deleteDoc(doc(dataBase, `workout`, `${title}`));
@@ -63,9 +65,6 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
           </button>
         )}
       </div>
-      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        some children
-      </Modal>
     </>
   );
 };

@@ -6,11 +6,13 @@ import './AdminExerciseView.css';
 interface AdminExerciseViewProps {
   exerciseList: Workout;
   setExerciseViewToWorkoutArray: (exerciseViewObject: Workout) => void;
+  isModal: boolean;
 }
 
 const AdminExerciseView: React.FunctionComponent<AdminExerciseViewProps> = ({
   exerciseList,
   setExerciseViewToWorkoutArray,
+  isModal,
 }) => {
   const [exerciseArray, setExerciseArray] = useState<Array<ExerciseList>>([]);
   const [exerciseViewObject, setExerciseViewObject] = useState<Workout>({
@@ -32,10 +34,13 @@ const AdminExerciseView: React.FunctionComponent<AdminExerciseViewProps> = ({
     setExerciseViewObject(newExerciseViewObject);
   }, [exerciseArray, exerciseViewObject]);
   return (
-    <div className="AdminPage-AdminExerciseView">
-      <div className="AdminPage-AdminExerciseView_exrCaption">{exerciseList.title}</div>
+    <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExerciseView`}>
+      <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExerciseView_exrCaption`}>
+        {exerciseList.title}
+      </div>
       {exerciseList.exercises.map((item) => (
         <AdminExercise
+          isModal={isModal}
           exercise={item}
           key={item.id}
           setIdToArray={setIdToArray}

@@ -4,15 +4,16 @@ import AdminExerciseView from '../adminExerciseView/AdminExerciseView';
 
 interface AdminExercisesListProps {
   exerciseListArr: Workout[];
-  setExerciseWorkoutArray: (exerciseCollectionsArray: Array<Workout>) => void;
+  setExerciseWorkoutArray?: (exerciseCollectionsArray: Array<Workout>) => void;
+  isModal: boolean;
 }
 
 const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
   exerciseListArr: exerciseListArr,
   setExerciseWorkoutArray,
+  isModal,
 }): JSX.Element => {
   const [workoutArray, setWorkoutArray] = useState<Array<Workout>>([]);
-
   const setExerciseViewToWorkoutArray = (exerciseViewObject: Workout) => {
     const result = workoutArray;
     if (workoutArray.length === 0) {
@@ -32,13 +33,16 @@ const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
       }
     }
     setWorkoutArray(result);
-    setExerciseWorkoutArray(workoutArray);
+    if (setExerciseWorkoutArray) {
+      setExerciseWorkoutArray(workoutArray);
+    }
   };
 
   return (
-    <div className="AdminPage-AdminExercisesList">
+    <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExercisesList`}>
       {exerciseListArr?.map((item) => (
         <AdminExerciseView
+          isModal={isModal}
           exerciseList={item}
           key={item.title}
           setExerciseViewToWorkoutArray={setExerciseViewToWorkoutArray}

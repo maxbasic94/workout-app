@@ -7,12 +7,14 @@ interface WorkoutListProps {
   workoutList: Array<Workout>;
   setWorkoutName?: Dispatch<SetStateAction<string>>;
   isAdminPage: boolean;
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const WorkoutList: React.FC<WorkoutListProps> = ({
   workoutList,
   setWorkoutName,
   isAdminPage,
+  setIsOpen,
 }): JSX.Element => {
   const classPage = isAdminPage ? 'AdminPage' : 'UserPage';
   return (
@@ -24,6 +26,7 @@ const WorkoutList: React.FC<WorkoutListProps> = ({
           setWorkoutName={setWorkoutName}
           key={`${title}_${exercises.length}`}
           isAdminPage={isAdminPage}
+          setIsOpen={setIsOpen}
         />
       ))}
     </div>

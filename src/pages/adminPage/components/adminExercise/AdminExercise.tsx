@@ -6,11 +6,13 @@ interface AdminExerciseProps {
   exercise: ExerciseList;
   setIdToArray: (exercise: ExerciseList) => void;
   removeIdToArray: (id: number) => void;
+  isModal: boolean;
 }
 const AdminExercise: React.FunctionComponent<AdminExerciseProps> = ({
   exercise,
   setIdToArray,
   removeIdToArray,
+  isModal,
 }): JSX.Element => {
   const [isChecked, setIsChecked] = useState(false);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,21 +21,25 @@ const AdminExercise: React.FunctionComponent<AdminExerciseProps> = ({
   };
 
   return (
-    <div className="AdminPage-AdminExercise">
-      <div className="AdminPage-ImageContainer">
+    <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExercise`}>
+      <div className={`${isModal ? 'Modal' : 'AdminPage'}-ImageContainer`}>
         <img
-          className="AdminPage-ImageContainer_image"
+          className={`${isModal ? 'Modal' : 'AdminPage'}-ImageContainer_image`}
           src={exercise.photo}
           alt="exerciseName"
         ></img>
       </div>
-      <div className="AdminPage-ExrInfoContainer">
-        <div className="AdminPage-ExrInfoContainer_title">{exercise.title}</div>
-        <div className="AdminPage-ExrInfoContainer_duration">{exercise.duration} sec</div>
+      <div className={`${isModal ? 'Modal' : 'AdminPage'}-ExrInfoContainer`}>
+        <div className={`${isModal ? 'Modal' : 'AdminPage'}-ExrInfoContainer_title`}>
+          {exercise.title}
+        </div>
+        <div className={`${isModal ? 'Modal' : 'AdminPage'}-ExrInfoContainer_duration`}>
+          {exercise.duration} sec
+        </div>
       </div>
-      <div className="AdminPage-CheckboxContainer">
+      <div className={`${isModal ? 'Modal' : 'AdminPage'}-CheckboxContainer`}>
         <input
-          className="AdminPage-checkbox"
+          className={`${isModal ? 'Modal' : 'AdminPage'}-checkbox`}
           type="checkbox"
           checked={isChecked}
           onChange={handleChange}

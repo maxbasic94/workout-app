@@ -10,6 +10,7 @@ import { useAppDispatch } from '../../hooks/redux-hooks';
 import { useAuth } from '../../hooks/use-auth';
 import WorkoutList from '../../components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
+import Modal from '../../components/modal/Modal';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
@@ -19,6 +20,8 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   const [workoutArray, setWorkoutArray] = useState<Array<Workout>>([]);
   const [workoutNameInput, setWorkoutNameInput] = useState('');
   const [watchButtonState, setWatchButtonState] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [workoutName, setWorkoutName] = useState('');
   const { isAuth, email } = useAuth();
   const dispatch = useAppDispatch();
   const workoutList = useFetchFirebaseData();
@@ -102,6 +105,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
           </div>
           <div className="AdminPage-div_exerciseContainer">
             <AdminExercisesList
+              isModal={false}
               exerciseListArr={exerciseArr}
               setExerciseWorkoutArray={setExerciseWorkoutArray}
             />
@@ -115,7 +119,19 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
       ) : (
         <div className="AdminPage-WorkoutList">
           <h3>Workout list</h3>
-          <WorkoutList workoutList={workoutList} isAdminPage={true} />
+          <WorkoutList
+            workoutList={workoutList}
+            isAdminPage={true}
+            setIsOpen={setIsOpen}
+            setWorkoutName={setWorkoutName}
+          />
+          <Modal
+            workoutList={workoutList}
+            workoutName={workoutName}
+            exerciseListArr={exerciseArr}
+            open={isOpen}
+            onClose={() => setIsOpen(false)}
+          />
         </div>
       )}
     </div>
