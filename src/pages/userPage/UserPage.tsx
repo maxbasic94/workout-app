@@ -4,10 +4,10 @@ import { useAppDispatch } from '../../hooks/redux-hooks';
 import { useAuth } from '../../hooks/use-auth';
 import { removeUser } from '../../store/slices/userSlice';
 import { Navigate } from 'react-router-dom';
-import WorkoutList from './components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import Loader from '../../components/loader/Loader';
 import CompletedWorkout from './components/completedWorkout/CompletedWorkout';
+import WorkoutList from '../../components/workoutList/WorkoutList';
 // import { Workout } from '../../types/types';
 
 interface UserPageProps {
@@ -39,7 +39,11 @@ const UserPage: React.FC<UserPageProps> = ({ setWorkoutName }): JSX.Element => {
       ) : (
         <>
           {workoutArray.length ? (
-            <WorkoutList workoutList={workoutArray} setWorkoutName={setWorkoutName} />
+            <WorkoutList
+              workoutList={workoutArray}
+              setWorkoutName={setWorkoutName}
+              isAdminPage={false}
+            />
           ) : (
             <Loader color="#aa00ff" />
           )}

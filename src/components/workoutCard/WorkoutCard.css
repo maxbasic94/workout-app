@@ -36,5 +36,24 @@
   margin-bottom: 5px;
 }
 
-/* .AdminPage-Button_edit {} */
-/* .AdminPage-Button_delete {} */
+.AdminPage-Div_buttonsContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.AdminPage-Button_edit,
+.AdminPage-Button_delete {
+  
+  margin-bottom: 5px;
+  min-width: 55px;
+  border-width: 1px;
+  border-radius: 5px;
+}
+.AdminPage-Button_delete {
+  background-color: tomato;
+  color: white;
+}
+
+.AdminPage-edit {
+  background-color: grey;
+}

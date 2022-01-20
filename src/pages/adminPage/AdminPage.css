@@ -58,6 +58,10 @@
   min-width: 210px;
 }
 
+.AdminPage-WorkoutList {
+  text-align: center;
+}
+
 @media screen and (max-width: 800px) {
   .AdminPage {
     width: 100%;

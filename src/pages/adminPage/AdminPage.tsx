@@ -8,6 +8,8 @@ import { doc, setDoc } from 'firebase/firestore';
 import { Navigate } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import { useAuth } from '../../hooks/use-auth';
+import WorkoutList from '../../components/workoutList/WorkoutList';
+import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
@@ -19,6 +21,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   const [watchButtonState, setWatchButtonState] = useState(true);
   const { isAuth, email } = useAuth();
   const dispatch = useAppDispatch();
+  const workoutList = useFetchFirebaseData();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setWorkoutNameInput(event.currentTarget.value);
@@ -111,7 +114,10 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
           </div>
         </>
       ) : (
-        <div>Workout list</div>
+        <div className="AdminPage-WorkoutList">
+          <h3>Workout list</h3>
+          <WorkoutList workoutList={workoutList} isAdminPage={true} />
+        </div>
       )}
     </div>
   ) : (

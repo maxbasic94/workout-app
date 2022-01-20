@@ -6,7 +6,7 @@ import './WorkoutCard.css';
 interface WorkoutCardProps {
   title: string;
   exercises: Array<ExerciseList>;
-  setWorkoutName: Dispatch<SetStateAction<string>>;
+  setWorkoutName?: Dispatch<SetStateAction<string>>;
   isAdminPage: boolean;
 }
 
@@ -18,9 +18,17 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
 }): JSX.Element => {
   const classPage = isAdminPage ? 'AdminPage' : 'UserPage';
   const push = useNavigate();
-  const handleClick = () => {
-    setWorkoutName(title);
-    push('/');
+  const handleClickGoToWorkoutButton = () => {
+    if (setWorkoutName) {
+      setWorkoutName(title);
+      push('/');
+    }
+  };
+  const handleClickEditButton = () => {
+    console.log('editButton', title);
+  };
+  const handleClickDeleteButton = () => {
+    console.log('deleteButton', title);
   };
 
   return (
@@ -32,12 +40,19 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
         </div>
       ))}
       {isAdminPage ? (
-        <>
-          <button className={`${classPage}-Button_edit`}>Edit</button>
-          <button className={`${classPage}-Button_delete`}>Delete</button>
-        </>
+        <div className={`${classPage}-Div_buttonsContainer`}>
+          <button className={`${classPage}-Button_edit`} onClick={handleClickEditButton}>
+            Edit
+          </button>
+          <button className={`${classPage}-Button_delete`} onClick={handleClickDeleteButton}>
+            Delete
+          </button>
+        </div>
       ) : (
-        <button className={`${classPage}-Button_goToWorkout`} onClick={handleClick}>
+        <button
+          className={`${classPage}-Button_goToWorkout`}
+          onClick={handleClickGoToWorkoutButton}
+        >
           Go to Workout
         </button>
       )}
