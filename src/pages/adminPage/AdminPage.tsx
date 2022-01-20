@@ -39,7 +39,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
 
   const setExerciseWorkoutArray = (exerciseCollectionsArray: Array<Workout>) => {
     setWorkoutArray(exerciseCollectionsArray);
-    console.log(exerciseCollectionsArray);
   };
 
   const handleClickCreateWorkout = async () => {

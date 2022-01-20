@@ -43,7 +43,7 @@
 
 .AdminPage-Button_edit,
 .AdminPage-Button_delete {
-  
+  font-size: 18px;
   margin-bottom: 5px;
   min-width: 55px;
   border-width: 1px;
