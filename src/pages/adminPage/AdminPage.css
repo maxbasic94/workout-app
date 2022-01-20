@@ -9,11 +9,11 @@
 
 .AdminPage-inputContainer {
   text-align: center;
-  width: 800px;
+  width: 100%;
 }
 
 .AdminPage-input_workoutName {
-  width: 94%;
+  width: 800px;
   height: 25px;
   font-size: 20px;
 }
@@ -47,6 +47,17 @@
   padding-bottom: 65px;
 }
 
+.AdminPage-Div_buttonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.AdminPage-Button_logOut,
+.AdminPage-Button_watchWorkout {
+  min-width: 210px;
+}
+
 @media screen and (max-width: 800px) {
   .AdminPage {
     width: 100%;
@@ -58,6 +69,10 @@
 
   .AdminPage-div_buttonContainer {
     width: 100%;
+  }
+
+  .AdminPage-input_workoutName {
+    width: 94%;
   }
 
 }

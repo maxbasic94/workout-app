@@ -1,4 +1,5 @@
-.UserPage-WorkoutCard {
+.UserPage-WorkoutCard,
+.AdminPage-WorkoutCard {
   font-family: sans-serif;
   margin-bottom: 10px;
   text-align: center;
@@ -6,13 +7,15 @@
   max-width: 800px;
 }
 
-.UserPage-WorkoutCard-title {
+.UserPage-WorkoutCard-title,
+.AdminPage-WorkoutCard-title {
   text-align: center;
   font-size: 24px;
   text-decoration: underline;
 }
 
-.UserPage-WorkoutCard_userExerciseList {
+.UserPage-WorkoutCard_userExerciseList,
+.AdminPage-WorkoutCard_userExerciseList {
   font-size: 18px;
   text-align: left;
   margin: 0px 5px;
@@ -30,8 +33,8 @@
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-}
-
-.UserPage-Button_goToWorkout {
   margin-bottom: 5px;
 }
+
+/* .AdminPage-Button_edit {} */
+/* .AdminPage-Button_delete {} */

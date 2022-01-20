@@ -33,9 +33,9 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
 
   useEffect(() => {
     if (workoutName) {
-      const workoutArray: Array<Workout> = [];
       const workoutCollection = collection(dataBase, `workout`);
       onSnapshot(doc(workoutCollection, `${workoutName}`), (querySnapshot) => {
+        const workoutArray: Array<Workout> = [];
         querySnapshot.data()?.collection.forEach((item: string) => {
           const exercisesArray: Array<ExerciseList> = [];
           const exerciseViewCollection = query(
@@ -52,13 +52,11 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
             exerciseViewObject.title === 'Warm up'
               ? workoutArray.unshift(exerciseViewObject)
               : workoutArray.push(exerciseViewObject);
+            const allExerciseArray = getAllExerciseArray(workoutArray);
+            setExerciseArray(allExerciseArray);
+            setExerciseArr(workoutArray);
           });
         });
-        setTimeout(() => {
-          const allExerciseArray = getAllExerciseArray(workoutArray);
-          setExerciseArray(allExerciseArray);
-          setExerciseArr(workoutArray);
-        }, 500);
       });
     }
   }, [workoutName, setExerciseArray]);

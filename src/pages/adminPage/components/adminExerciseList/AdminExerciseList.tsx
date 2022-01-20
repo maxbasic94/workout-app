@@ -13,7 +13,7 @@ const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
 }): JSX.Element => {
   const [workoutArray, setWorkoutArray] = useState<Array<Workout>>([]);
 
-  function setExerciseViewToWorkoutArray(exerciseViewObject: Workout) {
+  const setExerciseViewToWorkoutArray = (exerciseViewObject: Workout) => {
     const result = workoutArray;
     if (workoutArray.length === 0) {
       result.push(exerciseViewObject);
@@ -33,7 +33,7 @@ const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
     }
     setWorkoutArray(result);
     setExerciseWorkoutArray(workoutArray);
-  }
+  };
 
   return (
     <div className="AdminPage-AdminExercisesList">

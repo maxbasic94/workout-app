@@ -17,15 +17,15 @@ const AdminExerciseView: React.FunctionComponent<AdminExerciseViewProps> = ({
     title: `${exerciseList.title}`,
     exercises: [],
   });
-  function setIdToArray(exercise: ExerciseList) {
+  const setIdToArray = (exercise: ExerciseList) => {
     setExerciseArray((oldValue) => [...oldValue, exercise]);
     setExerciseViewToWorkoutArray(exerciseViewObject);
-  }
-  function removeIdToArray(id: number) {
+  };
+  const removeIdToArray = (id: number) => {
     const newExerciseArray = exerciseArray.filter((item) => item.id !== id);
     setExerciseArray(newExerciseArray);
     setExerciseViewToWorkoutArray(exerciseViewObject);
-  }
+  };
   useEffect(() => {
     const newExerciseViewObject = exerciseViewObject;
     newExerciseViewObject.exercises = exerciseArray;

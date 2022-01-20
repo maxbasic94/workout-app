@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Workout } from '../../../../types/types';
-import WorkoutCard from '../workoutCard/WorkoutCard';
+import WorkoutCard from '../../../../components/workoutCard/WorkoutCard';
 import './WorkoutList.css';
 
 interface WorkoutListProps {
@@ -17,6 +17,7 @@ const WorkoutList: React.FC<WorkoutListProps> = ({ workoutList, setWorkoutName }
           exercises={exercises}
           setWorkoutName={setWorkoutName}
           key={`${title}_${exercises.length}`}
+          isAdminPage={false}
         />
       ))}
     </div>
