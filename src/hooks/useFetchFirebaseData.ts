@@ -4,15 +4,18 @@ import { dataBase } from '../firebase/firebase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 
 const useFetchFirebaseData = (): Array<Workout> => {
-  const [workoutList, setWorkoutList] = useState<Array<Workout>>([]);
+  const [workoutList, setWorkoutList] = useState<Array<string>>([]);
+  const [exercisesMap, setExercisesMap] = useState<Record<string, ExerciseList[]>>({});
 
   useEffect(() => {
     const exerciseViewCollection = query(collection(dataBase, 'workout'));
     onSnapshot(exerciseViewCollection, (querySnapshot) => {
-      const workoutArray: Array<Workout> = [];
+      const workoutArray: string[] = [];
       querySnapshot.forEach((exerciseViewItem) => {
         const exercisesArray: Array<ExerciseList> = [];
-        exerciseViewItem.data().collection.forEach((item: string) => {
+        const title = exerciseViewItem.data().title;
+
+        exerciseViewItem.data().collection.forEach(async (item: string) => {
           const exerciseViewCollection = query(
             collection(dataBase, `workout`, exerciseViewItem.data().title, `${item}`)
           );
@@ -20,21 +23,25 @@ const useFetchFirebaseData = (): Array<Workout> => {
             snapshot.forEach((item) => {
               exercisesArray.push(item.data() as ExerciseList);
             });
+
+            setExercisesMap((previousValue) => ({
+              ...previousValue,
+              [title]: (previousValue[title] || []).concat(exercisesArray),
+            }));
           });
         });
-        workoutArray.push({
-          title: exerciseViewItem.data().title,
-          exercises: exercisesArray,
-        });
+
+        workoutArray.push(title);
       });
-      // setWorkoutList(workoutArray);
-      setTimeout(() => {
-        setWorkoutList(workoutArray);
-      }, 1000);
+
+      setWorkoutList(workoutArray);
     });
   }, []);
 
-  return workoutList;
+  return workoutList.map((workoutItem) => ({
+    title: workoutItem,
+    exercises: exercisesMap[workoutItem] || [],
+  }));
 };
 
 export default useFetchFirebaseData;

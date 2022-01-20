@@ -19,16 +19,20 @@ const WorkoutList: React.FC<WorkoutListProps> = ({
   const classPage = isAdminPage ? 'AdminPage' : 'UserPage';
   return (
     <div className={`${classPage}-WorkoutList_container`}>
-      {workoutList.map(({ title, exercises }) => (
-        <WorkoutCard
-          title={title}
-          exercises={exercises}
-          setWorkoutName={setWorkoutName}
-          key={`${title}_${exercises.length}`}
-          isAdminPage={isAdminPage}
-          setIsOpen={setIsOpen}
-        />
-      ))}
+      {workoutList.map(({ title, exercises }) => {
+        // console.log(exercises);
+
+        return (
+          <WorkoutCard
+            title={title}
+            exercises={exercises}
+            setWorkoutName={setWorkoutName}
+            key={`${title}_${exercises.length}`}
+            isAdminPage={isAdminPage}
+            setIsOpen={setIsOpen}
+          />
+        );
+      })}
     </div>
   );
 };
