@@ -2,6 +2,8 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { ExerciseList } from '../../types/types';
 import { useNavigate } from 'react-router-dom';
 import './WorkoutCard.css';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { dataBase } from '../../firebase/firebase';
 
 interface WorkoutCardProps {
   title: string;
@@ -27,8 +29,8 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
   const handleClickEditButton = () => {
     console.log('editButton', title);
   };
-  const handleClickDeleteButton = () => {
-    console.log('deleteButton', title);
+  const handleClickDeleteButton = async () => {
+    await deleteDoc(doc(dataBase, `workout`, `${title}`));
   };
 
   return (
