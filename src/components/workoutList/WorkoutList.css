@@ -1,0 +1,12 @@
+.UserPage-WorkoutList_container {
+    display: flex;
+    width: 800px;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (width < 800px) {
+    .UserPage-WorkoutList_container {
+        width: 100%;
+    }
+}

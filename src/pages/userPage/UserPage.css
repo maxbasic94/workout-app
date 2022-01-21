@@ -1,0 +1,25 @@
+.UserPage {
+  display: flex;
+  align-self: center;
+  height: 100vh;
+  width: 800px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.UserPage-Div_buttonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.UserPage-Button_logOut,
+.UserPage-Button_watchWorkout {
+  min-width: 210px;
+}
+
+@media screen and (width < 800px) {
+  .UserPage {
+    width: 100%;
+  }
+}

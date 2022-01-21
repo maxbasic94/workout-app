@@ -1,13 +1,44 @@
 import React from 'react';
 import './FinishWorkout.css';
 import complete from './complete.png';
-import { Link } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { dataBase } from '../../../../firebase/firebase';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 interface FinishWorkoutProps {
   time: number;
+  workoutName?: string;
 }
 
-const FinishWorkout: React.FC<FinishWorkoutProps> = ({ time }): JSX.Element => {
+const FinishWorkout: React.FC<FinishWorkoutProps> = ({ time, workoutName }): JSX.Element => {
+  const push = useNavigate();
+  const auth = getAuth();
+  const handleClick = () => {
+    onAuthStateChanged(auth, async (user) => {
+      const performedDocRef = doc(dataBase, `users`, `${user?.uid}`);
+      const performedDocData = await (await getDoc(performedDocRef)).data()?.performed;
+      let newPerformedArray = [];
+      if (Array.isArray(performedDocData)) {
+        newPerformedArray = performedDocData.concat({
+          time: `${Math.round(time / 60)}`,
+          name: workoutName,
+        });
+      } else {
+        newPerformedArray = [
+          {
+            time: `${Math.round(time / 60)}`,
+            name: workoutName,
+          },
+        ];
+      }
+      await updateDoc(performedDocRef, {
+        performed: newPerformedArray,
+      });
+    });
+    push('/user');
+  };
+
   return (
     <div className="ExercisePage-FinishWorkout_container">
       <img className="ExercisePage-FinishWorkout_image" src={complete} alt="complete" />
@@ -17,9 +48,9 @@ const FinishWorkout: React.FC<FinishWorkoutProps> = ({ time }): JSX.Element => {
       </div>
       <div className="ExercisePage-FinishWorkout_text_timeCaption">Minutes</div>
       <div className="ExercisePage-FinishWorkout_text_time">{Math.round(time / 60)}</div>
-      <Link className="ExercisePage-FinishWorkout_button_end" to={'/'}>
+      <button className="ExercisePage-FinishWorkout_button_end" onClick={handleClick}>
         Save &#38; Continue
-      </Link>
+      </button>
     </div>
   );
 };

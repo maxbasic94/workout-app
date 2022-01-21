@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Workout, ExerciseList as ExerciseList } from '../src/types/types';
 import StartPage from './pages/startPage/StartPage';
 import ExercisePage from './pages/exercisePage/ExercisePage';
-import NotFoundPage from './pages/notFoundPage/NotFoundPage';
-import { Route, Routes } from 'react-router-dom';
+// import NotFoundPage from './pages/notFoundPage/NotFoundPage';
+import LoginPage from './pages/loginPage/LoginPage';
+import RegisterPage from './pages/registerPage/RegisterPage';
+import AdminPage from './pages/adminPage/AdminPage';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import useLocalStorage from 'use-local-storage';
 import './App.css';
 import SwitchTheme from './themes/SwitchTheme';
-
-function getAllExerciseArray(allExerciseArray: Array<Workout> | undefined) {
-  const resultArr: Array<ExerciseList> = [];
-  allExerciseArray?.forEach((item: Workout) => {
-    item.exercises.forEach((exr: ExerciseList) => {
-      resultArr.push(exr);
-    });
-  });
-  return resultArr;
-}
+import { dataBase } from './firebase/firebase';
+import { collection, query, onSnapshot } from 'firebase/firestore';
+import UserPage from './pages/userPage/UserPage';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useAppDispatch } from './hooks/redux-hooks';
+import { setUser } from './store/slices/userSlice';
+import { useAuth } from './hooks/use-auth';
+import Loader from './components/loader/Loader';
 
 const App: React.FunctionComponent = (): JSX.Element => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -26,27 +27,94 @@ const App: React.FunctionComponent = (): JSX.Element => {
     setTheme(newTheme);
   }
 
+  const { isAuth } = useAuth();
   const [result, setResult] = useState<Workout[]>([]);
+  const [isPageLoad, setIsPageLoad] = useState(false);
   const [exerciseArray, setExerciseArray] = useState<ExerciseList[]>([]);
-  const apiPath: string = process.env.REACT_APP_API_PATH || '';
-  useEffect(() => {
-    fetch(`${apiPath}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setExerciseArray(getAllExerciseArray(data.data.questions));
-        setResult(data.data.questions);
-      });
-  }, [apiPath]);
+  const [workoutName, setWorkoutName] = useState<string>('');
+  const dispatch = useAppDispatch();
 
-  return (
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.refreshToken,
+          })
+        );
+        setIsPageLoad(true);
+      } else {
+        alert('is not user');
+      }
+    });
+  }, [dispatch]);
+
+  useEffect(() => {
+    const exerciseViewCollection = query(collection(dataBase, 'api'));
+    const workoutArray: Array<Workout> = [];
+    onSnapshot(exerciseViewCollection, (querySnapshot) => {
+      querySnapshot.forEach((ExerciseViewItem) => {
+        const documentsCollection = query(
+          collection(dataBase, 'api', `${ExerciseViewItem.data().title}`, 'exercises')
+        );
+        const exercisesArray: Array<ExerciseList> = [];
+
+        onSnapshot(documentsCollection, (querySnapshot2) => {
+          querySnapshot2.forEach((item) => {
+            const exercise = item.data() as ExerciseList;
+            exercisesArray.push(exercise);
+          });
+        });
+        const exerciseViewObject = {
+          title: ExerciseViewItem.data().title,
+          exercises: exercisesArray,
+        };
+        exerciseViewObject.title === 'Warm up'
+          ? workoutArray.unshift(exerciseViewObject)
+          : workoutArray.push(exerciseViewObject);
+      });
+      setResult(workoutArray);
+    });
+  }, []);
+
+  return isPageLoad ? (
     <div className="App" data-theme={theme}>
       <SwitchTheme theme={theme} changeTheme={switchTheme} />
       <Routes>
-        <Route path="/" element={<StartPage exerciseArr={result} />} />
-        <Route path="/exercise" element={<ExercisePage allExercises={exerciseArray} />} />
-        <Route path="*" element={<NotFoundPage />} />
+        {isAuth
+          ? [
+              <Route
+                key="startPage"
+                path="/"
+                element={
+                  <StartPage workoutName={workoutName} setExerciseArray={setExerciseArray} />
+                }
+              />,
+              <Route
+                key="exercisePage"
+                path="/exercise"
+                element={<ExercisePage allExercises={exerciseArray} workoutName={workoutName} />}
+              />,
+              <Route key="adminPage" path="/admin" element={<AdminPage exerciseArr={result} />} />,
+              <Route
+                key="userPage"
+                path="/user"
+                element={<UserPage setWorkoutName={setWorkoutName} />}
+              />,
+              <Route key="notFoundPage" path="*" element={<Navigate to="/" />} />,
+            ]
+          : [
+              <Route key="login" path="/login" element={<LoginPage />} />,
+              <Route key="register" path="/register" element={<RegisterPage />} />,
+              <Route key="notFoundPage" path="*" element={<Navigate to="/login" />} />,
+            ]}
       </Routes>
     </div>
+  ) : (
+    <Loader color="black" />
   );
 };
 

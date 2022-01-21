@@ -8,9 +8,13 @@ import FinishWorkout from './components/finishWorkout/FinishWorkout';
 
 interface ExrPageProps {
   allExercises: Array<ExerciseList>;
+  workoutName: string;
 }
 
-const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): JSX.Element => {
+const ExercisePage: React.FC<ExrPageProps> = ({
+  allExercises: allExercises,
+  workoutName,
+}): JSX.Element => {
   const [url, setUrl] = useState<string>('');
   const [indexExercise, setIndexExercise] = useState(0);
   const [duration, setDuration] = useState(20);
@@ -57,7 +61,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({ allExercises: allExercises }): J
   return (
     <div className="ExercisePage">
       {indexExercise === allExercises.length && allExercises.length ? (
-        <FinishWorkout time={time} />
+        <FinishWorkout time={time} workoutName={workoutName} />
       ) : (
         <>
           <Control

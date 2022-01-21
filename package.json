@@ -108,6 +108,7 @@
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.0",
     "@babel/preset-typescript": "^7.16.5",
+    "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/react": "^11.2.7",
     "@types/enzyme": "^3.10.10",
     "@types/pretty": "^2.0.0",
@@ -126,6 +127,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.3.0",
+    "firebase": "^9.6.2",
     "husky": "^7.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "26.6.0",
@@ -135,6 +137,7 @@
     "node-fetch": "^3.1.0",
     "prettier": "2.5.0",
     "pretty": "^2.0.0",
+    "react-redux": "^7.2.6",
     "react-switch": "^6.0.0",
     "regenerator-runtime": "^0.13.9",
     "use-local-storage": "^2.2.5"
@@ -159,7 +162,9 @@
       "Ashmiana",
       "browserslist",
       "styl",
-      "precommit"
+      "precommit",
+      "reduxjs",
+      "firestore"
     ],
     "import": []
   }

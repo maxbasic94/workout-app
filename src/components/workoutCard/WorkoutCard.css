@@ -1,0 +1,59 @@
+.UserPage-WorkoutCard,
+.AdminPage-WorkoutCard {
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  text-align: center;
+  border: 1px solid gray;
+  max-width: 800px;
+}
+
+.UserPage-WorkoutCard-title,
+.AdminPage-WorkoutCard-title {
+  text-align: center;
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+.UserPage-WorkoutCard_userExerciseList,
+.AdminPage-WorkoutCard_userExerciseList {
+  font-size: 18px;
+  text-align: left;
+  margin: 0px 5px;
+}
+
+.UserPage-Button_goToWorkout {
+  background: #aa00ff;
+  color: white;
+  box-shadow: 0px 4px 8px rgba(170, 0, 255, 0.24);
+  border-radius: 4px;
+  border-width: 1px;
+
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.AdminPage-Div_buttonsContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.AdminPage-Button_edit,
+.AdminPage-Button_delete {
+  font-size: 18px;
+  margin-bottom: 5px;
+  min-width: 55px;
+  border-width: 1px;
+  border-radius: 5px;
+}
+.AdminPage-Button_delete {
+  background-color: tomato;
+  color: white;
+}
+
+.AdminPage-edit {
+  background-color: grey;
+}

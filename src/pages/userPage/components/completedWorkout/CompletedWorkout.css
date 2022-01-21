@@ -1,0 +1,17 @@
+.UserPage-CompletedWorkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.UserPage-CompletedWorkout_dataContainer {
+    display: flex;
+    border: 1px solid grey;
+    margin-bottom: 5px;
+}
+
+.UserPage-CompletedWorkout_name,
+.UserPage-CompletedWorkout_time {
+    min-width: 100px;
+    text-align: center;
+}

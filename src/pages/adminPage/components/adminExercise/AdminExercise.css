@@ -1,0 +1,47 @@
+.AdminPage-AdminExercise {
+  width: 100%;
+  display: flex;
+  padding-bottom: 5px;
+  align-items: center;
+}
+
+.AdminPage-ImageContainer_image {
+  height: 64px;
+  width: 64px;
+}
+
+.AdminPage-ExrInfoContainer {
+  width: 680px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+
+.AdminPage-ExrInfoContainer_title {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.AdminPage-ExrInfoContainer_duration {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.AdminPage-checkbox {
+  height: 19px;
+  width: 19px;
+}
+
+@media screen and (max-width: 830px) {
+  .AdminPage-ExrInfoContainer {
+    width: 75vw;
+  }
+}
