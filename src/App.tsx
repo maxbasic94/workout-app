@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Workout, ExerciseList as ExerciseList } from '../src/types/types';
 import StartPage from './pages/startPage/StartPage';
 import ExercisePage from './pages/exercisePage/ExercisePage';
-// import NotFoundPage from './pages/notFoundPage/NotFoundPage';
 import LoginPage from './pages/loginPage/LoginPage';
 import RegisterPage from './pages/registerPage/RegisterPage';
 import AdminPage from './pages/adminPage/AdminPage';
