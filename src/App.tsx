@@ -5,7 +5,7 @@ import ExercisePage from './pages/exercisePage/ExercisePage';
 import LoginPage from './pages/loginPage/LoginPage';
 import RegisterPage from './pages/registerPage/RegisterPage';
 import AdminPage from './pages/adminPage/AdminPage';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import useLocalStorage from 'use-local-storage';
 import './App.css';
 import SwitchTheme from './themes/SwitchTheme';
@@ -25,7 +25,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
   }
-
+  const push = useNavigate();
   const { isAuth } = useAuth();
   const [result, setResult] = useState<Workout[]>([]);
   const [isPageLoad, setIsPageLoad] = useState(false);
@@ -46,10 +46,11 @@ const App: React.FunctionComponent = (): JSX.Element => {
         );
         setIsPageLoad(true);
       } else {
+        push('/login');
         alert('is not user');
       }
     });
-  }, [dispatch]);
+  }, [dispatch, push]);
 
   useEffect(() => {
     const exerciseViewCollection = query(collection(dataBase, 'api'));
