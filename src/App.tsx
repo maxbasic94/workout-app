@@ -47,7 +47,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
         setIsPageLoad(true);
       } else {
         push('/login');
-        alert('is not user');
+        setIsPageLoad(true);
       }
     });
   }, [dispatch, push]);
