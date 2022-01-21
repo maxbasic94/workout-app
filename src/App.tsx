@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Workout, ExerciseList as ExerciseList } from '../src/types/types';
 import StartPage from './pages/startPage/StartPage';
 import ExercisePage from './pages/exercisePage/ExercisePage';
-import NotFoundPage from './pages/notFoundPage/NotFoundPage';
+// import NotFoundPage from './pages/notFoundPage/NotFoundPage';
 import LoginPage from './pages/loginPage/LoginPage';
 import RegisterPage from './pages/registerPage/RegisterPage';
 import AdminPage from './pages/adminPage/AdminPage';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import useLocalStorage from 'use-local-storage';
 import './App.css';
 import SwitchTheme from './themes/SwitchTheme';
@@ -16,6 +16,8 @@ import UserPage from './pages/userPage/UserPage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useAppDispatch } from './hooks/redux-hooks';
 import { setUser } from './store/slices/userSlice';
+import { useAuth } from './hooks/use-auth';
+import Loader from './components/loader/Loader';
 
 const App: React.FunctionComponent = (): JSX.Element => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -25,7 +27,9 @@ const App: React.FunctionComponent = (): JSX.Element => {
     setTheme(newTheme);
   }
 
+  const { isAuth } = useAuth();
   const [result, setResult] = useState<Workout[]>([]);
+  const [isPageLoad, setIsPageLoad] = useState(false);
   const [exerciseArray, setExerciseArray] = useState<ExerciseList[]>([]);
   const [workoutName, setWorkoutName] = useState<string>('');
   const dispatch = useAppDispatch();
@@ -41,6 +45,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
             token: user.refreshToken,
           })
         );
+        setIsPageLoad(true);
       } else {
         alert('is not user');
       }
@@ -75,25 +80,41 @@ const App: React.FunctionComponent = (): JSX.Element => {
     });
   }, []);
 
-  return (
+  return isPageLoad ? (
     <div className="App" data-theme={theme}>
       <SwitchTheme theme={theme} changeTheme={switchTheme} />
       <Routes>
-        <Route
-          path="/"
-          element={<StartPage workoutName={workoutName} setExerciseArray={setExerciseArray} />}
-        />
-        <Route
-          path="/exercise"
-          element={<ExercisePage allExercises={exerciseArray} workoutName={workoutName} />}
-        />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/admin" element={<AdminPage exerciseArr={result} />} />
-        <Route path="/user" element={<UserPage setWorkoutName={setWorkoutName} />} />
-        <Route path="*" element={<NotFoundPage />} />
+        {isAuth
+          ? [
+              <Route
+                key="startPage"
+                path="/"
+                element={
+                  <StartPage workoutName={workoutName} setExerciseArray={setExerciseArray} />
+                }
+              />,
+              <Route
+                key="exercisePage"
+                path="/exercise"
+                element={<ExercisePage allExercises={exerciseArray} workoutName={workoutName} />}
+              />,
+              <Route key="adminPage" path="/admin" element={<AdminPage exerciseArr={result} />} />,
+              <Route
+                key="userPage"
+                path="/user"
+                element={<UserPage setWorkoutName={setWorkoutName} />}
+              />,
+              <Route key="notFoundPage" path="*" element={<Navigate to="/" />} />,
+            ]
+          : [
+              <Route key="login" path="/login" element={<LoginPage />} />,
+              <Route key="register" path="/register" element={<RegisterPage />} />,
+              <Route key="notFoundPage" path="*" element={<Navigate to="/login" />} />,
+            ]}
       </Routes>
     </div>
+  ) : (
+    <Loader color="black" />
   );
 };
 
