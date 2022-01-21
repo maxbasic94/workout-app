@@ -2,7 +2,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { dataBase } from '../firebase/firebase';
 import { Workout } from '../types/types';
 
-const removeEmptyArray = (currentArray: Array<Workout>) => {
+const removeEmptyArray = (currentArray: Array<Workout>): Array<Workout> => {
   const resultArray = currentArray;
   currentArray.forEach((item, index) => {
     if (item.exercises.length === 0) {
@@ -12,7 +12,10 @@ const removeEmptyArray = (currentArray: Array<Workout>) => {
   return resultArray;
 };
 
-const uploadDataToFirestore = async (workoutArray: Array<Workout>, workoutNameInput: string) => {
+const uploadDataToFirestore = async (
+  workoutArray: Array<Workout>,
+  workoutNameInput: string
+): Promise<void> => {
   try {
     const setArray = removeEmptyArray(workoutArray);
     const collectionArray: Array<string> = [];
