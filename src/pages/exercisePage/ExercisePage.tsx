@@ -5,6 +5,7 @@ import './ExercisePage.css';
 import Player from './components/player/Player';
 import PlayPauseButton from './components/playPauseButton/PlayPauseButton';
 import FinishWorkout from './components/finishWorkout/FinishWorkout';
+import LogOut from '../../components/logOut/LogOut';
 
 interface ExrPageProps {
   allExercises: Array<ExerciseList>;
@@ -60,6 +61,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({
 
   return (
     <div className="ExercisePage">
+      <LogOut />
       {indexExercise === allExercises.length && allExercises.length ? (
         <FinishWorkout time={time} workoutName={workoutName} />
       ) : (

@@ -1,17 +1,12 @@
 import React, { useState, ChangeEvent } from 'react';
 import './AdminPage.css';
 import { Workout } from '../../types/types';
-import { removeUser } from '../../store/slices/userSlice';
 import AdminExercisesList from './components/adminExerciseList/AdminExerciseList';
-// import { dataBase } from '../../firebase/firebase';
-// import { doc, setDoc } from 'firebase/firestore';
-import { Navigate } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/redux-hooks';
-import { useAuth } from '../../hooks/use-auth';
 import WorkoutList from '../../components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import Modal from '../../components/modal/Modal';
 import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
+import LogOut from '../../components/logOut/LogOut';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
@@ -23,8 +18,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   const [watchButtonState, setWatchButtonState] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [workoutName, setWorkoutName] = useState('');
-  const { isAuth, email } = useAuth();
-  const dispatch = useAppDispatch();
   const { workoutList, setIsDelete } = useFetchFirebaseData();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -45,12 +38,10 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
     alert('workout created');
   };
 
-  return isAuth ? (
+  return (
     <div className="AdminPage">
       <div className="AdminPage-Div_buttonsContainer">
-        <button className="AdminPage-Button_logOut" onClick={() => dispatch(removeUser())}>
-          Log out from {email}
-        </button>
+        <LogOut />
         <button className="AdminPage-Button_watchWorkout" onClick={handleClickWatchWorkout}>
           {watchButtonState ? `Watch workouts` : `Create new workout`}
         </button>
@@ -103,8 +94,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
         </div>
       )}
     </div>
-  ) : (
-    <Navigate to="/login" />
   );
 };
 

@@ -1,15 +1,12 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/use-auth';
-import { removeUser } from '../../store/slices/userSlice';
 import { Workout, ExerciseList } from '../../types/types';
 import StartInfo from './components/startInfo/StartInfo';
 import ExercisesList from './components/exercisesList/ExercisesList';
 import './StartPage.css';
-import { useAppDispatch } from '../../hooks/redux-hooks';
 import { dataBase } from '../../firebase/firebase';
 import { query, collection, onSnapshot, doc } from 'firebase/firestore';
 import Loader from '../../components/loader/Loader';
+import LogOut from '../../components/logOut/LogOut';
 
 interface ExerciseProps {
   workoutName?: string;
@@ -18,8 +15,6 @@ interface ExerciseProps {
 
 const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): JSX.Element => {
   const [exerciseArr, setExerciseArr] = useState<Workout[]>([]);
-  const dispatch = useAppDispatch();
-  const { isAuth, email } = useAuth();
 
   function getAllExerciseArray(allExerciseArray: Array<Workout> | undefined) {
     const resultArr: Array<ExerciseList> = [];
@@ -61,9 +56,9 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
     }
   }, [workoutName, setExerciseArray]);
 
-  return isAuth ? (
+  return (
     <div className="StartPage">
-      <button onClick={() => dispatch(removeUser())}>Log out from {email}</button>
+      <LogOut />
       {exerciseArr.length ? (
         <>
           <StartInfo />
@@ -73,8 +68,6 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
         <Loader color="#aa00ff" />
       )}
     </div>
-  ) : (
-    <Navigate to="/login" />
   );
 };
 
