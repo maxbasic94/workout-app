@@ -11,6 +11,7 @@ interface WorkoutCardProps {
   setWorkoutName?: Dispatch<SetStateAction<string>>;
   isAdminPage: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setIsDelete?: (value: boolean) => void;
 }
 
 const WorkoutCard: React.FC<WorkoutCardProps> = ({
@@ -19,6 +20,7 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
   setWorkoutName,
   isAdminPage,
   setIsOpen,
+  setIsDelete,
 }): JSX.Element => {
   const classPage = isAdminPage ? 'AdminPage' : 'UserPage';
   const push = useNavigate();
@@ -35,6 +37,7 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
     }
   };
   const handleClickDeleteButton = async () => {
+    setIsDelete && setIsDelete(true);
     await deleteDoc(doc(dataBase, `workout`, `${title}`));
   };
 
@@ -43,7 +46,10 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
       <div className={`${classPage}-WorkoutCard`}>
         <div className={`${classPage}-WorkoutCard-title`}>{title}</div>
         {exercises.map((item, index) => (
-          <div className={`${classPage}-WorkoutCard_userExerciseList`} key={item.id}>
+          <div
+            className={`${classPage}-WorkoutCard_userExerciseList`}
+            key={`${index + 1}_${item.title}`}
+          >
             {`${index + 1}. ${item.title}`}
           </div>
         ))}

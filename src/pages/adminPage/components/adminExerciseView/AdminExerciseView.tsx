@@ -7,12 +7,14 @@ interface AdminExerciseViewProps {
   exerciseList: Workout;
   setExerciseViewToWorkoutArray: (exerciseViewObject: Workout) => void;
   isModal: boolean;
+  checkedExerciseList?: Array<ExerciseList>;
 }
 
 const AdminExerciseView: React.FunctionComponent<AdminExerciseViewProps> = ({
   exerciseList,
   setExerciseViewToWorkoutArray,
   isModal,
+  checkedExerciseList,
 }) => {
   const [exerciseArray, setExerciseArray] = useState<Array<ExerciseList>>([]);
   const [exerciseViewObject, setExerciseViewObject] = useState<Workout>({
@@ -33,6 +35,7 @@ const AdminExerciseView: React.FunctionComponent<AdminExerciseViewProps> = ({
     newExerciseViewObject.exercises = exerciseArray;
     setExerciseViewObject(newExerciseViewObject);
   }, [exerciseArray, exerciseViewObject]);
+
   return (
     <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExerciseView`}>
       <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExerciseView_exrCaption`}>
@@ -45,6 +48,7 @@ const AdminExerciseView: React.FunctionComponent<AdminExerciseViewProps> = ({
           key={item.id}
           setIdToArray={setIdToArray}
           removeIdToArray={removeIdToArray}
+          checkedExerciseList={checkedExerciseList}
         />
       ))}
       <hr />

@@ -9,10 +9,12 @@ const CompletedWorkout: React.FC = (): JSX.Element => {
   const auth = getAuth();
 
   useEffect(() => {
-    const completedWorkoutDoc = doc(dataBase, `users`, `${auth.currentUser?.uid}`);
-    onSnapshot(completedWorkoutDoc, (snapshot) => {
-      setCompletedWorkoutList(snapshot.data()?.performed);
-    });
+    if (auth.currentUser?.uid) {
+      const completedWorkoutDoc = doc(dataBase, `users`, `${auth.currentUser.uid}`);
+      onSnapshot(completedWorkoutDoc, (snapshot) => {
+        setCompletedWorkoutList(snapshot.data()?.performed);
+      });
+    }
   }, [auth.currentUser?.uid]);
 
   return (

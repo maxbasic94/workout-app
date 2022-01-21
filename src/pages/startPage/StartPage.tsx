@@ -61,7 +61,6 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
     }
   }, [workoutName, setExerciseArray]);
 
-  console.log(exerciseArr);
   return isAuth ? (
     <div className="StartPage">
       <button onClick={() => dispatch(removeUser())}>Log out from {email}</button>

@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { Workout } from '../../../../types/types';
+import { ExerciseList, Workout } from '../../../../types/types';
 import AdminExerciseView from '../adminExerciseView/AdminExerciseView';
 
 interface AdminExercisesListProps {
   exerciseListArr: Workout[];
   setExerciseWorkoutArray?: (exerciseCollectionsArray: Array<Workout>) => void;
   isModal: boolean;
+  checkedExerciseList?: Array<ExerciseList>;
 }
 
 const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
   exerciseListArr: exerciseListArr,
   setExerciseWorkoutArray,
   isModal,
+  checkedExerciseList,
 }): JSX.Element => {
   const [workoutArray, setWorkoutArray] = useState<Array<Workout>>([]);
   const setExerciseViewToWorkoutArray = (exerciseViewObject: Workout) => {
@@ -46,6 +48,7 @@ const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
           exerciseList={item}
           key={item.title}
           setExerciseViewToWorkoutArray={setExerciseViewToWorkoutArray}
+          checkedExerciseList={checkedExerciseList}
         />
       ))}
     </div>

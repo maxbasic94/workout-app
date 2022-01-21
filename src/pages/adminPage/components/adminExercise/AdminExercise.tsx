@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import { ExerciseList } from '../../../../types/types';
 import './AdminExercise.css';
 
@@ -7,18 +7,26 @@ interface AdminExerciseProps {
   setIdToArray: (exercise: ExerciseList) => void;
   removeIdToArray: (id: number) => void;
   isModal: boolean;
+  checkedExerciseList?: Array<ExerciseList>;
 }
 const AdminExercise: React.FunctionComponent<AdminExerciseProps> = ({
   exercise,
   setIdToArray,
   removeIdToArray,
   isModal,
+  checkedExerciseList,
 }): JSX.Element => {
   const [isChecked, setIsChecked] = useState(false);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.currentTarget.checked);
     event.currentTarget.checked ? setIdToArray(exercise) : removeIdToArray(exercise.id);
   };
+  useEffect(() => {
+    checkedExerciseList &&
+      checkedExerciseList.forEach((item) => {
+        item.id === exercise.id && setIsChecked(true);
+      });
+  }, [checkedExerciseList, exercise.id]);
 
   return (
     <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExercise`}>

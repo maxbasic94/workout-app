@@ -13,6 +13,9 @@ import SwitchTheme from './themes/SwitchTheme';
 import { dataBase } from './firebase/firebase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import UserPage from './pages/userPage/UserPage';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useAppDispatch } from './hooks/redux-hooks';
+import { setUser } from './store/slices/userSlice';
 
 const App: React.FunctionComponent = (): JSX.Element => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -25,6 +28,24 @@ const App: React.FunctionComponent = (): JSX.Element => {
   const [result, setResult] = useState<Workout[]>([]);
   const [exerciseArray, setExerciseArray] = useState<ExerciseList[]>([]);
   const [workoutName, setWorkoutName] = useState<string>('');
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.refreshToken,
+          })
+        );
+      } else {
+        alert('is not user');
+      }
+    });
+  }, [dispatch]);
 
   useEffect(() => {
     const exerciseViewCollection = query(collection(dataBase, 'api'));

@@ -3,14 +3,15 @@ import './AdminPage.css';
 import { Workout } from '../../types/types';
 import { removeUser } from '../../store/slices/userSlice';
 import AdminExercisesList from './components/adminExerciseList/AdminExerciseList';
-import { dataBase } from '../../firebase/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+// import { dataBase } from '../../firebase/firebase';
+// import { doc, setDoc } from 'firebase/firestore';
 import { Navigate } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import { useAuth } from '../../hooks/use-auth';
 import WorkoutList from '../../components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import Modal from '../../components/modal/Modal';
+import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
@@ -24,61 +25,24 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   const [workoutName, setWorkoutName] = useState('');
   const { isAuth, email } = useAuth();
   const dispatch = useAppDispatch();
-  const workoutList = useFetchFirebaseData();
+  const { workoutList, setIsDelete } = useFetchFirebaseData();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setWorkoutNameInput(event.currentTarget.value);
-  };
-
-  const removeEmptyArray = (currentArray: Array<Workout>) => {
-    const resultArray = currentArray;
-    currentArray.forEach((item, index) => {
-      if (item.exercises.length === 0) {
-        resultArray.splice(index, 1);
-      }
-    });
-    return resultArray;
   };
 
   const setExerciseWorkoutArray = (exerciseCollectionsArray: Array<Workout>) => {
     setWorkoutArray(exerciseCollectionsArray);
   };
 
-  const handleClickCreateWorkout = async () => {
-    try {
-      const setArray = removeEmptyArray(workoutArray);
-      const collectionArray: Array<string> = [];
-      if (workoutNameInput && workoutArray.length > 0) {
-        setArray.forEach(async (item) => {
-          collectionArray.push(`${item.title}`);
-          const workoutDoc = doc(dataBase, `workout`, `${workoutNameInput}`);
-          await setDoc(workoutDoc, { title: workoutNameInput, collection: collectionArray });
-          item.exercises.forEach(async (elem) => {
-            await setDoc(
-              doc(workoutDoc, `${item.title}`, `exercise${elem.id}`),
-              {
-                id: elem.id,
-                duration: elem.duration,
-                description: elem.description,
-                photo: elem.photo,
-                title: elem.title,
-                video: elem.video,
-              },
-              { merge: true }
-            );
-          });
-        });
-        alert('workout send to firestore');
-      } else {
-        throw new Error(`empty workout's name or exercise list!`);
-      }
-    } catch (error) {
-      alert(error);
-    }
+  const handleClickWatchWorkout = () => {
+    setIsDelete(true);
+    watchButtonState ? setWatchButtonState(false) : setWatchButtonState(true);
   };
 
-  const handleClickWatchWorkout = () => {
-    watchButtonState ? setWatchButtonState(false) : setWatchButtonState(true);
+  const handleClickCreateWorkout = () => {
+    uploadDataToFirestore(workoutArray, workoutNameInput);
+    alert('workout created');
   };
 
   return isAuth ? (
@@ -124,13 +88,17 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
             isAdminPage={true}
             setIsOpen={setIsOpen}
             setWorkoutName={setWorkoutName}
+            setIsDelete={setIsDelete}
           />
           <Modal
+            setIsDelete={setIsDelete}
+            workoutArray={workoutArray}
             workoutList={workoutList}
             workoutName={workoutName}
             exerciseListArr={exerciseArr}
             open={isOpen}
             onClose={() => setIsOpen(false)}
+            setExerciseWorkoutArray={setExerciseWorkoutArray}
           />
         </div>
       )}

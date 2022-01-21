@@ -1,14 +1,20 @@
+import { deleteDoc, doc } from 'firebase/firestore';
 import ReactDom from 'react-dom';
+import { dataBase } from '../../firebase/firebase';
+import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
 import AdminExercisesList from '../../pages/adminPage/components/adminExerciseList/AdminExerciseList';
 import { Workout } from '../../types/types';
 import './Modal.css';
 
 interface ModalProps {
+  setIsDelete?: (value: boolean) => void;
+  workoutArray: Array<Workout>;
   open: boolean;
   onClose: () => void;
   exerciseListArr: Array<Workout>;
   workoutName: string;
   workoutList: Array<Workout>;
+  setExerciseWorkoutArray?: (exerciseCollectionsArray: Array<Workout>) => void;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -17,6 +23,9 @@ const Modal: React.FC<ModalProps> = ({
   exerciseListArr,
   workoutName,
   workoutList,
+  setExerciseWorkoutArray,
+  workoutArray,
+  setIsDelete,
 }) => {
   if (!open) {
     return null;
@@ -32,11 +41,18 @@ const Modal: React.FC<ModalProps> = ({
     return result;
   };
 
-  const UpdateWorkout = () => {
-    console.log('Update workout button');
+  const UpdateWorkout = async () => {
+    deleteDoc(doc(dataBase, `workout`, `${workoutName}`))
+      .then(() => {
+        uploadDataToFirestore(workoutArray, workoutName);
+      })
+      .then(() => {
+        alert(`Workout ${workoutName} updated`);
+      })
+      .then(() => {
+        setIsDelete && setIsDelete(true);
+      });
   };
-
-  console.log(exerciseListArr, currentWorkout());
 
   return ReactDom.createPortal(
     <>
@@ -48,7 +64,12 @@ const Modal: React.FC<ModalProps> = ({
           </button>
         </div>
         <div className="Modal_WorkoutName">{workoutName}</div>
-        <AdminExercisesList isModal={true} exerciseListArr={exerciseListArr} />
+        <AdminExercisesList
+          setExerciseWorkoutArray={setExerciseWorkoutArray}
+          isModal={true}
+          exerciseListArr={exerciseListArr}
+          checkedExerciseList={currentWorkout()}
+        />
         <div className="Modal-UpdateButtonContainer">
           <button className="Modal-Button_UpdateWorkout" onClick={UpdateWorkout}>
             Update

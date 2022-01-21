@@ -18,8 +18,7 @@ const UserPage: React.FC<UserPageProps> = ({ setWorkoutName }): JSX.Element => {
   const [watchButtonState, setWatchButtonState] = useState(true);
   const { isAuth, email } = useAuth();
   const dispatch = useAppDispatch();
-  const workoutArray = useFetchFirebaseData();
-  console.log({ workoutArray });
+  const { workoutList: workoutArray } = useFetchFirebaseData();
   const handleClickWatchWorkout = () => {
     watchButtonState ? setWatchButtonState(false) : setWatchButtonState(true);
   };

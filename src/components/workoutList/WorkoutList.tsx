@@ -8,6 +8,7 @@ interface WorkoutListProps {
   setWorkoutName?: Dispatch<SetStateAction<string>>;
   isAdminPage: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setIsDelete?: (value: boolean) => void;
 }
 
 const WorkoutList: React.FC<WorkoutListProps> = ({
@@ -15,13 +16,12 @@ const WorkoutList: React.FC<WorkoutListProps> = ({
   setWorkoutName,
   isAdminPage,
   setIsOpen,
+  setIsDelete,
 }): JSX.Element => {
   const classPage = isAdminPage ? 'AdminPage' : 'UserPage';
   return (
     <div className={`${classPage}-WorkoutList_container`}>
       {workoutList.map(({ title, exercises }) => {
-        // console.log(exercises);
-
         return (
           <WorkoutCard
             title={title}
@@ -30,6 +30,7 @@ const WorkoutList: React.FC<WorkoutListProps> = ({
             key={`${title}_${exercises.length}`}
             isAdminPage={isAdminPage}
             setIsOpen={setIsOpen}
+            setIsDelete={setIsDelete}
           />
         );
       })}
