@@ -32,29 +32,28 @@ const useFetchFirebaseData = (): UseFetchFirebaseDataResult => {
       })
       .then(() => {
         exercisesList.forEach((item) => {
-          const exercisesArray: Array<ExerciseList> = [];
           item.collection.forEach((exerciseViewCollectionName) => {
+            const exercisesArray: Array<ExerciseList> = [];
             getDocs(
               collection(dataBase, `workout`, `${item.title}`, `${exerciseViewCollectionName}`)
-            ).then((exerciseViewDocs) => {
-              exerciseViewDocs.forEach((item) => {
-                exercisesArray.push(item.data() as ExerciseList);
+            )
+              .then((exerciseViewDocs) => {
+                exerciseViewDocs.forEach((item) => {
+                  exercisesArray.push(item.data() as ExerciseList);
+                });
+                workoutArray.push({ title: item.title, exercises: exercisesArray });
+              })
+              .then(() => {
+                setIsDelete(false);
+                workoutArray.forEach((item) => {
+                  item.exercises.length > 0;
+                });
+              })
+              .then(() => {
+                workoutArray.length === exercisesList.length && setWorkoutList(workoutArray);
               });
-            });
           });
-          workoutArray.push({ title: item.title, exercises: exercisesArray });
         });
-      })
-      .then(() => {
-        setIsDelete(false);
-        workoutArray.forEach((item) => {
-          item.exercises.length > 0;
-        });
-      })
-      .then(() => {
-        setTimeout(() => {
-          setWorkoutList(workoutArray);
-        }, 500);
       });
   }, [isDelete]);
 
