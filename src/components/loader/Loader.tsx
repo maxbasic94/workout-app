@@ -16,7 +16,6 @@ const Loader: React.FC<LoaderProps> = ({ color }): JSX.Element => {
         y="0px"
         width="53px"
         height="60px"
-        // viewBox="0 0 100 100"
       >
         <circle fill={color} stroke="none" cx="6" cy="50" r="6">
           <animate

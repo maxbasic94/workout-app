@@ -8,7 +8,6 @@ import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import Loader from '../../components/loader/Loader';
 import CompletedWorkout from './components/completedWorkout/CompletedWorkout';
 import WorkoutList from '../../components/workoutList/WorkoutList';
-// import { Workout } from '../../types/types';
 
 interface UserPageProps {
   setWorkoutName: Dispatch<SetStateAction<string>>;

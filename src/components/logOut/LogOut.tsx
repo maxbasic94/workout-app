@@ -13,11 +13,7 @@ const LogOut: React.FC = (): JSX.Element => {
     push('/login');
   };
 
-  return (
-    <>
-      <button onClick={handleClick}>Log out from {email}</button>
-    </>
-  );
+  return <button onClick={handleClick}>Log out from {email}</button>;
 };
 
 export default LogOut;

@@ -32,11 +32,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({
   }, [allExercises, indexExercise]);
 
   function changeReadyState() {
-    if (isReady) {
-      setIsReady(false);
-    } else {
-      setIsReady(true);
-    }
+    isReady ? setIsReady(false) : setIsReady(true);
   }
 
   function moveToNextIndex() {

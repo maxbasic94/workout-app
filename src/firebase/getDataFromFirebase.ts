@@ -5,15 +5,15 @@ import { collection, query, onSnapshot } from 'firebase/firestore';
 const getDataFromFirestore = () => {
   const exerciseViewCollection = query(collection(dataBase, 'api'));
   const workoutArray: Array<Workout> = [];
-  onSnapshot(exerciseViewCollection, (querySnapshot) => {
-    querySnapshot.forEach((ExerciseViewItem) => {
+  onSnapshot(exerciseViewCollection, (apiCollectionDocs) => {
+    apiCollectionDocs.forEach((ExerciseViewItem) => {
       const documentsCollection = query(
         collection(dataBase, 'api', `${ExerciseViewItem.data().title}`, 'exercises')
       );
       const exercisesArray: Array<ExerciseList> = [];
 
-      onSnapshot(documentsCollection, (querySnapshot2) => {
-        querySnapshot2.forEach((item) => {
+      onSnapshot(documentsCollection, (workoutSubCollectionsName) => {
+        workoutSubCollectionsName.forEach((item) => {
           const exercise = item.data() as ExerciseList;
           exercisesArray.push(exercise);
         });

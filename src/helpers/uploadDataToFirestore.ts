@@ -5,9 +5,7 @@ import { Workout } from '../types/types';
 const removeEmptyArray = (currentArray: Array<Workout>): Array<Workout> => {
   const resultArray = currentArray;
   currentArray.forEach((item, index) => {
-    if (item.exercises.length === 0) {
-      resultArray.splice(index, 1);
-    }
+    item.exercises.length === 0 && resultArray.splice(index, 1);
   });
   return resultArray;
 };
