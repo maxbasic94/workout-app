@@ -42,6 +42,7 @@ Helper functions are located in the folder `src/helpers`.
 ├─ src                 
 │  ├─ components        # Folder with component to some pages
 │  ├─ firebase          # Folder with setting firebase
+│  ├─ helpers           # Folder with helper functions
 │  ├─ hooks             # Folder with custom hooks
 │  ├─ pages             # Application pages
 │  │  ├─ page           # Application page
