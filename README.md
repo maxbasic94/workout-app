@@ -41,7 +41,7 @@ Helper functions are located in the folder `src/helpers`.
 ├─ .husky               # Folder for husky settings(pre-commit hook)
 ├─ src                 
 │  ├─ components        # Folder with component to some pages
-│  ├─ firebase          # Folder to work with firebase
+│  ├─ firebase          # Folder with setting firebase
 │  ├─ hooks             # Folder with custom hooks
 │  ├─ pages             # Application pages
 │  │  ├─ page           # Application page
