@@ -50,8 +50,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
         setIsPageLoad(true);
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const exerciseViewCollection = query(collection(dataBase, 'api'));
