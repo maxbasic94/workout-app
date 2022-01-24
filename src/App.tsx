@@ -13,9 +13,9 @@ import { dataBase } from './firebase/firebase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import UserPage from './pages/userPage/UserPage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { useAppDispatch } from './hooks/redux-hooks';
+import { useAppDispatch } from './hooks/reduxHooks';
 import { setUser } from './store/slices/userSlice';
-import { useAuth } from './hooks/use-auth';
+import { useAuth } from './hooks/useAuth';
 import Loader from './components/loader/Loader';
 
 const App: React.FunctionComponent = (): JSX.Element => {

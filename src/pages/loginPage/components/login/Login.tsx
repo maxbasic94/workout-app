@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from '../../../../components/form/Form';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { setUser } from '../../../../store/slices/userSlice';
-import { useAppDispatch } from '../../../../hooks/redux-hooks';
+import { useAppDispatch } from '../../../../hooks/reduxHooks';
 import { dataBase } from '../../../../firebase/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 

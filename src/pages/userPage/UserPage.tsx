@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import './UserPage.css';
-import { useAppDispatch } from '../../hooks/redux-hooks';
-import { useAuth } from '../../hooks/use-auth';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { useAuth } from '../../hooks/useAuth';
 import { removeUser } from '../../store/slices/userSlice';
 import { Navigate } from 'react-router-dom';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';

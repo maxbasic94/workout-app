@@ -1,7 +1,7 @@
 import React from 'react';
 import { removeUser } from '../../store/slices/userSlice';
-import { useAppDispatch } from '../../hooks/redux-hooks';
-import { useAuth } from '../../hooks/use-auth';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { useAuth } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 const LogOut: React.FC = (): JSX.Element => {
