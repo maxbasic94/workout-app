@@ -28,18 +28,40 @@ After finishing your workout click button `save & continue`. \
 Have a good day!
 
 ## Folders structure
+
+Application consist of pages. \
+Folder with new page place to `src/pages`. \
+Every page contains folder `components` for components necessary to this application page. \
+Every component place in its own folder. Styles for this component are also placed there. \
+Components that are used on some page contains in `src/components`. Every component also has its own folder. \
+Helper functions are located in the folder `src/helpers`.
     
 ```
 .
-├─ .husky              # Folder for husky settings(pre-commit hook)
-├─ src                          
-│  ├─ pages            # Application pages
-│  │  ├─ page          # Application page
-│  │  │  ├─ components # Folder with components necessary for this page.
-│  │  │  ...
-│  │ ...                 
-│  ├─ tests            # Folder with unit tests 
-│  ├─ themes           # Folder with components to change theme
-│  ├─ types            # Folder with types                
+├─ .husky               # Folder for husky settings(pre-commit hook)
+├─ src                 
+│  ├─ components        # Folder with component to some pages
+│  ├─ firebase          # Folder to work with firebase
+│  ├─ hooks             # Folder with custom hooks
+│  ├─ pages             # Application pages
+│  │  ├─ page           # Application page
+│  │  │  ├─ components  # Folder with components necessary for this page.
+│  │  │  ... 
+│  │ ...                  
+│  ├─ store             # Master state store
+│  ├─ tests             # Folder with unit tests 
+│  ├─ themes            # Folder with components to change theme
+│  ├─ types             # Folder with types                
 │ ...
 ```              
+### Naming
+
+Files with a capital letter contains JSX Element:
+```
+UserPage.tsx
+```
+
+Files with a small letter contain functions, variables, etc.
+```
+uploadDataToFirestore.ts
+```
