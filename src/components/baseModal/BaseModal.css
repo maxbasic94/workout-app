@@ -38,6 +38,7 @@
   margin: 5px 23px 0 0;
 }
 
+
 @media screen and (width < 640px) {
   .Modal-Container {
     width: 90vw;

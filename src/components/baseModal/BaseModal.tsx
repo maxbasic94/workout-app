@@ -20,8 +20,8 @@ const BaseModal: React.FC<BaseModalProps> = ({ open, onClose, children }) => {
           <button className="Modal-Button_closeModal" onClick={() => onClose(false)}>
             X
           </button>
-          {children}
         </div>
+        {children}
       </div>
     </>,
     document.querySelector('#portal') as HTMLElement
