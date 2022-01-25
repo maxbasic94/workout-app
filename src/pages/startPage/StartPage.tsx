@@ -6,7 +6,9 @@ import './StartPage.css';
 import { dataBase } from '../../firebase/firebase';
 import { query, collection, onSnapshot, doc } from 'firebase/firestore';
 import Loader from '../../components/loader/Loader';
-import LogOut from '../../components/logOut/LogOut';
+import { useAuth } from '../../hooks/useAuth';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { removeUser } from '../../store/slices/userSlice';
 
 interface ExerciseProps {
   workoutName?: string;
@@ -15,6 +17,8 @@ interface ExerciseProps {
 
 const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): JSX.Element => {
   const [exerciseArr, setExerciseArr] = useState<Workout[]>([]);
+  const { email } = useAuth();
+  const dispatch = useAppDispatch();
 
   function getAllExerciseArray(allExerciseArray: Array<Workout> | undefined) {
     const resultArr: Array<ExerciseList> = [];
@@ -58,7 +62,9 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
 
   return (
     <div className="StartPage">
-      <LogOut />
+      <button className="UserPage-Button_logOut" onClick={() => dispatch(removeUser())}>
+        Log out from {email}
+      </button>
       {exerciseArr.length ? (
         <>
           <StartInfo />

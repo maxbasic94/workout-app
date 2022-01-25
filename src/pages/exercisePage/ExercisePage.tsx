@@ -5,7 +5,9 @@ import './ExercisePage.css';
 import Player from './components/player/Player';
 import PlayPauseButton from './components/playPauseButton/PlayPauseButton';
 import FinishWorkout from './components/finishWorkout/FinishWorkout';
-import LogOut from '../../components/logOut/LogOut';
+import { useAuth } from '../../hooks/useAuth';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { removeUser } from '../../store/slices/userSlice';
 
 interface ExrPageProps {
   allExercises: Array<ExerciseList>;
@@ -23,6 +25,8 @@ const ExercisePage: React.FC<ExrPageProps> = ({
   const [isPause, setIsPause] = useState(true);
   const [time, setTime] = useState(0);
   const playerRef = useRef<HTMLVideoElement>(null);
+  const { email } = useAuth();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (allExercises.length && indexExercise < allExercises.length) {
@@ -57,7 +61,9 @@ const ExercisePage: React.FC<ExrPageProps> = ({
 
   return (
     <div className="ExercisePage">
-      <LogOut />
+      <button className="UserPage-Button_logOut" onClick={() => dispatch(removeUser())}>
+        Log out from {email}
+      </button>
       {indexExercise === allExercises.length && allExercises.length ? (
         <FinishWorkout time={time} workoutName={workoutName} />
       ) : (

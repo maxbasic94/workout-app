@@ -3,7 +3,6 @@ import './UserPage.css';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { useAuth } from '../../hooks/useAuth';
 import { removeUser } from '../../store/slices/userSlice';
-import { Navigate } from 'react-router-dom';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import Loader from '../../components/loader/Loader';
 import CompletedWorkout from './components/completedWorkout/CompletedWorkout';
@@ -15,14 +14,14 @@ interface UserPageProps {
 
 const UserPage: React.FC<UserPageProps> = ({ setWorkoutName }): JSX.Element => {
   const [watchButtonState, setWatchButtonState] = useState(true);
-  const { isAuth, email } = useAuth();
+  const { email } = useAuth();
   const dispatch = useAppDispatch();
   const { workoutList: workoutArray } = useFetchFirebaseData();
   const handleClickWatchWorkout = () => {
     watchButtonState ? setWatchButtonState(false) : setWatchButtonState(true);
   };
 
-  return isAuth ? (
+  return (
     <div className="UserPage">
       <div className="UserPage-Div_buttonsContainer">
         <button className="UserPage-Button_logOut" onClick={() => dispatch(removeUser())}>
@@ -49,8 +48,6 @@ const UserPage: React.FC<UserPageProps> = ({ setWorkoutName }): JSX.Element => {
         </>
       )}
     </div>
-  ) : (
-    <Navigate to="/login" />
   );
 };
 

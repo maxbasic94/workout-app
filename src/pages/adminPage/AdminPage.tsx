@@ -6,7 +6,9 @@ import WorkoutList from '../../components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import Modal from '../../components/modal/Modal';
 import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
-import LogOut from '../../components/logOut/LogOut';
+import { useAuth } from '../../hooks/useAuth';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { removeUser } from '../../store/slices/userSlice';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
@@ -19,6 +21,8 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [workoutName, setWorkoutName] = useState('');
   const { workoutList, setIsDelete } = useFetchFirebaseData();
+  const { email } = useAuth();
+  const dispatch = useAppDispatch();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setWorkoutNameInput(event.currentTarget.value);
@@ -41,7 +45,9 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   return (
     <div className="AdminPage">
       <div className="AdminPage-Div_buttonsContainer">
-        <LogOut />
+        <button className="UserPage-Button_logOut" onClick={() => dispatch(removeUser())}>
+          Log out from {email}
+        </button>
         <button className="AdminPage-Button_watchWorkout" onClick={handleClickWatchWorkout}>
           {watchButtonState ? `Watch workouts` : `Create new workout`}
         </button>
