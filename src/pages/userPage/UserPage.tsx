@@ -1,12 +1,10 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useContext, useState } from 'react';
 import './UserPage.css';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import { useAuth } from '../../hooks/useAuth';
-import { removeUser } from '../../store/slices/userSlice';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import Loader from '../../components/loader/Loader';
 import CompletedWorkout from './components/completedWorkout/CompletedWorkout';
 import WorkoutList from '../../components/workoutList/WorkoutList';
+import UserContext from '../../context/UserContext';
 
 interface UserPageProps {
   setWorkoutName: Dispatch<SetStateAction<string>>;
@@ -14,18 +12,27 @@ interface UserPageProps {
 
 const UserPage: React.FC<UserPageProps> = ({ setWorkoutName }): JSX.Element => {
   const [watchButtonState, setWatchButtonState] = useState(true);
-  const { email } = useAuth();
-  const dispatch = useAppDispatch();
   const { workoutList: workoutArray } = useFetchFirebaseData();
   const handleClickWatchWorkout = () => {
     watchButtonState ? setWatchButtonState(false) : setWatchButtonState(true);
   };
+  const { userData, setUserData } = useContext(UserContext);
 
   return (
     <div className="UserPage">
       <div className="UserPage-Div_buttonsContainer">
-        <button className="UserPage-Button_logOut" onClick={() => dispatch(removeUser())}>
-          Log out from {email}
+        <button
+          className="UserPage-Button_logOut"
+          onClick={() =>
+            setUserData({
+              isAuth: false,
+              email: null,
+              token: null,
+              id: null,
+            })
+          }
+        >
+          Log out from {userData.email}
         </button>
         <button className="UserPage-Button_watchWorkout" onClick={handleClickWatchWorkout}>
           {watchButtonState ? `Watch performed workouts` : `Select new workout`}

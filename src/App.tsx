@@ -13,25 +13,32 @@ import { dataBase } from './firebase/firebase';
 import { collection, query, onSnapshot, getDoc, doc } from 'firebase/firestore';
 import UserPage from './pages/userPage/UserPage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { useAppDispatch } from './hooks/reduxHooks';
-import { setUser } from './store/slices/userSlice';
-import { useAuth } from './hooks/useAuth';
 import Loader from './components/loader/Loader';
+import UserContext from './context/UserContext';
 
 const App: React.FunctionComponent = (): JSX.Element => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+  const [userData, setUserData] = useState<{
+    isAuth: boolean;
+    email: string | null;
+    token: string | null;
+    id: string | null;
+  }>({
+    isAuth: false,
+    email: null,
+    token: null,
+    id: null,
+  });
   function switchTheme() {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
   }
   const push = useNavigate();
-  const { isAuth } = useAuth();
   const [result, setResult] = useState<Workout[]>([]);
   const [isPageLoad, setIsPageLoad] = useState(false);
   const [exerciseArray, setExerciseArray] = useState<ExerciseList[]>([]);
   const [workoutName, setWorkoutName] = useState<string>('');
-  const dispatch = useAppDispatch();
   const checkIsAdmin = async (uid: string) => {
     const userDoc = await getDoc(doc(dataBase, 'users', `${uid}`));
     return userDoc.data();
@@ -41,13 +48,12 @@ const App: React.FunctionComponent = (): JSX.Element => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-          })
-        );
+        setUserData({
+          isAuth: true,
+          email: user.email,
+          token: user.refreshToken,
+          id: user.uid,
+        });
         setIsPageLoad(true);
         checkIsAdmin(user.uid).then((data) => {
           data?.isAdmin ? push('/admin') : push('/user');
@@ -88,42 +94,48 @@ const App: React.FunctionComponent = (): JSX.Element => {
   }, []);
 
   return isPageLoad ? (
-    <div className="App" data-theme={theme}>
-      <SwitchTheme theme={theme} changeTheme={switchTheme} />
-      <Routes>
-        {isAuth
-          ? [
-              <Route
-                key="startPage"
-                path="/"
-                element={
-                  <StartPage workoutName={workoutName} setExerciseArray={setExerciseArray} />
-                }
-              />,
-              <Route
-                key="exercisePage"
-                path="/exercise"
-                element={<ExercisePage allExercises={exerciseArray} workoutName={workoutName} />}
-              />,
-              <Route key="adminPage" path="/admin" element={<AdminPage exerciseArr={result} />} />,
-              <Route
-                key="userPage"
-                path="/user"
-                element={<UserPage setWorkoutName={setWorkoutName} />}
-              />,
-              <Route key="notFoundPage" path="*" element={<Navigate to="/user" />} />,
-            ]
-          : [
-              <Route
-                key="login"
-                path="/login"
-                element={<LoginPage setIsPageLoad={setIsPageLoad} />}
-              />,
-              <Route key="register" path="/register" element={<RegisterPage />} />,
-              <Route key="notFoundPage" path="*" element={<Navigate to="/login" />} />,
-            ]}
-      </Routes>
-    </div>
+    <UserContext.Provider value={{ userData, setUserData }}>
+      <div className="App" data-theme={theme}>
+        <SwitchTheme theme={theme} changeTheme={switchTheme} />
+        <Routes>
+          {userData.isAuth
+            ? [
+                <Route
+                  key="startPage"
+                  path="/"
+                  element={
+                    <StartPage workoutName={workoutName} setExerciseArray={setExerciseArray} />
+                  }
+                />,
+                <Route
+                  key="exercisePage"
+                  path="/exercise"
+                  element={<ExercisePage allExercises={exerciseArray} workoutName={workoutName} />}
+                />,
+                <Route
+                  key="adminPage"
+                  path="/admin"
+                  element={<AdminPage exerciseArr={result} />}
+                />,
+                <Route
+                  key="userPage"
+                  path="/user"
+                  element={<UserPage setWorkoutName={setWorkoutName} />}
+                />,
+                <Route key="notFoundPage" path="*" element={<Navigate to="/user" />} />,
+              ]
+            : [
+                <Route
+                  key="login"
+                  path="/login"
+                  element={<LoginPage setIsPageLoad={setIsPageLoad} />}
+                />,
+                <Route key="register" path="/register" element={<RegisterPage />} />,
+                <Route key="notFoundPage" path="*" element={<Navigate to="/login" />} />,
+              ]}
+        </Routes>
+      </div>
+    </UserContext.Provider>
   ) : (
     <Loader color="#aa00ff" />
   );

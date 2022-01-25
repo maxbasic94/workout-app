@@ -1,19 +1,18 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../../../components/form/Form';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { setUser } from '../../../../store/slices/userSlice';
-import { useAppDispatch } from '../../../../hooks/reduxHooks';
 import { dataBase } from '../../../../firebase/firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import UserContext from '../../../../context/UserContext';
 
 interface LoginProps {
   setIsPageLoad: Dispatch<SetStateAction<boolean>>;
 }
 
 const Login: React.FC<LoginProps> = ({ setIsPageLoad }): JSX.Element => {
-  const dispatch = useAppDispatch();
   const push = useNavigate();
+  const { setUserData } = useContext(UserContext);
   const checkIsAdmin = async (uid: string) => {
     const userDoc = await getDoc(doc(dataBase, 'users', `${uid}`));
     return userDoc.data();
@@ -23,13 +22,12 @@ const Login: React.FC<LoginProps> = ({ setIsPageLoad }): JSX.Element => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-          })
-        );
+        setUserData({
+          isAuth: true,
+          email: user.email,
+          token: user.refreshToken,
+          id: user.uid,
+        });
         setIsPageLoad(false);
         checkIsAdmin(user.uid)
           .then((data) => {

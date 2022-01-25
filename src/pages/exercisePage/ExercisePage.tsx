@@ -1,13 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ExerciseList } from '../../types/types';
 import Control from './components/control/Control';
 import './ExercisePage.css';
 import Player from './components/player/Player';
 import PlayPauseButton from './components/playPauseButton/PlayPauseButton';
 import FinishWorkout from './components/finishWorkout/FinishWorkout';
-import { useAuth } from '../../hooks/useAuth';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import { removeUser } from '../../store/slices/userSlice';
+import UserContext from '../../context/UserContext';
 
 interface ExrPageProps {
   allExercises: Array<ExerciseList>;
@@ -25,8 +23,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({
   const [isPause, setIsPause] = useState(true);
   const [time, setTime] = useState(0);
   const playerRef = useRef<HTMLVideoElement>(null);
-  const { email } = useAuth();
-  const dispatch = useAppDispatch();
+  const { userData, setUserData } = useContext(UserContext);
 
   useEffect(() => {
     if (allExercises.length && indexExercise < allExercises.length) {
@@ -61,8 +58,18 @@ const ExercisePage: React.FC<ExrPageProps> = ({
 
   return (
     <div className="ExercisePage">
-      <button className="UserPage-Button_logOut" onClick={() => dispatch(removeUser())}>
-        Log out from {email}
+      <button
+        className="UserPage-Button_logOut"
+        onClick={() =>
+          setUserData({
+            isAuth: false,
+            email: null,
+            token: null,
+            id: null,
+          })
+        }
+      >
+        Log out from {userData.email}
       </button>
       {indexExercise === allExercises.length && allExercises.length ? (
         <FinishWorkout time={time} workoutName={workoutName} />

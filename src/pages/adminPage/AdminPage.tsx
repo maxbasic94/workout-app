@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useContext } from 'react';
 import './AdminPage.css';
 import { Workout } from '../../types/types';
 import AdminExercisesList from './components/adminExerciseList/AdminExerciseList';
@@ -6,9 +6,7 @@ import WorkoutList from '../../components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import Modal from '../../components/modal/Modal';
 import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
-import { useAuth } from '../../hooks/useAuth';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import { removeUser } from '../../store/slices/userSlice';
+import UserContext from '../../context/UserContext';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
@@ -21,8 +19,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [workoutName, setWorkoutName] = useState('');
   const { workoutList, setIsDelete } = useFetchFirebaseData();
-  const { email } = useAuth();
-  const dispatch = useAppDispatch();
+  const { userData, setUserData } = useContext(UserContext);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setWorkoutNameInput(event.currentTarget.value);
@@ -45,8 +42,18 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   return (
     <div className="AdminPage">
       <div className="AdminPage-Div_buttonsContainer">
-        <button className="UserPage-Button_logOut" onClick={() => dispatch(removeUser())}>
-          Log out from {email}
+        <button
+          className="UserPage-Button_logOut"
+          onClick={() =>
+            setUserData({
+              isAuth: false,
+              email: null,
+              token: null,
+              id: null,
+            })
+          }
+        >
+          Log out from {userData.email}
         </button>
         <button className="AdminPage-Button_watchWorkout" onClick={handleClickWatchWorkout}>
           {watchButtonState ? `Watch workouts` : `Create new workout`}

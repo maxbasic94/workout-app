@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { Workout, ExerciseList } from '../../types/types';
 import StartInfo from './components/startInfo/StartInfo';
 import ExercisesList from './components/exercisesList/ExercisesList';
@@ -6,9 +6,7 @@ import './StartPage.css';
 import { dataBase } from '../../firebase/firebase';
 import { query, collection, onSnapshot, doc } from 'firebase/firestore';
 import Loader from '../../components/loader/Loader';
-import { useAuth } from '../../hooks/useAuth';
-import { useAppDispatch } from '../../hooks/reduxHooks';
-import { removeUser } from '../../store/slices/userSlice';
+import UserContext from '../../context/UserContext';
 
 interface ExerciseProps {
   workoutName?: string;
@@ -17,8 +15,7 @@ interface ExerciseProps {
 
 const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): JSX.Element => {
   const [exerciseArr, setExerciseArr] = useState<Workout[]>([]);
-  const { email } = useAuth();
-  const dispatch = useAppDispatch();
+  const { userData, setUserData } = useContext(UserContext);
 
   function getAllExerciseArray(allExerciseArray: Array<Workout> | undefined) {
     const resultArr: Array<ExerciseList> = [];
@@ -62,8 +59,18 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
 
   return (
     <div className="StartPage">
-      <button className="UserPage-Button_logOut" onClick={() => dispatch(removeUser())}>
-        Log out from {email}
+      <button
+        className="UserPage-Button_logOut"
+        onClick={() =>
+          setUserData({
+            isAuth: false,
+            email: null,
+            token: null,
+            id: null,
+          })
+        }
+      >
+        Log out from {userData.email}
       </button>
       {exerciseArr.length ? (
         <>
