@@ -10,7 +10,7 @@ import useLocalStorage from 'use-local-storage';
 import './App.css';
 import SwitchTheme from './themes/SwitchTheme';
 import { dataBase } from './firebase/firebase';
-import { collection, query, onSnapshot } from 'firebase/firestore';
+import { collection, query, onSnapshot, getDoc, doc } from 'firebase/firestore';
 import UserPage from './pages/userPage/UserPage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useAppDispatch } from './hooks/reduxHooks';
@@ -32,6 +32,10 @@ const App: React.FunctionComponent = (): JSX.Element => {
   const [exerciseArray, setExerciseArray] = useState<ExerciseList[]>([]);
   const [workoutName, setWorkoutName] = useState<string>('');
   const dispatch = useAppDispatch();
+  const checkIsAdmin = async (uid: string) => {
+    const userDoc = await getDoc(doc(dataBase, 'users', `${uid}`));
+    return userDoc.data();
+  };
 
   useEffect(() => {
     const auth = getAuth();
@@ -45,6 +49,9 @@ const App: React.FunctionComponent = (): JSX.Element => {
           })
         );
         setIsPageLoad(true);
+        checkIsAdmin(user.uid).then((data) => {
+          data?.isAdmin ? push('/admin') : push('/user');
+        });
       } else {
         push('/login');
         setIsPageLoad(true);
@@ -104,10 +111,14 @@ const App: React.FunctionComponent = (): JSX.Element => {
                 path="/user"
                 element={<UserPage setWorkoutName={setWorkoutName} />}
               />,
-              <Route key="notFoundPage" path="*" element={<Navigate to="/" />} />,
+              <Route key="notFoundPage" path="*" element={<Navigate to="/user" />} />,
             ]
           : [
-              <Route key="login" path="/login" element={<LoginPage />} />,
+              <Route
+                key="login"
+                path="/login"
+                element={<LoginPage setIsPageLoad={setIsPageLoad} />}
+              />,
               <Route key="register" path="/register" element={<RegisterPage />} />,
               <Route key="notFoundPage" path="*" element={<Navigate to="/login" />} />,
             ]}

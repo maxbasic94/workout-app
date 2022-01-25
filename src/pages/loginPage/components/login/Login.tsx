@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../../../components/form/Form';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
@@ -7,7 +7,11 @@ import { useAppDispatch } from '../../../../hooks/reduxHooks';
 import { dataBase } from '../../../../firebase/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
-const Login: React.FC = (): JSX.Element => {
+interface LoginProps {
+  setIsPageLoad: Dispatch<SetStateAction<boolean>>;
+}
+
+const Login: React.FC<LoginProps> = ({ setIsPageLoad }): JSX.Element => {
   const dispatch = useAppDispatch();
   const push = useNavigate();
   const checkIsAdmin = async (uid: string) => {
@@ -26,9 +30,14 @@ const Login: React.FC = (): JSX.Element => {
             token: user.refreshToken,
           })
         );
-        checkIsAdmin(user.uid).then((data) => {
-          data?.isAdmin ? push('/admin') : push('/user');
-        });
+        setIsPageLoad(false);
+        checkIsAdmin(user.uid)
+          .then((data) => {
+            data?.isAdmin ? push('/admin') : push('/user');
+          })
+          .then(() => {
+            setIsPageLoad(true);
+          });
       })
       .catch(() => alert('Invalid user!'));
   };

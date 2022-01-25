@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 import Login from './components/login/Login';
 import './LoginPage.css';
 
-const LoginPage: React.FC = (): JSX.Element => {
+interface LoginPageProps {
+  setIsPageLoad: Dispatch<SetStateAction<boolean>>;
+}
+
+const LoginPage: React.FC<LoginPageProps> = ({ setIsPageLoad }): JSX.Element => {
   return (
     <div className="LoginPage">
       <h1>Login Page</h1>
-      <Login />
+      <Login setIsPageLoad={setIsPageLoad} />
       <p>
         Or <Link to="/register">Register</Link>
       </p>
