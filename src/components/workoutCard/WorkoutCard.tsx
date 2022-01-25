@@ -46,10 +46,7 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
       <div className={`${classPage}-WorkoutCard`}>
         <div className={`${classPage}-WorkoutCard-title`}>{title}</div>
         {exercises.map((item, index) => (
-          <div
-            className={`${classPage}-WorkoutCard_userExerciseList`}
-            key={`${index + 1}_${item.title}`}
-          >
+          <div className={`${classPage}-WorkoutCard_userExerciseList`} key={item.id}>
             {`${index + 1}. ${item.title}`}
           </div>
         ))}
