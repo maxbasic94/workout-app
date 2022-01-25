@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { deleteDoc, doc } from 'firebase/firestore';
 import { Dispatch, SetStateAction } from 'react';
 import { dataBase } from '../../firebase/firebase';
