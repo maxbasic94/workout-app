@@ -4,9 +4,9 @@ import { Workout } from '../../types/types';
 import AdminExercisesList from './components/adminExerciseList/AdminExerciseList';
 import WorkoutList from '../../components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
-import Modal from '../../components/modal/Modal';
 import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
 import UserContext from '../../context/UserContext';
+import AdminModal from '../../components/adminModal/AdminModal';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
@@ -94,14 +94,14 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
             setWorkoutName={setWorkoutName}
             setIsDelete={setIsDelete}
           />
-          <Modal
+          <AdminModal
             setIsDelete={setIsDelete}
             workoutArray={workoutArray}
             workoutList={workoutList}
             workoutName={workoutName}
             exerciseListArr={exerciseArr}
             open={isOpen}
-            onClose={() => setIsOpen(false)}
+            onClose={setIsOpen}
             setExerciseWorkoutArray={setExerciseWorkoutArray}
           />
         </div>

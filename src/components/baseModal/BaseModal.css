@@ -1,0 +1,45 @@
+.Modal-Container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 80vh;
+  width: 600px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 1000;
+}
+
+.Modal-Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.Modal-Div_buttonContainer {
+  position: sticky;
+  top: 5px;
+  width: inherit;
+  text-align: right;
+}
+
+.Modal-Button_closeModal {
+  font-size: 18px;
+  background-color: tomato;
+  color: white;
+  border-width: 0px;
+  border-radius: 5px;
+  line-height: 20px;
+  margin: 5px 23px 0 0;
+}
+
+@media screen and (width < 640px) {
+  .Modal-Container {
+    width: 90vw;
+  }
+}
