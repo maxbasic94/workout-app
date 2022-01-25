@@ -11,7 +11,7 @@ const SingUp: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const push = useNavigate();
   const setUserToFirestore = async (email: string | null, uid: string) => {
-    await setDoc(doc(dataBase, `users`, `${uid}`), { isAdmin: false, name: email });
+    await setDoc(doc(dataBase, `users`, `${uid}`), { isAdmin: false, name: email, performed: [] });
   };
 
   const handleRegister = (email: string, password: string) => {
