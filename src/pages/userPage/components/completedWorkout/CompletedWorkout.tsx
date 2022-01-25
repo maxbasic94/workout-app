@@ -20,7 +20,7 @@ const CompletedWorkout: React.FC = (): JSX.Element => {
   return (
     <div className="UserPage-CompletedWorkout">
       <h4 className="UserPage-CompletedWorkout_caption">Completed workouts</h4>
-      {completedWorkoutList.map(({ name, time }, index) => (
+      {completedWorkoutList?.map(({ name, time }, index) => (
         <div className="UserPage-CompletedWorkout_dataContainer" key={`${index}_${name}`}>
           <div className="UserPage-CompletedWorkout_name">name: {name}</div>
           <div className="UserPage-CompletedWorkout_time">time: {time}</div>
