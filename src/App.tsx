@@ -125,7 +125,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
       </Routes>
     </div>
   ) : (
-    <Loader color="black" />
+    <Loader color="#aa00ff" />
   );
 };
 
