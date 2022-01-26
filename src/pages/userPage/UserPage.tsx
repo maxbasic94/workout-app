@@ -5,6 +5,7 @@ import Loader from '../../components/loader/Loader';
 import CompletedWorkout from './components/completedWorkout/CompletedWorkout';
 import WorkoutList from '../../components/workoutList/WorkoutList';
 import UserContext from '../../context/UserContext';
+import { getAuth, signOut } from 'firebase/auth';
 
 interface UserPageProps {
   setWorkoutName: Dispatch<SetStateAction<string>>;
@@ -17,20 +18,22 @@ const UserPage: React.FC<UserPageProps> = ({ setWorkoutName }): JSX.Element => {
     watchButtonState ? setWatchButtonState(false) : setWatchButtonState(true);
   };
   const { userData, setUserData } = useContext(UserContext);
+  const auth = getAuth();
 
   return (
     <div className="UserPage">
       <div className="UserPage-Div_buttonsContainer">
         <button
           className="UserPage-Button_logOut"
-          onClick={() =>
+          onClick={() => {
             setUserData({
               isAuth: false,
               email: null,
               token: null,
               id: null,
-            })
-          }
+            });
+            signOut(auth);
+          }}
         >
           Log out from {userData.email}
         </button>

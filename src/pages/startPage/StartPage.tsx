@@ -7,6 +7,7 @@ import { dataBase } from '../../firebase/firebase';
 import { query, collection, onSnapshot, doc } from 'firebase/firestore';
 import Loader from '../../components/loader/Loader';
 import UserContext from '../../context/UserContext';
+import { getAuth, signOut } from 'firebase/auth';
 
 interface ExerciseProps {
   workoutName?: string;
@@ -16,6 +17,7 @@ interface ExerciseProps {
 const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): JSX.Element => {
   const [exerciseArr, setExerciseArr] = useState<Workout[]>([]);
   const { userData, setUserData } = useContext(UserContext);
+  const auth = getAuth();
 
   function getAllExerciseArray(allExerciseArray: Array<Workout> | undefined) {
     const resultArr: Array<ExerciseList> = [];
@@ -61,14 +63,15 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
     <div className="StartPage">
       <button
         className="UserPage-Button_logOut"
-        onClick={() =>
+        onClick={() => {
           setUserData({
             isAuth: false,
             email: null,
             token: null,
             id: null,
-          })
-        }
+          });
+          signOut(auth);
+        }}
       >
         Log out from {userData.email}
       </button>

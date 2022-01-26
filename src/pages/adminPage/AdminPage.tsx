@@ -7,6 +7,7 @@ import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
 import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
 import UserContext from '../../context/UserContext';
 import AdminModal from '../../components/adminModal/AdminModal';
+import { getAuth, signOut } from 'firebase/auth';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
@@ -20,6 +21,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
   const [workoutName, setWorkoutName] = useState('');
   const { workoutList, setIsDelete } = useFetchFirebaseData();
   const { userData, setUserData } = useContext(UserContext);
+  const auth = getAuth();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setWorkoutNameInput(event.currentTarget.value);
@@ -44,14 +46,15 @@ const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
       <div className="AdminPage-Div_buttonsContainer">
         <button
           className="UserPage-Button_logOut"
-          onClick={() =>
+          onClick={() => {
             setUserData({
               isAuth: false,
               email: null,
               token: null,
               id: null,
-            })
-          }
+            });
+            signOut(auth);
+          }}
         >
           Log out from {userData.email}
         </button>
