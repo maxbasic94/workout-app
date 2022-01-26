@@ -33,7 +33,7 @@ Application consist of pages. \
 Folder with new page place to `src/pages`. \
 Every page contains folder `components` for components necessary to this application page. \
 Every component place in its own folder. Styles for this component are also placed there. \
-Components that are used on some page contains in `src/components`. Every component also has its own folder. \
+Components that are used on few page contains in `src/components`. Every component also has its own folder. \
 Helper functions are located in the folder `src/helpers`.
     
 ```
