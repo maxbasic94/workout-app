@@ -12,7 +12,7 @@ import SwitchTheme from './themes/SwitchTheme';
 import { dataBase } from './firebase/firebase';
 import { collection, query, onSnapshot, getDoc, doc } from 'firebase/firestore';
 import UserPage from './pages/userPage/UserPage';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import Loader from './components/loader/Loader';
 import UserContext from './context/UserContext';
 
@@ -30,6 +30,17 @@ const App: React.FunctionComponent = (): JSX.Element => {
     token: null,
     id: null,
   });
+  const logOut = () => {
+    const auth = getAuth();
+    signOut(auth);
+    setUserData({
+      isAuth: false,
+      email: null,
+      token: null,
+      id: null,
+    });
+  };
+
   function switchTheme() {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
@@ -94,7 +105,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
   }, []);
 
   return isPageLoad ? (
-    <UserContext.Provider value={{ userData, setUserData }}>
+    <UserContext.Provider value={{ userData, setUserData, logOut }}>
       <div className="App" data-theme={theme}>
         <SwitchTheme theme={theme} changeTheme={switchTheme} />
         <Routes>

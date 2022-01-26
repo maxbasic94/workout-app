@@ -6,7 +6,6 @@ import Player from './components/player/Player';
 import PlayPauseButton from './components/playPauseButton/PlayPauseButton';
 import FinishWorkout from './components/finishWorkout/FinishWorkout';
 import UserContext from '../../context/UserContext';
-import { getAuth, signOut } from 'firebase/auth';
 
 interface ExrPageProps {
   allExercises: Array<ExerciseList>;
@@ -24,8 +23,7 @@ const ExercisePage: React.FC<ExrPageProps> = ({
   const [isPause, setIsPause] = useState(true);
   const [time, setTime] = useState(0);
   const playerRef = useRef<HTMLVideoElement>(null);
-  const { userData, setUserData } = useContext(UserContext);
-  const auth = getAuth();
+  const { userData, logOut } = useContext(UserContext);
 
   useEffect(() => {
     if (allExercises.length && indexExercise < allExercises.length) {
@@ -34,11 +32,11 @@ const ExercisePage: React.FC<ExrPageProps> = ({
     }
   }, [allExercises, indexExercise]);
 
-  function changeReadyState() {
+  const changeReadyState = () => {
     isReady ? setIsReady(false) : setIsReady(true);
-  }
+  };
 
-  function moveToNextIndex() {
+  const moveToNextIndex = () => {
     if (allExercises.length > indexExercise) {
       setIndexExercise(indexExercise + 1);
     }
@@ -47,31 +45,20 @@ const ExercisePage: React.FC<ExrPageProps> = ({
       setTime(time + duration);
     }
     setIsPause(true);
-  }
+  };
 
-  function moveToPrevIndex() {
+  const moveToPrevIndex = () => {
     if (indexExercise > 0) {
       setIndexExercise(indexExercise - 1);
       setTime(time - duration);
       changeReadyState();
     }
     setIsPause(true);
-  }
+  };
 
   return (
     <div className="ExercisePage">
-      <button
-        className="UserPage-Button_logOut"
-        onClick={() => {
-          setUserData({
-            isAuth: false,
-            email: null,
-            token: null,
-            id: null,
-          });
-          signOut(auth);
-        }}
-      >
+      <button className="UserPage-Button_logOut" onClick={logOut}>
         Log out from {userData.email}
       </button>
       {indexExercise === allExercises.length && allExercises.length ? (

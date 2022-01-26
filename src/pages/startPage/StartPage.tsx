@@ -7,7 +7,6 @@ import { dataBase } from '../../firebase/firebase';
 import { query, collection, onSnapshot, doc } from 'firebase/firestore';
 import Loader from '../../components/loader/Loader';
 import UserContext from '../../context/UserContext';
-import { getAuth, signOut } from 'firebase/auth';
 
 interface ExerciseProps {
   workoutName?: string;
@@ -16,10 +15,8 @@ interface ExerciseProps {
 
 const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): JSX.Element => {
   const [exerciseArr, setExerciseArr] = useState<Workout[]>([]);
-  const { userData, setUserData } = useContext(UserContext);
-  const auth = getAuth();
-
-  function getAllExerciseArray(allExerciseArray: Array<Workout> | undefined) {
+  const { userData, logOut } = useContext(UserContext);
+  const getAllExerciseArray = (allExerciseArray: Array<Workout> | undefined) => {
     const resultArr: Array<ExerciseList> = [];
     allExerciseArray?.forEach((item: Workout) => {
       item.exercises.forEach((exr: ExerciseList) => {
@@ -27,7 +24,7 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
       });
     });
     return resultArr;
-  }
+  };
 
   useEffect(() => {
     if (workoutName) {
@@ -61,18 +58,7 @@ const StartPage: React.FC<ExerciseProps> = ({ workoutName, setExerciseArray }): 
 
   return (
     <div className="StartPage">
-      <button
-        className="UserPage-Button_logOut"
-        onClick={() => {
-          setUserData({
-            isAuth: false,
-            email: null,
-            token: null,
-            id: null,
-          });
-          signOut(auth);
-        }}
-      >
+      <button className="UserPage-Button_logOut" onClick={logOut}>
         Log out from {userData.email}
       </button>
       {exerciseArr.length ? (

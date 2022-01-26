@@ -10,11 +10,13 @@ interface UserContextInterface {
       id: string | null;
     }>
   >;
+  logOut: () => void;
 }
 
 const UserContext = React.createContext<UserContextInterface>({
   userData: { isAuth: false, email: '', token: '', id: '' },
   setUserData: () => null,
+  logOut: () => null,
 });
 
 export default UserContext;
