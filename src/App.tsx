@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Workout, ExerciseList as ExerciseList } from '../src/types/types';
+import { Workout, ExerciseList as ExerciseList, UserState } from '../src/types/types';
 import StartPage from './pages/startPage/StartPage';
 import ExercisePage from './pages/exercisePage/ExercisePage';
 import LoginPage from './pages/loginPage/LoginPage';
@@ -20,12 +20,7 @@ import { getStartingData } from './helpers/getWorkoutData';
 const App: React.FunctionComponent = (): JSX.Element => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
-  const [userData, setUserData] = useState<{
-    isAuth: boolean;
-    email: string | null;
-    token: string | null;
-    id: string | null;
-  }>({
+  const [userData, setUserData] = useState<UserState>({
     isAuth: false,
     email: null,
     token: null,
