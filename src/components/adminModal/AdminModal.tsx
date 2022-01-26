@@ -1,7 +1,5 @@
-import { deleteDoc, doc } from 'firebase/firestore';
 import { Dispatch, SetStateAction } from 'react';
-import { dataBase } from '../../firebase/firebase';
-import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
+import updateWorkout from '../../helpers/updateWorkout';
 import AdminExercisesList from '../../pages/adminPage/components/adminExerciseList/AdminExerciseList';
 import { Workout } from '../../types/types';
 import BaseModal from '../baseComponents/baseModal/BaseModal';
@@ -37,18 +35,8 @@ const AdminModal: React.FC<AdminModalProps> = ({
     });
     return result;
   };
-
-  const updateWorkout = async () => {
-    deleteDoc(doc(dataBase, `workout`, `${workoutName}`))
-      .then(() => {
-        uploadDataToFirestore(workoutArray, workoutName);
-      })
-      .then(() => {
-        alert(`Workout ${workoutName} updated`);
-      })
-      .then(() => {
-        setIsDelete && setIsDelete(true);
-      });
+  const handlerClick = () => {
+    setIsDelete && updateWorkout(setIsDelete, workoutName, workoutArray);
   };
 
   return (
@@ -62,7 +50,7 @@ const AdminModal: React.FC<AdminModalProps> = ({
           checkedExerciseList={currentWorkout()}
         />
         <div className="Modal-UpdateButtonContainer">
-          <button className="Modal-Button_UpdateWorkout" onClick={updateWorkout}>
+          <button className="Modal-Button_UpdateWorkout" onClick={() => handlerClick()}>
             Update
           </button>
         </div>
