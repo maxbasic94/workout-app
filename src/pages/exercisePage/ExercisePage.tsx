@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { ExerciseList } from '../../types/types';
 import Control from './components/control/Control';
 import './ExercisePage.css';
@@ -6,6 +6,7 @@ import Player from './components/player/Player';
 import PlayPauseButton from './components/playPauseButton/PlayPauseButton';
 import FinishWorkout from './components/finishWorkout/FinishWorkout';
 import UserContext from '../../context/UserContext';
+import useStatesExercisePage from '../../hooks/useStatesExercisePage,hook';
 
 interface ExrPageProps {
   allExercises: Array<ExerciseList>;
@@ -16,45 +17,20 @@ const ExercisePage: React.FC<ExrPageProps> = ({
   allExercises: allExercises,
   workoutName,
 }): JSX.Element => {
-  const [url, setUrl] = useState<string>('');
-  const [indexExercise, setIndexExercise] = useState(0);
-  const [duration, setDuration] = useState(20);
-  const [isReady, setIsReady] = useState(true);
-  const [isPause, setIsPause] = useState(true);
-  const [time, setTime] = useState(0);
   const playerRef = useRef<HTMLVideoElement>(null);
   const { userData, logOut } = useContext(UserContext);
-
-  useEffect(() => {
-    if (allExercises.length && indexExercise < allExercises.length) {
-      setDuration(allExercises[indexExercise].duration);
-      setUrl(allExercises[indexExercise].video);
-    }
-  }, [allExercises, indexExercise]);
-
-  const changeReadyState = () => {
-    isReady ? setIsReady(false) : setIsReady(true);
-  };
-
-  const moveToNextIndex = () => {
-    if (allExercises.length > indexExercise) {
-      setIndexExercise(indexExercise + 1);
-    }
-    if (allExercises.length - 1 > indexExercise) {
-      changeReadyState();
-      setTime(time + duration);
-    }
-    setIsPause(true);
-  };
-
-  const moveToPrevIndex = () => {
-    if (indexExercise > 0) {
-      setIndexExercise(indexExercise - 1);
-      setTime(time - duration);
-      changeReadyState();
-    }
-    setIsPause(true);
-  };
+  const {
+    url,
+    isPause,
+    setIsPause,
+    moveToNextIndex,
+    moveToPrevIndex,
+    indexExercise,
+    time,
+    duration,
+    isReady,
+    changeReadyState,
+  } = useStatesExercisePage(allExercises);
 
   return (
     <div className="ExercisePage">

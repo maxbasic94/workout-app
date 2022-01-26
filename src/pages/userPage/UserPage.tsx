@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useContext, useState } from 'react';
 import './UserPage.css';
-import useFetchFirebaseData from '../../hooks/useFetchFirebaseData';
+import useFetchFirebaseData from '../../hooks/useFetchFirebaseData.hook';
 import Loader from '../../components/loader/Loader';
 import CompletedWorkout from './components/completedWorkout/CompletedWorkout';
 import WorkoutList from '../../components/workoutList/WorkoutList';
