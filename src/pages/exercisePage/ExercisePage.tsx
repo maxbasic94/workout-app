@@ -6,7 +6,7 @@ import Player from './components/player/Player';
 import PlayPauseButton from './components/playPauseButton/PlayPauseButton';
 import FinishWorkout from './components/finishWorkout/FinishWorkout';
 import UserContext from '../../context/UserContext';
-import useStatesExercisePage from '../../hooks/useStatesExercisePage,hook';
+import useStatesExercisePage from '../../hooks/useStatesExercisePage.hook';
 
 interface ExrPageProps {
   allExercises: Array<ExerciseList>;
