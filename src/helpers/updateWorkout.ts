@@ -7,7 +7,7 @@ const updateWorkout = async (
   setIsDelete: (value: boolean) => void,
   workoutName: string,
   workoutArray: Array<Workout>
-) => {
+): Promise<void> => {
   deleteDoc(doc(dataBase, `workout`, `${workoutName}`))
     .then(() => {
       uploadDataToFirestore(workoutArray, workoutName);
