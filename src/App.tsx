@@ -10,11 +10,12 @@ import useLocalStorage from 'use-local-storage';
 import './App.css';
 import SwitchTheme from './themes/SwitchTheme';
 import { dataBase } from './firebase/firebase';
-import { collection, query, onSnapshot, getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 import UserPage from './pages/userPage/UserPage';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import Loader from './components/loader/Loader';
 import UserContext from './context/UserContext';
+import { getStartingData } from './helpers/getWorkoutData';
 
 const App: React.FunctionComponent = (): JSX.Element => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -41,10 +42,10 @@ const App: React.FunctionComponent = (): JSX.Element => {
     });
   };
 
-  function switchTheme() {
+  const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-  }
+  };
   const push = useNavigate();
   const [result, setResult] = useState<Workout[]>([]);
   const [isPageLoad, setIsPageLoad] = useState(false);
@@ -77,31 +78,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    const exerciseViewCollection = query(collection(dataBase, 'api'));
-    const workoutArray: Array<Workout> = [];
-    onSnapshot(exerciseViewCollection, (querySnapshot) => {
-      querySnapshot.forEach((ExerciseViewItem) => {
-        const documentsCollection = query(
-          collection(dataBase, 'api', `${ExerciseViewItem.data().title}`, 'exercises')
-        );
-        const exercisesArray: Array<ExerciseList> = [];
-
-        onSnapshot(documentsCollection, (querySnapshot2) => {
-          querySnapshot2.forEach((item) => {
-            const exercise = item.data() as ExerciseList;
-            exercisesArray.push(exercise);
-          });
-        });
-        const exerciseViewObject = {
-          title: ExerciseViewItem.data().title,
-          exercises: exercisesArray,
-        };
-        exerciseViewObject.title === 'Warm up'
-          ? workoutArray.unshift(exerciseViewObject)
-          : workoutArray.push(exerciseViewObject);
-      });
-      setResult(workoutArray);
-    });
+    setResult(getStartingData());
   }, []);
 
   return isPageLoad ? (

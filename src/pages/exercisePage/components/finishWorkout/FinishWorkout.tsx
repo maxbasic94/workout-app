@@ -14,7 +14,7 @@ interface FinishWorkoutProps {
 const FinishWorkout: React.FC<FinishWorkoutProps> = ({ time, workoutName }): JSX.Element => {
   const push = useNavigate();
   const auth = getAuth();
-  const handleClick = () => {
+  const handlerClick = () => {
     onAuthStateChanged(auth, async (user) => {
       const performedDocRef = doc(dataBase, `users`, `${user?.uid}`);
       const performedDocData = await (await getDoc(performedDocRef)).data()?.performed;
@@ -48,7 +48,7 @@ const FinishWorkout: React.FC<FinishWorkoutProps> = ({ time, workoutName }): JSX
       </div>
       <div className="ExercisePage-FinishWorkout_text_timeCaption">Minutes</div>
       <div className="ExercisePage-FinishWorkout_text_time">{Math.round(time / 60)}</div>
-      <button className="ExercisePage-FinishWorkout_button_end" onClick={handleClick}>
+      <button className="ExercisePage-FinishWorkout_button_end" onClick={handlerClick}>
         Save &#38; Continue
       </button>
     </div>

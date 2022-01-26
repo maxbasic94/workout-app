@@ -10,10 +10,10 @@ interface SwitchThemeProps {
 const SwitchTheme: React.FC<SwitchThemeProps> = ({ theme, changeTheme }): JSX.Element => {
   const initialState = theme === 'light' ? false : true;
   const [checked, setChecked] = useState(initialState);
-  function toggleTheme() {
+  const toggleTheme = () => {
     checked ? setChecked(false) : setChecked(true);
     changeTheme();
-  }
+  };
   return (
     <Switch
       className="App-Switch"
