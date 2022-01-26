@@ -34,13 +34,18 @@ Folder with new page place to `src/pages`. \
 Every page contains folder `components` for components necessary to this application page. \
 Every component place in its own folder. Styles for this component are also placed there. \
 Components that are used on few page contains in `src/components`. Every component also has its own folder. \
+There is folder `baseComponents` in the `src/components`. It needs to contain base components. \ 
 Helper functions are located in the folder `src/helpers`.
     
 ```
 .
 ├─ .husky               # Folder for husky settings(pre-commit hook)
 ├─ src                 
-│  ├─ components        # Folder with component to some pages
+│  ├─ components        # Folder with component to few pages
+│  │  ├─ baseComponents # Folder with base components
+│  │  │  │ 
+│  │  │ ...
+│  │ ... 
 │  ├─ context           # Folder with contexts
 │  ├─ firebase          # Folder with setting firebase
 │  ├─ helpers           # Folder with helper functions

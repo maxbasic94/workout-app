@@ -4,7 +4,7 @@ import { dataBase } from '../../firebase/firebase';
 import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
 import AdminExercisesList from '../../pages/adminPage/components/adminExerciseList/AdminExerciseList';
 import { Workout } from '../../types/types';
-import BaseModal from '../baseModal/BaseModal';
+import BaseModal from '../baseComponents/baseModal/BaseModal';
 import './AdminModal.css';
 
 interface AdminModalProps {
