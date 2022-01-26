@@ -5,13 +5,28 @@
 }
 
 .UserPage-CompletedWorkout_dataContainer {
-    display: flex;
-    border: 1px solid grey;
-    margin-bottom: 5px;
+  display: flex;
+  border: 1px solid grey;
+  margin-bottom: 5px;
+  min-width: 500px;
+  justify-content: space-between;
 }
 
 .UserPage-CompletedWorkout_name,
 .UserPage-CompletedWorkout_time {
-    min-width: 100px;
     text-align: center;
+}
+
+.UserPage-CompletedWorkout_name {
+  margin-left: 20px;
+}
+
+.UserPage-CompletedWorkout_time {
+  margin-right: 20px;
+}
+
+@media screen and (width < 500px) {
+  .UserPage-CompletedWorkout_dataContainer {
+    min-width: 90vw;
+  }
 }
