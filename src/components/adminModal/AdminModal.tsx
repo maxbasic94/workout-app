@@ -52,24 +52,22 @@ const AdminModal: React.FC<AdminModalProps> = ({
   };
 
   return (
-    <>
-      <BaseModal open={open} onClose={onClose}>
-        <>
-          <div className="Modal_WorkoutName">{workoutName}</div>
-          <AdminExercisesList
-            setExerciseWorkoutArray={setExerciseWorkoutArray}
-            isModal={true}
-            exerciseListArr={exerciseListArr}
-            checkedExerciseList={currentWorkout()}
-          />
-          <div className="Modal-UpdateButtonContainer">
-            <button className="Modal-Button_UpdateWorkout" onClick={updateWorkout}>
-              Update
-            </button>
-          </div>
-        </>
-      </BaseModal>
-    </>
+    <BaseModal open={open} onClose={onClose}>
+      <>
+        <div className="Modal_WorkoutName">{workoutName}</div>
+        <AdminExercisesList
+          setExerciseWorkoutArray={setExerciseWorkoutArray}
+          isModal={true}
+          exerciseListArr={exerciseListArr}
+          checkedExerciseList={currentWorkout()}
+        />
+        <div className="Modal-UpdateButtonContainer">
+          <button className="Modal-Button_UpdateWorkout" onClick={updateWorkout}>
+            Update
+          </button>
+        </div>
+      </>
+    </BaseModal>
   );
 };
 
