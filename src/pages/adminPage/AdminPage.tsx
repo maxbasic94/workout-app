@@ -1,43 +1,31 @@
-import React, { useState, ChangeEvent, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import './AdminPage.css';
 import { Workout } from '../../types/types';
 import AdminExercisesList from './components/adminExerciseList/AdminExerciseList';
 import WorkoutList from '../../components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData.hook';
-import { uploadDataToFirestore } from '../../helpers/uploadDataToFirestore';
 import UserContext from '../../context/UserContext';
 import AdminModal from '../../components/adminModal/AdminModal';
+import useAdminPageData from '../../hooks/useAdminPageData.hook';
 
 interface AdminPageProps {
   exerciseArr: Workout[];
 }
 
 const AdminPage: React.FC<AdminPageProps> = ({ exerciseArr }): JSX.Element => {
-  const [workoutArray, setWorkoutArray] = useState<Array<Workout>>([]);
-  const [workoutNameInput, setWorkoutNameInput] = useState('');
-  const [watchButtonState, setWatchButtonState] = useState(true);
+  const {
+    workoutArray,
+    watchButtonState,
+    workoutNameInput,
+    handleChange,
+    setExerciseWorkoutArray,
+    handleClickWatchWorkout,
+    handleClickCreateWorkout,
+  } = useAdminPageData();
   const [isOpen, setIsOpen] = useState(false);
   const [workoutName, setWorkoutName] = useState('');
   const { workoutList, setIsDelete } = useFetchFirebaseData();
   const { userData, logOut } = useContext(UserContext);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setWorkoutNameInput(event.currentTarget.value);
-  };
-
-  const setExerciseWorkoutArray = (exerciseCollectionsArray: Array<Workout>) => {
-    setWorkoutArray(exerciseCollectionsArray);
-  };
-
-  const handleClickWatchWorkout = () => {
-    setIsDelete(true);
-    watchButtonState ? setWatchButtonState(false) : setWatchButtonState(true);
-  };
-
-  const handleClickCreateWorkout = () => {
-    uploadDataToFirestore(workoutArray, workoutNameInput);
-    alert('workout created');
-  };
 
   return (
     <div className="AdminPage">

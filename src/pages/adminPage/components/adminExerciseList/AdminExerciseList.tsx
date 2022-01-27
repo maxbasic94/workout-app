@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useAdminExerciseListData from '../../../../hooks/useAdminExerciseListData.hook';
 import { ExerciseList, Workout } from '../../../../types/types';
 import AdminExerciseView from '../adminExerciseView/AdminExerciseView';
 
@@ -15,30 +16,7 @@ const AdminExercisesList: React.FC<AdminExercisesListProps> = ({
   isModal,
   checkedExerciseList,
 }): JSX.Element => {
-  const [workoutArray, setWorkoutArray] = useState<Array<Workout>>([]);
-  const setExerciseViewToWorkoutArray = (exerciseViewObject: Workout) => {
-    const result = workoutArray;
-    if (workoutArray.length === 0) {
-      result.push(exerciseViewObject);
-    } else {
-      let elementFount = false;
-      workoutArray.forEach((item, index) => {
-        if (item.title === exerciseViewObject.title) {
-          result[index] = exerciseViewObject;
-          elementFount = true;
-        }
-      });
-      if (!elementFount) {
-        exerciseViewObject.title === 'Warm up'
-          ? workoutArray.unshift(exerciseViewObject)
-          : workoutArray.push(exerciseViewObject);
-      }
-    }
-    setWorkoutArray(result);
-    if (setExerciseWorkoutArray) {
-      setExerciseWorkoutArray(workoutArray);
-    }
-  };
+  const { setExerciseViewToWorkoutArray } = useAdminExerciseListData(setExerciseWorkoutArray);
 
   return (
     <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExercisesList`}>

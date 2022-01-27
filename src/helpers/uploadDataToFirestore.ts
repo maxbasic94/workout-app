@@ -37,6 +37,7 @@ const uploadDataToFirestore = async (
           );
         });
       });
+      alert('workout created');
     } else {
       throw new Error(`empty workout's name or exercise list!`);
     }

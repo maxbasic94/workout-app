@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useAdminExerciseViewData from '../../../../hooks/useAdminExerciseViewData.hook';
 import { Workout, ExerciseList } from '../../../../types/types';
 import AdminExercise from '../adminExercise/AdminExercise';
 import './AdminExerciseView.css';
@@ -16,25 +17,10 @@ const AdminExerciseView: React.FunctionComponent<AdminExerciseViewProps> = ({
   isModal,
   checkedExerciseList,
 }) => {
-  const [exerciseArray, setExerciseArray] = useState<Array<ExerciseList>>([]);
-  const [exerciseViewObject, setExerciseViewObject] = useState<Workout>({
-    title: `${exerciseList.title}`,
-    exercises: [],
-  });
-  const setIdToArray = (exercise: ExerciseList) => {
-    setExerciseArray((oldValue) => [...oldValue, exercise]);
-    setExerciseViewToWorkoutArray(exerciseViewObject);
-  };
-  const removeIdToArray = (id: number) => {
-    const newExerciseArray = exerciseArray.filter((item) => item.id !== id);
-    setExerciseArray(newExerciseArray);
-    setExerciseViewToWorkoutArray(exerciseViewObject);
-  };
-  useEffect(() => {
-    const newExerciseViewObject = exerciseViewObject;
-    newExerciseViewObject.exercises = exerciseArray;
-    setExerciseViewObject(newExerciseViewObject);
-  }, [exerciseArray, exerciseViewObject]);
+  const { setIdToArray, removeIdToArray } = useAdminExerciseViewData(
+    setExerciseViewToWorkoutArray,
+    exerciseList
+  );
 
   return (
     <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExerciseView`}>

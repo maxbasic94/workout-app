@@ -1,4 +1,5 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import React from 'react';
+import useAdminExerciseData from '../../../../hooks/useAdminExerciseData.hook';
 import { ExerciseList } from '../../../../types/types';
 import './AdminExercise.css';
 
@@ -16,17 +17,12 @@ const AdminExercise: React.FunctionComponent<AdminExerciseProps> = ({
   isModal,
   checkedExerciseList,
 }): JSX.Element => {
-  const [isChecked, setIsChecked] = useState(false);
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.currentTarget.checked);
-    event.currentTarget.checked ? setIdToArray(exercise) : removeIdToArray(exercise.id);
-  };
-  useEffect(() => {
-    checkedExerciseList &&
-      checkedExerciseList.forEach((item) => {
-        item.id === exercise.id && setIsChecked(true);
-      });
-  }, [checkedExerciseList, exercise.id]);
+  const { isChecked, handleChange } = useAdminExerciseData(
+    checkedExerciseList,
+    exercise,
+    setIdToArray,
+    removeIdToArray
+  );
 
   return (
     <div className={`${isModal ? 'Modal' : 'AdminPage'}-AdminExercise`}>
