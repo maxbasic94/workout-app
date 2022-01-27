@@ -15,7 +15,7 @@ const Form: React.FC<FormProps> = ({ title, handleClick }): JSX.Element => {
 
   return (
     <div className="Form">
-      <form onSubmit={handleFormSubmit} action="javascript:void(0)" method="get">
+      <form onSubmit={handleFormSubmit}>
         <input
           className="Form-input_email"
           type="email"
