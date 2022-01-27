@@ -5,7 +5,7 @@ import AdminExercisesList from './components/adminExerciseList/AdminExerciseList
 import WorkoutList from '../../components/workoutList/WorkoutList';
 import useFetchFirebaseData from '../../hooks/useFetchFirebaseData.hook';
 import UserContext from '../../context/UserContext';
-import AdminModal from '../../components/adminModal/AdminModal';
+import AdminModal from './components/adminModal/AdminModal';
 import useAdminPageData from '../../hooks/useAdminPageData.hook';
 
 interface AdminPageProps {

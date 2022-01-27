@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
-import updateWorkout from '../../helpers/updateWorkout';
-import AdminExercisesList from '../../pages/adminPage/components/adminExerciseList/AdminExerciseList';
-import { Workout } from '../../types/types';
-import BaseModal from '../baseComponents/baseModal/BaseModal';
+import updateWorkout from '../../../../helpers/updateWorkout';
+import AdminExercisesList from '../adminExerciseList/AdminExerciseList';
+import { Workout } from '../../../../types/types';
+import BaseModal from '../../../../components/baseModal/BaseModal';
 import './AdminModal.css';
 
 interface AdminModalProps {
