@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent } from 'react';
+import './Form.css';
 
 interface FormProps {
   title: string;
@@ -14,10 +15,11 @@ const Form: React.FC<FormProps> = ({ title, handleClick }): JSX.Element => {
 
   return (
     <div className="Form">
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} action="javascript:void(0)" method="get">
         <input
           className="Form-input_email"
           type="email"
+          required
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="email"
@@ -29,7 +31,7 @@ const Form: React.FC<FormProps> = ({ title, handleClick }): JSX.Element => {
           onChange={(event) => setPassword(event.target.value)}
           placeholder="password"
         />
-        <button className={`Form-button${title}`} onClick={() => handleClick(email, password)}>
+        <button className="Form-Button_submit" onClick={() => handleClick(email, password)}>
           {title}
         </button>
       </form>

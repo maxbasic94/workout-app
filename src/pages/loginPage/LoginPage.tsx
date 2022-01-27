@@ -10,11 +10,13 @@ interface LoginPageProps {
 const LoginPage: React.FC<LoginPageProps> = ({ setIsPageLoad }): JSX.Element => {
   return (
     <div className="LoginPage">
-      <h1>Login Page</h1>
-      <Login setIsPageLoad={setIsPageLoad} />
-      <p>
-        Or <Link to="/register">Register</Link>
-      </p>
+      <div className="LoginPage-container">
+        <h1 className="LoginPage-Caption">Login Page</h1>
+        <Login setIsPageLoad={setIsPageLoad} />
+        <p className="LoginPage-Link_goToLogin">
+          Or <Link to="/register">Register</Link>
+        </p>
+      </div>
     </div>
   );
 };

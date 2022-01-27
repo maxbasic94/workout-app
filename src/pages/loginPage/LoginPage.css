@@ -1,3 +1,22 @@
 .LoginPage {
-    height: 100vh;
+  height: 100vh;
 }
+
+.LoginPage-Caption {
+  text-align: center;
+}
+
+.LoginPage-container {
+  height: 210px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-top: 50px;
+  padding: 0 10px 5px 10px;
+}
+
+.LoginPage-Link_goToLogin {
+  display: inline;
+  position: relative;
+  bottom: 25px;
+}
+
